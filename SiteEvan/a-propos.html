@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos — Evan Pavel</title>
+  <meta name="description" content="Né en 2009 dans la région parisienne, Evan Pavel est un jeune artiste animé par une quête de réalisme saisissant, du pastel à l'aquarelle en passant par la peinture à l'huile." />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Sora', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Sora', 'Arial Black', 'sans-serif'],
+          },
+          colors: {
+            'brand-black': '#1a1a1a',
+            'brand-gray': '#717171',
+            'brand-light-gray': '#f8f8f8',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .detail-modal {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease; padding: 2rem;
+    }
+    .detail-modal.open { opacity: 1; pointer-events: auto; }
+    .detail-modal .modal-content {
+      display: flex; gap: 3rem; max-width: 85vw; max-height: 90vh; align-items: center;
+    }
+    .detail-modal .modal-img {
+      max-width: 60vw; max-height: 85vh; object-fit: contain; flex-shrink: 0;
+    }
+    .detail-modal .modal-info { color: #fff; min-width: 220px; max-width: 340px; }
+    .detail-modal .modal-info h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .detail-modal .modal-info .meta-label {
+      font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;
+    }
+    .detail-modal .modal-info .meta-value { font-size: 0.9375rem; margin-bottom: 1.25rem; }
+    .detail-modal .modal-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      color: #fff; font-size: 2rem; background: none; border: none;
+      cursor: pointer; line-height: 1; z-index: 101;
+    }
+    @media (max-width: 768px) {
+      .detail-modal .modal-content { flex-direction: column; gap: 1.5rem; }
+      .detail-modal .modal-img { max-width: 90vw; max-height: 50vh; }
+      .detail-modal .modal-info { max-width: 90vw; }
+    }
+    .img-wrap { position: relative; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<header class="sticky-nav">
+  <nav class="max-w-site flex justify-between items-center md:items-baseline py-6">
+    <div class="logo">
+      <a class="heading-bold text-2xl tracking-tighter" href="index.html">Evan Pavel</a>
+    </div>
+    <div class="desktop-nav flex space-x-12">
+      <a class="nav-link" href="index.html">Accueil</a>
+      <a class="nav-link" href="oeuvres.html">Œuvres</a>
+      <a class="nav-link active" href="a-propos.html">À propos</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </div>
+    <button class="mobile-menu-btn" onclick="this.classList.toggle('open'); document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div id="mobileNav" class="mobile-nav max-w-site">
+    <a class="nav-link" href="index.html">Accueil</a>
+    <a class="nav-link" href="oeuvres.html">Œuvres</a>
+    <a class="nav-link" href="a-propos.html">À propos</a>
+    <a class="nav-link" href="contact.html">Contact</a>
+  </div>
+</header>
+
+<main>
+  <!-- ═══════════════ PAGE HEADER ═══════════════ -->
+  <div class="max-w-site">
+    <section class="page-header fade-in">
+      <span class="subtitle">L'Artiste</span>
+      <h1 class="heading-bold">À propos.</h1>
+    </section>
+  </div>
+
+  <!-- ═══════════════ ABOUT CONTENT ═══════════════ -->
+  <section class="max-w-site pb-24">
+    <div class="about-grid">
+      <div class="about-portrait fade-in">
+        <img src="images/artist_portrait.png" alt="Portrait d'Evan Pavel" loading="lazy" />
+      </div>
+      <div class="fade-in">
+        <h2 class="heading-bold text-3xl md:text-4xl mb-8">Evan<br>Pavel.</h2>
+        <p class="text-brand-gray text-base leading-relaxed mb-6">
+          Né en 2009 dans la région parisienne, Evan Pavel est un jeune artiste animé par une quête de réalisme saisissant. Du pastel à l'aquarelle en passant par la peinture à l'huile, il maîtrise des techniques variées pour donner vie à des œuvres d'une précision remarquable.
+        </p>
+        <p class="text-brand-gray text-base leading-relaxed mb-6">
+          Son travail se distingue par un jeu subtil de textures et de profondeurs, où chaque toile capture la lumière avec une justesse qui invite le regard à s'attarder.
+        </p>
+        <p class="text-brand-gray text-base leading-relaxed mb-6">
+          Dès l'âge de 10 ans, il intègre l'atelier de peinture à l'huile flamande de <a href="https://www.richard-gautier.fr" target="_blank" class="underline hover:opacity-70 transition-opacity">Richard Gautier</a>, maître niortais et véritable artisan de la lumière juste. Sous sa direction, Evan forge des bases techniques solides et cultive une exigence artistique qui nourrit chacune de ses créations.
+        </p>
+        <p class="text-brand-gray text-base leading-relaxed">
+          Au-delà de la peinture, Evan est un esprit curieux : cartographie, langues et dialectes, vélo de route en compétition, aéronautique — il est titulaire d'un BIA — et musique, batteur passionné depuis l'âge de 6 ans. Autant de facettes qui enrichissent son regard d'artiste.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ AWARDS ═══════════════ -->
+  <section class="bg-brand-light-gray">
+    <div class="max-w-site section-gap-lg">
+      <div class="max-w-3xl fade-in">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-gray mb-4 block">Récompenses</span>
+        <h2 class="heading-bold text-4xl md:text-5xl mb-8">Parcours &amp;<br>Reconnaissance.</h2>
+      </div>
+      <ul class="awards-list max-w-3xl fade-in">
+        <li>
+          <span>Grand Prix — Concours Franco-Chinois de Dessin Jeunesse (AFCAC)</span>
+          <span class="award-year">2023</span>
+        </li>
+        <li>
+          <span>La nature à la reconquête de Niort</span>
+          <span class="award-year">2023</span>
+        </li>
+        <li>
+          <span>Prix d'Excellence — Concours Franco-Chinois de Dessin Jeunesse (AFCAC)</span>
+          <span class="award-year">2022</span>
+        </li>
+        <li>
+          <span>Dans la peau d'un artiste chinois</span>
+          <span class="award-year">2022</span>
+        </li>
+        <li>
+          <span>Lauréat — Concours Franco-Chinois de Dessin Jeunesse (AFCAC)</span>
+          <span class="award-year">2021</span>
+        </li>
+        <li>
+          <span>Un autre regard sur la Chine</span>
+          <span class="award-year">2021</span>
+        </li>
+      </ul>
+
+      <h3 class="font-bold text-lg mt-12 mb-6 max-w-3xl fade-in">La presse en parle</h3>
+      <ul class="awards-list max-w-3xl fade-in">
+        <li>
+          <a href="https://www.ouest-france.fr/nouvelle-aquitaine/bessines-79000/le-maitre-salue-et-encourage-leleve-evan-6184dc1c-51aa-493c-970b-a0344fdaf30e" target="_blank" class="hover:opacity-70 transition-opacity">Le maître salue et encourage son élève — Ouest-France</a>
+          <span class="award-year">2023</span>
+        </li>
+        <li>
+          <a href="https://www.ouest-france.fr/nouvelle-aquitaine/bessines-79000/quand-le-maitre-salue-son-eleve-e8e8bde1-66e1-4355-94ae-5a3dfe81f08b" target="_blank" class="hover:opacity-70 transition-opacity">Quand le maître salue son élève — Ouest-France</a>
+          <span class="award-year">2023</span>
+        </li>
+        <li>
+          <a href="https://www.ouest-france.fr/nouvelle-aquitaine/bessines-79000/je-vois-la-chine-par-ces-symboles-ebd9b460-3fef-4458-b73b-c75cd849a9ba" target="_blank" class="hover:opacity-70 transition-opacity">Je vois la Chine à travers ces symboles — Ouest-France</a>
+          <span class="award-year">2022</span>
+        </li>
+        <li>
+          <a href="https://www.ouest-france.fr/nouvelle-aquitaine/bessines-79000/crayon-pastel-et-aquarelle-e6cd48bf-2297-4f38-a44d-8dcc3f531035" target="_blank" class="hover:opacity-70 transition-opacity">Crayon, pastel et aquarelle — Ouest-France</a>
+          <span class="award-year">2021</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SELECTED WORK ═══════════════ -->
+  <section class="section-gap-lg max-w-site mt-8">
+    <h2 class="heading-bold text-4xl md:text-5xl mb-12 fade-in">Œuvres<br>Sélectionnées.</h2>
+    <div class="artwork-grid" style="gap: 3rem; row-gap: 5rem;">
+
+      <article class="artwork-card fade-in" data-artwork
+        data-title="L'appel du grand large" data-year="2025" data-medium="Huile sur papier" data-format="29,7 × 42 cm"
+        data-desc="« L'appel du grand large » est né de l'envie d'exprimer le respect et l'émerveillement face à la beauté et à la force fragile de la vie sous-marine.">
+        <div class="img-wrap">
+          <img src="images/01_lappel_du_grand_large.jpg" alt="L'appel du grand large" loading="lazy" />
+        </div>
+        <span class="artwork-num">01</span>
+        <h3>L'appel du grand large</h3>
+        <p class="artwork-meta">2025 · Huile sur papier · 29,7 × 42 cm</p>
+      </article>
+
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Les fleurs du clair-obscur" data-year="2025" data-medium="Huile sur bois" data-format="27 × 35 cm"
+        data-desc="Apprentissage de la peinture à l'huile, technique flamande, dans l'atelier de Richard Gautier. Bleuets, coquelicots et marguerites sous des pinceaux méticuleux.">
+        <div class="img-wrap">
+          <img src="images/02_les_fleurs_du_clair_obscur.jpg" alt="Les fleurs du clair-obscur" loading="lazy" />
+        </div>
+        <span class="artwork-num">02</span>
+        <h3>Les fleurs du clair-obscur</h3>
+        <p class="artwork-meta">2025 · Huile sur bois · 27 × 35 cm</p>
+      </article>
+
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Une ferme en Provence" data-year="2024" data-medium="Huile sur bois" data-format="29,7 × 42 cm"
+        data-desc="Ma ferme rêvée est un hommage à la Provence, cette terre de lumière et de couleurs.">
+        <div class="img-wrap">
+          <img src="images/03_une_ferme_en_provence.jpg" alt="Une ferme en Provence" loading="lazy" />
+        </div>
+        <span class="artwork-num">03</span>
+        <h3>Une ferme en Provence</h3>
+        <p class="artwork-meta">2024 · Huile sur bois · 29,7 × 42 cm</p>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<!-- Detail Modal -->
+<div class="detail-modal" id="detailModal">
+  <button class="modal-close" onclick="closeModal()">×</button>
+  <div class="modal-content">
+    <img class="modal-img" id="modalImg" src="" alt="" />
+    <div class="modal-info">
+      <h2 id="modalTitle"></h2>
+      <div class="meta-label">Année</div>
+      <div class="meta-value" id="modalYear"></div>
+      <div class="meta-label">Technique</div>
+      <div class="meta-value" id="modalMedium"></div>
+      <div class="meta-label">Format</div>
+      <div class="meta-value" id="modalFormat"></div>
+      <div class="meta-label">Description</div>
+      <div class="meta-value" id="modalDesc" style="opacity: 0.7; font-size: 0.875rem; line-height: 1.6;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="max-w-site flex flex-col md:flex-row justify-between items-center gap-4">
+    <p>&copy; 2026 Evan Pavel. Tous droits réservés. Les images de ce site ne sont pas libres de droit.</p>
+    <div class="flex gap-6">
+      <a href="https://www.instagram.com/evanpavel_87" target="_blank" class="nav-link">Instagram</a>
+      <a href="https://evanpav.wordpress.com" target="_blank" class="nav-link">Blog</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.querySelectorAll('[data-artwork]').forEach(card => {
+  card.addEventListener('click', () => {
+    const img = card.querySelector('img');
+    document.getElementById('modalImg').src = img.src;
+    document.getElementById('modalImg').alt = img.alt;
+    document.getElementById('modalTitle').textContent = card.dataset.title;
+    document.getElementById('modalYear').textContent = card.dataset.year;
+    document.getElementById('modalMedium').textContent = card.dataset.medium;
+    document.getElementById('modalFormat').textContent = card.dataset.format || '';
+    document.getElementById('modalDesc').textContent = card.dataset.desc;
+    document.getElementById('detailModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('detailModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+<script src="js/nav.js"></script>
+</body>
+</html>

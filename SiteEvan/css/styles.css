@@ -1,0 +1,543 @@
+/* ============================================
+   EVAN PAVEL — Artist Portfolio
+   Custom CSS (works with Tailwind CDN)
+   ============================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: 'Sora', system-ui, -apple-system, sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ---------- Typography ---------- */
+.heading-bold {
+  font-family: 'Sora', 'Arial Black', sans-serif;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.nav-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  color: #1a1a1a;
+  position: relative;
+}
+.nav-link:hover {
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+/* Sliding underline indicator */
+.desktop-nav {
+  position: relative;
+}
+.nav-indicator {
+  display: none;
+}
+
+/* ---------- Navigation ---------- */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #f0f0f0;
+}
+.sticky-nav nav {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+/* Mobile menu */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+  width: 28px;
+  height: 16px;
+}
+.mobile-menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #1a1a1a;
+  position: absolute;
+  left: 3px;
+  transition: all 0.3s ease;
+}
+.mobile-menu-btn span:nth-child(1) { top: 0; }
+.mobile-menu-btn span:nth-child(2) { top: 7px; }
+.mobile-menu-btn span:nth-child(3) { top: 14px; }
+
+/* Cross animation when open */
+.mobile-menu-btn.open span:nth-child(1) {
+  top: 7px;
+  transform: rotate(45deg);
+}
+.mobile-menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-btn.open span:nth-child(3) {
+  top: 7px;
+  transform: rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+}
+
+/* Nav link hover animation (desktop) */
+.desktop-nav .nav-link {
+  transition: opacity 0.3s ease;
+}
+
+/* Mobile nav staggered animation */
+@keyframes navSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav.open .nav-link {
+  animation: navSlideIn 0.4s ease forwards;
+  opacity: 0;
+}
+.mobile-nav.open .nav-link:nth-child(1) { animation-delay: 0.05s; }
+.mobile-nav.open .nav-link:nth-child(2) { animation-delay: 0.1s; }
+.mobile-nav.open .nav-link:nth-child(3) { animation-delay: 0.15s; }
+.mobile-nav.open .nav-link:nth-child(4) { animation-delay: 0.2s; }
+
+@media (max-width: 768px) {
+  .sticky-nav nav { align-items: center; }
+  .mobile-menu-btn { display: block !important; }
+  .desktop-nav { display: none !important; }
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    padding: 1.5rem 0 2.5rem;
+    gap: 1.5rem;
+  }
+  .mobile-nav .nav-link {
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+  }
+  .mobile-nav.open {
+    display: flex;
+  }
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  min-height: 80vh;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 2rem;
+  }
+  .hero-carousel-container {
+    display: none !important;
+  }
+}
+
+.hero-image-container {
+  overflow: hidden;
+  background-color: #f8f8f8;
+}
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.hero-image-container:hover img {
+  transform: scale(1.03);
+}
+
+/* ---------- Hero Carousel ---------- */
+.hero-carousel-container {
+  overflow: hidden;
+  height: 70vh;
+  position: relative;
+  background: #fff;
+}
+.hero-carousel-container::before,
+.hero-carousel-container::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-carousel-container::before {
+  top: 0;
+  background: linear-gradient(to bottom, #fff, transparent);
+}
+.hero-carousel-container::after {
+  bottom: 0;
+  background: linear-gradient(to top, #fff, transparent);
+}
+.hero-carousel-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: heroScroll 40s linear infinite;
+}
+.hero-carousel-track img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@keyframes heroScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* ---------- Gallery Grid ---------- */
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 3rem;
+}
+@media (max-width: 768px) {
+  .artwork-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.artwork-card {
+  cursor: pointer;
+}
+.artwork-card .img-wrap {
+  overflow: hidden;
+  background: #f8f8f8;
+  margin-bottom: 1.5rem;
+}
+.artwork-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s ease;
+}
+.artwork-card:hover img {
+  transform: scale(1.05);
+}
+.artwork-card .artwork-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #717171;
+  margin-bottom: 0.25rem;
+}
+.artwork-card h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.artwork-card .artwork-meta {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.8125rem;
+  color: #717171;
+}
+
+/* ---------- About Section ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+.about-portrait {
+  overflow: hidden;
+  background: #f8f8f8;
+}
+.about-portrait img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Awards / Press ---------- */
+.awards-list {
+  list-style: none;
+  border-top: 1px solid #e5e5e5;
+}
+.awards-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 0.9375rem;
+}
+.awards-list .award-year {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #717171;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Scroll Down Arrow ---------- */
+.scroll-arrow {
+  display: flex;
+  justify-content: center;
+  margin: -1.5rem 0 0 0;
+  padding: 0;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  color: #000000;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.scroll-arrow svg {
+  width: 40px;
+  height: 40px;
+}
+.scroll-arrow:hover {
+  opacity: 1;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(12px); }
+  60% { transform: translateY(6px); }
+}
+
+/* ---------- Contact Section ---------- */
+.contact-section {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+.contact-section a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.contact-section a:hover {
+  opacity: 0.7;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid #e5e5e5;
+  padding: 2rem 0;
+  font-size: 0.75rem;
+  color: #717171;
+}
+
+/* ---------- Page Header ---------- */
+.page-header {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+.page-header .subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #717171;
+  margin-bottom: 1rem;
+  display: block;
+}
+.page-header h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin-bottom: 2rem;
+}
+.page-header p {
+  color: #717171;
+  font-size: 1.125rem;
+  max-width: 36rem;
+  line-height: 1.7;
+}
+
+/* ---------- Utilities ---------- */
+.text-brand-gray { color: #717171; }
+.bg-brand-light-gray { background-color: #f8f8f8; }
+.max-w-site { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Spacer */
+.section-gap { padding: 5rem 0; }
+.section-gap-lg { padding: 8rem 0; }
+
+/* ---------- Fade-in animation ---------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Light-box overlay ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: #fff;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ======================================================
+   RESPONSIVE — TABLET (max-width: 1024px)
+   ====================================================== */
+@media (max-width: 1024px) {
+  .max-w-site { padding: 0 2rem !important; }
+  .section-gap { padding: 3.5rem 0; }
+  .section-gap-lg { padding: 5rem 0; }
+  .page-header { padding-top: 3.5rem; padding-bottom: 3rem; }
+  .page-header h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); }
+  .hero-section { gap: 2rem; min-height: 60vh; }
+  .artwork-grid { gap: 2rem; }
+  .about-grid { gap: 2.5rem; }
+}
+
+/* ======================================================
+   RESPONSIVE — MOBILE (max-width: 768px)
+   ====================================================== */
+@media (max-width: 768px) {
+  .max-w-site { padding: 0 1.5rem !important; }
+  .sticky-nav nav {
+    align-items: center !important;
+  }
+
+  .page-header { padding-top: 2.5rem; padding-bottom: 2rem; }
+  .page-header h1 { font-size: clamp(2rem, 10vw, 3.5rem); margin-bottom: 1rem; }
+  .page-header p { font-size: 1rem; line-height: 1.6; }
+
+  .hero-section { padding-top: 1rem; }
+  .hero-image-container { max-height: 50vh; }
+
+  .artwork-card h3 { font-size: 1rem; }
+  .artwork-card .artwork-meta { font-size: 0.75rem; margin-bottom: 0.5rem; }
+  .artwork-card .img-wrap { margin-bottom: 0.75rem; }
+  .artwork-card .artwork-num { margin-top: 0.25rem; }
+  .artwork-grid { gap: 2.5rem; }
+
+  /* Ensure all text sections have padding on mobile */
+  .about-grid > div:not(.about-portrait) { padding: 0 0.25rem; }
+
+  /* CTA buttons full-width on mobile */
+  .hero-section a[class*="border-2"],
+  .about-grid a[class*="border-2"] {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .awards-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 1rem 0;
+    font-size: 0.875rem;
+  }
+
+  .section-gap { padding: 3.5rem 0; }
+  .section-gap-lg { padding: 4.5rem 0; }
+
+  footer { padding: 1.5rem 0; font-size: 0.6875rem; }
+
+  .lightbox img { max-width: 95vw; max-height: 85vh; }
+
+  #submitBtn { width: 100%; text-align: center; }
+
+  .heading-bold { letter-spacing: -0.02em; }
+}
+
+/* ======================================================
+   RESPONSIVE — SMALL PHONES (max-width: 480px)
+   ====================================================== */
+@media (max-width: 480px) {
+  .max-w-site { padding: 0 0.75rem !important; }
+  .page-header { padding-top: 2rem; padding-bottom: 1.5rem; }
+  .page-header h1 { font-size: clamp(1.75rem, 12vw, 2.5rem); }
+  .page-header .subtitle { font-size: 0.625rem; margin-bottom: 0.75rem; }
+  .hero-section { padding-top: 0.5rem; }
+  .artwork-grid { gap: 2rem; }
+  .award-badge { font-size: 0.5rem; padding: 0.25rem 0.5rem; }
+}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Bespoke Sanctuary | Anne-Chantal Meyer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-secondary-fixed": "#181d12",
+                "on-primary-fixed": "#370e02",
+                "surface-tint": "#8a4f3c",
+                "tertiary-container": "#706f6f",
+                "primary-fixed": "#ffdbd0",
+                "background": "#fbf9f4",
+                "surface-bright": "#fbf9f4",
+                "on-secondary": "#ffffff",
+                "primary-fixed-dim": "#ffb59e",
+                "on-tertiary-fixed-variant": "#474746",
+                "surface-container-high": "#eae8e3",
+                "on-background": "#1b1c19",
+                "secondary-container": "#e0e5d2",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-fixed-variant": "#6e3826",
+                "primary-container": "#9e5f4b",
+                "on-tertiary-container": "#f6f3f3",
+                "on-secondary-fixed-variant": "#43493b",
+                "surface-dim": "#dbdad5",
+                "secondary-fixed-dim": "#c4c9b7",
+                "on-secondary-container": "#616658",
+                "secondary-fixed": "#e0e5d2",
+                "outline-variant": "#d8c2bc",
+                "outline": "#85736e",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#e5e2e1",
+                "inverse-primary": "#ffb59e",
+                "surface": "#fbf9f4",
+                "on-surface": "#1b1c19",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "surface-container-highest": "#e4e2dd",
+                "tertiary": "#585757",
+                "error-container": "#ffdad6",
+                "on-error-container": "#93000a",
+                "surface-container": "#f0eee9",
+                "surface-container-low": "#f5f3ee",
+                "on-error": "#ffffff",
+                "inverse-on-surface": "#f2f1ec",
+                "on-tertiary-fixed": "#1c1b1b",
+                "error": "#ba1a1a",
+                "primary": "#814735",
+                "on-primary-container": "#fff1ed",
+                "secondary": "#5b6052",
+                "surface-variant": "#e4e2dd",
+                "inverse-surface": "#30312e",
+                "on-surface-variant": "#53433f"
+              },
+              fontFamily: {
+                "headline": ["Noto Serif"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .letter-spacing-widest { letter-spacing: 0.1em; }
+        .letter-spacing-tight { letter-spacing: -0.02em; }
+        .ghost-border { border: 1px solid rgba(216, 194, 188, 0.2); }
+        .hero-gradient {
+            background: linear-gradient(135deg, #814735 0%, #9e5f4b 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl rounded-full px-8 py-4 bg-surface/80 backdrop-blur-xl flex justify-between items-center z-50 no-border shadow-[0_24px_32px_rgba(27,28,25,0.04)] transition-all duration-500 ease-in-out hover:scale-[1.01]">
+<div class="font-serif italic text-2xl text-[#1a1a1a]">The Bespoke Sanctuary</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-[#814735] font-semibold border-b border-[#d8c2bc]/40 pb-1 font-serif text-display-lg tracking-tight" href="#">Sanctuary</a>
+<a class="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors font-serif text-display-lg tracking-tight" href="#">Method</a>
+<a class="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors font-serif text-display-lg tracking-tight" href="#">Rituals</a>
+<a class="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors font-serif text-display-lg tracking-tight" href="#">Journal</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label text-[0.6875rem] tracking-widest uppercase hover:opacity-90 transition-all">
+            Begin Journey
+        </button>
+</nav>
+<main>
+<!-- Hero Section: The Architectural Canvas -->
+<section class="relative min-h-screen flex items-center px-10 md:px-20 pt-32 pb-20 overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center w-full max-w-[1600px] mx-auto">
+<div class="md:col-span-7 z-10">
+<span class="inline-block text-primary font-label text-[0.6875rem] tracking-[0.2em] uppercase mb-6">Relationship Architect</span>
+<h1 class="font-headline text-6xl md:text-[5.5rem] leading-[1.05] letter-spacing-tight text-on-background mb-8">
+                        The art of <span class="italic text-primary">intentional</span> connection.
+                    </h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-lg mb-12 leading-relaxed font-light">
+                        A private sanctuary for high-discourse couples seeking to rebuild the architecture of their intimacy through bespoke therapeutic ritual.
+                    </p>
+<div class="flex items-center gap-8">
+<button class="hero-gradient text-on-primary px-10 py-4 rounded-full font-label text-[0.75rem] tracking-[0.15em] uppercase shadow-lg">Explore The Method</button>
+<a class="text-primary font-label text-[0.75rem] tracking-[0.15em] uppercase border-b border-outline-variant pb-1" href="#">Our Philosophy</a>
+</div>
+</div>
+<div class="md:col-span-5 relative h-[716px] md:h-[870px]">
+<div class="absolute inset-0 bg-surface-container-low rounded-t-[10rem] rounded-b-none overflow-hidden shadow-2xl">
+<img alt="Interior of a modern, minimalist sanctuary with soft sunlight filtering through architectural arches" class="w-full h-full object-cover grayscale-[20%] sepia-[10%] opacity-90" data-alt="Interior of a modern, minimalist sanctuary with soft sunlight filtering through architectural arches and limestone walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg82Tp8dT4LB9qkPsaubZBu3dqruPQObhu0HcfcSc8chLd66aF9Y1jdMhXf_aw9d_LtrlSxfOh9rbh43nBJHJGDbu1vLJLiscHolajY3-elVO5S-ZyIawDBCHuMW1_ZLt5hr8awWWht2oYorE_6Wymz5W2INRPqu5uu50Jyx2d_ZpqITA8UvLyLTb7G9rNmiQY1TAdsy-24MVsJnLmuI3ap9gTiOtIWLToL4dF3zzdYrsTvY6Osk_VnW7qGnCWXwrBd2YGOK-Kxno"/>
+</div>
+<!-- Overlapping element for architectural feel -->
+<div class="absolute -bottom-10 -left-10 w-48 h-48 bg-secondary-container/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 hidden md:flex">
+<div class="text-center">
+<span class="block font-headline text-3xl text-primary">15</span>
+<span class="block font-label text-[0.6rem] tracking-widest uppercase text-on-secondary-container">Years Practice</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Luminous Glow -->
+<div class="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] -z-10 rounded-full"></div>
+</section>
+<!-- About Section: The Portrait -->
+<section class="py-32 bg-surface-container-low">
+<div class="max-w-[1400px] mx-auto px-10 md:px-20">
+<div class="flex flex-col md:flex-row gap-20 items-end">
+<div class="w-full md:w-1/3 aspect-[3/4] overflow-hidden rounded-xl shadow-sm">
+<img alt="Portrait of therapist Anne-Chantal Meyer in a soft linen attire looking thoughtful" class="w-full h-full object-cover grayscale" data-alt="A sophisticated portrait of a woman in minimalist linen clothing, warm studio lighting, neutral background, serene expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_RdFE0H725qlKUfmN--cOedMNrA0sEa4w2VlSOIIABnzonQnGmo0FrlgQpiUyJaGbkqZAyjPW6pImVhxzkj9gLn7S5Z10lPuK6XnwSuSrQgBbHEkY0tyDIXM9YxYvuMTfZhyZT-CjW7-3yFFetuhX4YfDjDVxQ5RVTqH1dOkVBqBnA8H6RnC7nsolyselgnIHR3t4h4wqYzjJMutkYVqKBhspbwO9Z9_fylcT2IR8K_qSs5yb4laryg_ZykWtOx4QwwdsuD0YnmM"/>
+</div>
+<div class="w-full md:w-2/3 pb-12">
+<h2 class="font-headline text-4xl md:text-5xl mb-8 text-on-background">Anne-Chantal Meyer</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                                I believe that every relationship is a structure—one that requires both structural integrity and aesthetic grace. My work combines clinical precision with the warmth of high-end hospitality.
+                            </p>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed italic">
+                                "Wellness is not just the absence of conflict, but the presence of beauty in how we hold space for one another."
+                            </p>
+</div>
+<div class="mt-12 h-[1px] bg-outline-variant/30 w-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services: Floating Objects -->
+<section class="py-32 bg-background relative overflow-hidden">
+<div class="max-w-[1600px] mx-auto px-10 md:px-20">
+<div class="mb-24 max-w-2xl">
+<span class="font-label text-[0.6875rem] tracking-[0.2em] uppercase text-primary mb-4 block">The Offering</span>
+<h2 class="font-headline text-5xl md:text-6xl text-on-background">Bespoke Rituals</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group p-12 bg-surface-container-lowest rounded-[2rem] shadow-[0_24px_48px_rgba(27,28,25,0.02)] transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_48px_64px_rgba(27,28,25,0.06)]">
+<span class="material-symbols-outlined text-primary text-4xl mb-8" data-icon="architecture">architecture</span>
+<h3 class="font-headline text-2xl mb-6">Structural Audits</h3>
+<p class="text-on-surface-variant font-light leading-relaxed mb-10">
+                            A deep-dive diagnostic session to identify the unseen fractures in your partnership's foundation.
+                        </p>
+<a class="inline-flex items-center gap-2 font-label text-[0.6875rem] tracking-widest uppercase text-primary group-hover:gap-4 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm" data-icon="trending_flat">trending_flat</span>
+</a>
+</div>
+<!-- Card 2 (Elevated) -->
+<div class="group p-12 bg-primary text-on-primary rounded-[2rem] shadow-xl md:-translate-y-12 transition-all duration-700 hover:-translate-y-16">
+<span class="material-symbols-outlined text-primary-fixed text-4xl mb-8" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline text-2xl mb-6">Immersive Retreats</h3>
+<p class="text-on-primary/80 font-light leading-relaxed mb-10">
+                            Three days of private, curated therapeutic work in exclusive, architecturally significant landscapes.
+                        </p>
+<a class="inline-flex items-center gap-2 font-label text-[0.6875rem] tracking-widest uppercase text-on-primary group-hover:gap-4 transition-all" href="#">
+                            Inquire for dates <span class="material-symbols-outlined text-sm" data-icon="trending_flat">trending_flat</span>
+</a>
+</div>
+<!-- Card 3 -->
+<div class="group p-12 bg-surface-container-lowest rounded-[2rem] shadow-[0_24px_48px_rgba(27,28,25,0.02)] transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_48px_64px_rgba(27,28,25,0.06)]">
+<span class="material-symbols-outlined text-primary text-4xl mb-8" data-icon="potted_plant">potted_plant</span>
+<h3 class="font-headline text-2xl mb-6">Intimacy Cultivation</h3>
+<p class="text-on-surface-variant font-light leading-relaxed mb-10">
+                            Ongoing refinement sessions focused on maintaining the ecosystem of your shared emotional life.
+                        </p>
+<a class="inline-flex items-center gap-2 font-label text-[0.6875rem] tracking-widest uppercase text-primary group-hover:gap-4 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm" data-icon="trending_flat">trending_flat</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Methodology: Architectural Timeline -->
+<section class="py-40 bg-surface">
+<div class="max-w-[1400px] mx-auto px-10 md:px-20 flex flex-col md:flex-row gap-24">
+<div class="w-full md:w-1/3">
+<h2 class="font-headline text-4xl md:text-5xl sticky top-40 text-on-background">The Path to <span class="italic">Restoration</span></h2>
+</div>
+<div class="w-full md:w-2/3 space-y-32">
+<div class="relative pl-12 border-l border-outline-variant/30">
+<div class="absolute -left-[5px] top-0 w-[9px] h-[9px] bg-primary rounded-full"></div>
+<span class="font-label text-[0.6rem] tracking-[0.2em] text-outline mb-4 block uppercase">Phase I</span>
+<h4 class="font-headline text-2xl mb-4">Deconstruction</h4>
+<p class="text-on-surface-variant max-w-lg font-light leading-relaxed">
+                            Peeling back the layers of defensive architecture to reveal the core desires and vulnerabilities beneath.
+                        </p>
+</div>
+<div class="relative pl-12 border-l border-outline-variant/30">
+<div class="absolute -left-[5px] top-0 w-[9px] h-[9px] bg-primary rounded-full"></div>
+<span class="font-label text-[0.6rem] tracking-[0.2em] text-outline mb-4 block uppercase">Phase II</span>
+<h4 class="font-headline text-2xl mb-4">Blueprint Design</h4>
+<p class="text-on-surface-variant max-w-lg font-light leading-relaxed">
+                            Crafting new communication protocols and rituals that honor the unique geometry of your bond.
+                        </p>
+</div>
+<div class="relative pl-12 border-l border-outline-variant/30">
+<div class="absolute -left-[5px] top-0 w-[9px] h-[9px] bg-primary rounded-full"></div>
+<span class="font-label text-[0.6rem] tracking-[0.2em] text-outline mb-4 block uppercase">Phase III</span>
+<h4 class="font-headline text-2xl mb-4">Foundation Setting</h4>
+<p class="text-on-surface-variant max-w-lg font-light leading-relaxed">
+                            Implementing the bespoke rituals into the daily fabric of life, ensuring lasting structural integrity.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials: Gallery Layout -->
+<section class="py-32 bg-surface-container">
+<div class="max-w-[1600px] mx-auto px-10 md:px-20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div class="relative">
+<div class="aspect-square bg-surface-container-low rounded-full overflow-hidden">
+<img alt="A couple holding hands softly on a beach at dusk" class="w-full h-full object-cover mix-blend-multiply opacity-80" data-alt="Soft focus intimate close-up of two people holding hands, gentle golden hour lighting, cinematic aesthetic, serene and quiet mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs4JEbyZHFneliQbm2YUBqtaTuMqSpm7Rz4ZLDj6WtjF7KNZvXyIer7KGNmIR5qpschFkJi1upG7T8z-F7uEmsq7uuATSdTGrCPwkm56bPyoeFz7u9-fr3Sxx3MtEHeqhl66fGQ9LtRw_9tU2LB8IHuKAe94-voFbposfsRonJK4y5BJIRpJEggPETFoz5AGPaE4Tovq_M1mp8Tt4RvW3ijizi4LnngxnPYBBgWHeKxmOlhnPQXk0wAf0WR2USydPcb44h5zK_EXE"/>
+</div>
+</div>
+<div class="space-y-16">
+<blockquote class="relative">
+<span class="font-headline text-6xl text-primary/10 absolute -top-10 -left-6">“</span>
+<p class="font-headline text-3xl md:text-4xl text-on-background leading-snug">
+                                Working with Anne-Chantal didn't just save our marriage; it redesigned our entire world. We learned that intimacy is a space you build, not just a feeling you wait for.
+                            </p>
+<footer class="mt-8 font-label text-[0.7rem] tracking-widest uppercase text-on-surface-variant">— Julian &amp; Elena, Zurich</footer>
+</blockquote>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking CTA: Meditative Form -->
+<section class="py-40 bg-background overflow-hidden relative">
+<div class="max-w-[1000px] mx-auto px-10 text-center">
+<h2 class="font-headline text-5xl mb-12">Enter The Sanctuary</h2>
+<p class="text-on-surface-variant text-lg mb-20 max-w-xl mx-auto font-light">
+                    Due to the highly personalized nature of this work, I accept a limited number of clients per quarter. Share your intent below.
+                </p>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+<div class="space-y-8">
+<div class="group">
+<label class="block font-label text-[0.6rem] tracking-widest uppercase text-outline mb-2">Primary Contact</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary px-0 py-3 transition-all placeholder:text-outline-variant/60 font-body" placeholder="Full Name" type="text"/>
+</div>
+<div class="group">
+<label class="block font-label text-[0.6rem] tracking-widest uppercase text-outline mb-2">Confidential Email</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary px-0 py-3 transition-all placeholder:text-outline-variant/60 font-body" placeholder="email@address.com" type="email"/>
+</div>
+</div>
+<div class="space-y-8">
+<div class="group">
+<label class="block font-label text-[0.6rem] tracking-widest uppercase text-outline mb-2">Your Intent</label>
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary px-0 py-3 transition-all placeholder:text-outline-variant/60 font-body resize-none" placeholder="Briefly describe the landscape of your relationship..." rows="4"></textarea>
+</div>
+</div>
+<div class="md:col-span-2 text-center mt-12">
+<button class="hero-gradient text-on-primary px-16 py-5 rounded-full font-label text-[0.8rem] tracking-[0.2em] uppercase shadow-xl hover:scale-[1.02] transition-transform">
+                            Request Consultation
+                        </button>
+</div>
+</form>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -bottom-20 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f5f3ee] dark:bg-stone-950 w-full pt-24 pb-12 tonal-shift from surface to surface-container-low flat no shadows">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 px-10 md:px-20 max-w-[1600px] mx-auto">
+<div class="md:col-span-6">
+<span class="font-serif text-3xl mb-8 block text-[#1a1a1a] dark:text-[#fbf9f4]">The Bespoke Sanctuary</span>
+<p class="max-w-xs text-on-surface-variant/60 font-light leading-relaxed">
+                    A private practice dedicated to the architectural restoration of human intimacy.
+                </p>
+</div>
+<div class="md:col-span-2">
+<span class="font-label tracking-widest uppercase text-[0.6875rem] text-primary font-bold mb-6 block">Explore</span>
+<ul class="space-y-4">
+<li><a class="font-sans tracking-widest uppercase text-[0.6875rem] text-[#1a1a1a]/40 dark:text-[#fbf9f4]/40 hover:text-[#814735] dark:hover:text-[#d8c2bc] transition-all" href="#">Consultations</a></li>
+<li><a class="font-sans tracking-widest uppercase text-[0.6875rem] text-[#1a1a1a]/40 dark:text-[#fbf9f4]/40 hover:text-[#814735] dark:hover:text-[#d8c2bc] transition-all" href="#">Private Retreats</a></li>
+<li><a class="font-sans tracking-widest uppercase text-[0.6875rem] text-[#1a1a1a]/40 dark:text-[#fbf9f4]/40 hover:text-[#814735] dark:hover:text-[#d8c2bc] transition-all" href="#">The Archive</a></li>
+</ul>
+</div>
+<div class="md:col-span-2">
+<span class="font-label tracking-widest uppercase text-[0.6875rem] text-primary font-bold mb-6 block">Legal</span>
+<ul class="space-y-4">
+<li><a class="font-sans tracking-widest uppercase text-[0.6875rem] text-[#1a1a1a]/40 dark:text-[#fbf9f4]/40 hover:text-[#814735] dark:hover:text-[#d8c2bc] transition-all" href="#">Privacy</a></li>
+<li><a class="font-sans tracking-widest uppercase text-[0.6875rem] text-[#1a1a1a]/40 dark:text-[#fbf9f4]/40 hover:text-[#814735] dark:hover:text-[#d8c2bc] transition-all" href="#">Accessibility</a></li>
+</ul>
+</div>
+<div class="md:col-span-2">
+<span class="font-label tracking-widest uppercase text-[0.6875rem] text-primary font-bold mb-6 block">Location</span>
+<p class="font-sans tracking-widest uppercase text-[0.6875rem] text-[#1a1a1a]/40 dark:text-[#fbf9f4]/40">
+                    Zurich, Switzerland<br/>
+                    Global In-Person Residency
+                </p>
+</div>
+</div>
+<div class="max-w-[1600px] mx-auto px-10 md:px-20 mt-24 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-outline-variant/10 pt-8">
+<span class="font-sans tracking-widest uppercase text-[0.6875rem] text-[#1a1a1a]/40 dark:text-[#fbf9f4]/40">© 2024 The Bespoke Sanctuary. All rights reserved.</span>
+<div class="flex gap-8">
+<a class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="share" href="#">share</a>
+<a class="material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="mail" href="#">mail</a>
+</div>
+</div>
+</footer>
+</body></html>

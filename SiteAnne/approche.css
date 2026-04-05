@@ -1,0 +1,423 @@
+/* ============================================
+   APPROCHE PAGE — CUSTOM STYLES
+   ============================================ */
+
+/* ---------- BLOCKQUOTE SECTION ---------- */
+.ap-quote-section {
+  padding: 0 0 2rem;
+  background: var(--surface);
+}
+
+.ap-blockquote {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.ap-blockquote-mark {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-serif);
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--primary);
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ap-blockquote p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.9;
+  color: var(--on-background);
+  font-style: italic;
+}
+
+.ap-blockquote footer {
+  margin-top: 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ---------- ALTERNATING SERVICE SECTIONS ---------- */
+.ap-service {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.ap-service:nth-child(even) {
+  background: var(--surface-container-low);
+}
+
+.ap-service-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .ap-service-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+/* Reversed layout: image goes right, content left */
+.ap-service--reversed .ap-service-grid {
+  direction: ltr;
+}
+
+@media (min-width: 768px) {
+  .ap-service--reversed .ap-service-grid {
+    direction: rtl;
+  }
+
+  .ap-service--reversed .ap-service-grid>* {
+    direction: ltr;
+  }
+}
+
+/* Image side */
+.ap-service-image {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+}
+
+.ap-service-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.ap-service-image:hover img {
+  transform: scale(1.04);
+}
+
+.ap-service-image-tag {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--on-background);
+}
+
+.ap-service-image-tag .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--primary);
+  font-variation-settings: 'FILL' 1, 'wght' 400;
+}
+
+/* Content side */
+.ap-service-content .label {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.ap-service-content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.ap-service-content p {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+/* Checklist */
+.ap-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.ap-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  color: var(--on-surface-variant);
+}
+
+.ap-checklist .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-variation-settings: 'FILL' 1, 'wght' 400;
+  flex-shrink: 0;
+}
+
+/* ---------- PROCESS SECTION ---------- */
+.ap-process {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface-container-low);
+}
+
+.ap-process-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.ap-process-header h2 {
+  margin-top: 0.75rem;
+}
+
+.ap-process-header p {
+  max-width: 520px;
+  margin: 1rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.ap-process-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .ap-process-steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.ap-process-step {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+  transition: all var(--transition-slow);
+}
+
+.ap-process-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(26, 29, 34, 0.08);
+  background: var(--glass-bg-strong);
+}
+
+.ap-process-number {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.2;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.ap-process-line {
+  width: 40px;
+  height: 2px;
+  background: var(--primary);
+  opacity: 0.3;
+  margin: 0 auto 1.25rem;
+  border-radius: 1px;
+}
+
+.ap-process-step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.ap-process-step p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* ---------- CNV SECTION ---------- */
+.ap-cnv {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface);
+}
+
+.ap-cnv-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .ap-cnv-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+.ap-cnv-intro h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ap-cnv-intro p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.ap-cnv-quote {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 1rem 1rem 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--primary);
+}
+
+/* CNV Benefit Cards */
+.ap-cnv-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ap-cnv-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--glass-shadow);
+  transition: all var(--transition-slow);
+}
+
+.ap-cnv-card:hover {
+  transform: translateX(4px);
+  background: var(--glass-bg-strong);
+  box-shadow: 0 8px 32px rgba(26, 29, 34, 0.08);
+}
+
+.ap-cnv-card-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(74, 96, 120, 0.06);
+  border-radius: 12px;
+}
+
+.ap-cnv-card-icon .material-symbols-outlined {
+  font-size: 1.5rem;
+  color: var(--primary);
+  font-variation-settings: 'FILL' 0, 'wght' 300;
+}
+
+.ap-cnv-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--on-background);
+}
+
+.ap-cnv-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* ---------- CTA CARD ---------- */
+.ap-cta {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface-container-low);
+}
+
+.ap-cta-card {
+  position: relative;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 4rem 3rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 2.5rem;
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+}
+
+.ap-cta-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 250px;
+  height: 250px;
+  background: rgba(74, 96, 120, 0.06);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.ap-cta-card h2 {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ap-cta-card p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 550px;
+  margin: 0 auto 2.5rem;
+}
+
+.ap-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- RESPONSIVE TWEAKS ---------- */
+@media (max-width: 767px) {
+  .ap-service-image img {
+    height: 280px;
+  }
+
+  .ap-cta-card {
+    padding: 2.5rem 1.5rem;
+  }
+}

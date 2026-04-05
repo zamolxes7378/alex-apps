@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Œuvres — Evan Pavel</title>
+  <meta name="description" content="L'œuvre complète d'Evan Pavel. Pastel, aquarelle, huile sur bois, huile sur verre — une exploration de l'hyperréalisme." />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Sora', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Sora', 'Arial Black', 'sans-serif'],
+          },
+          colors: {
+            'brand-black': '#1a1a1a',
+            'brand-gray': '#717171',
+            'brand-light-gray': '#f8f8f8',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .detail-modal {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease; padding: 2rem;
+    }
+    .detail-modal.open { opacity: 1; pointer-events: auto; }
+    .detail-modal .modal-content {
+      display: flex; gap: 3rem; max-width: 85vw; max-height: 90vh; align-items: center;
+    }
+    .detail-modal .modal-img {
+      max-width: 60vw; max-height: 85vh; object-fit: contain; flex-shrink: 0;
+    }
+    .detail-modal .modal-info { color: #fff; min-width: 220px; max-width: 340px; }
+    .detail-modal .modal-info h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .detail-modal .modal-info .meta-label {
+      font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;
+    }
+    .detail-modal .modal-info .meta-value { font-size: 0.9375rem; margin-bottom: 1.25rem; }
+    .detail-modal .modal-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      color: #fff; font-size: 2rem; background: none; border: none;
+      cursor: pointer; line-height: 1; z-index: 101;
+    }
+    @media (max-width: 768px) {
+      .detail-modal .modal-content { flex-direction: column; gap: 1.5rem; }
+      .detail-modal .modal-img { max-width: 90vw; max-height: 50vh; }
+      .detail-modal .modal-info { max-width: 90vw; }
+    }
+    .award-badge {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
+      color: #fbbf24; font-size: 0.625rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.35rem 0.65rem; border-radius: 2px;
+      display: flex; align-items: center; gap: 0.35rem; z-index: 2;
+    }
+    .award-badge svg { width: 12px; height: 12px; fill: currentColor; }
+    .img-wrap { position: relative; }
+  </style>
+</head>
+<body>
+
+<header class="sticky-nav">
+  <nav class="max-w-site flex justify-between items-center md:items-baseline py-6">
+    <div class="logo">
+      <a class="heading-bold text-2xl tracking-tighter" href="index.html">Evan Pavel</a>
+    </div>
+    <div class="desktop-nav flex space-x-12">
+      <a class="nav-link" href="index.html">Accueil</a>
+      <a class="nav-link active" href="oeuvres.html">Œuvres</a>
+      <a class="nav-link" href="a-propos.html">À propos</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </div>
+    <button class="mobile-menu-btn" onclick="this.classList.toggle('open'); document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div id="mobileNav" class="mobile-nav max-w-site">
+    <a class="nav-link" href="index.html">Accueil</a>
+    <a class="nav-link" href="oeuvres.html">Œuvres</a>
+    <a class="nav-link" href="a-propos.html">À propos</a>
+    <a class="nav-link" href="contact.html">Contact</a>
+  </div>
+</header>
+
+<main class="max-w-site">
+  <section class="page-header fade-in">
+    <span class="subtitle">L'œuvre complète</span>
+    <h1 class="heading-bold">Œuvres.</h1>
+    <p>
+      Une exploration de l'hyperréalisme à travers le pastel, l'aquarelle et la peinture à l'huile. Jeux de matière, de texture et de profondeur.
+    </p>
+  </section>
+
+  <section class="pb-32">
+    <div class="artwork-grid" style="gap: 3rem; row-gap: 5rem;">
+
+      <!-- 01 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="L'appel du grand large" data-year="2025" data-medium="Huile sur papier" data-format="29,7 × 42 cm"
+        data-desc="« L'appel du grand large » est né de l'envie d'exprimer le respect et l'émerveillement face à la beauté et à la force fragile de la vie sous-marine. La tortue de mer occupe une place centrale, avançant avec lenteur et grâce dans un décor somptueux. Peinture réalisée à l'huile sur papier selon la technique flamande, apprise dans l'atelier de Richard Gautier.">
+        <div class="img-wrap">
+          <img src="images/01_lappel_du_grand_large.jpg" alt="L'appel du grand large" loading="lazy" />
+        </div>
+        <span class="artwork-num">01</span>
+        <h3>L'appel du grand large</h3>
+        <p class="artwork-meta">2025 · Huile sur papier · 29,7 × 42 cm</p>
+      </article>
+
+      <!-- 02 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Les fleurs du clair-obscur" data-year="2025" data-medium="Huile sur bois" data-format="27 × 35 cm"
+        data-desc="Apprentissage de la peinture à l'huile, technique flamande, dans l'atelier de Richard Gautier. Les élèves ont relevé le défi des sujets floraux. Bleuets, coquelicots et marguerites : sous leurs pinceaux méticuleux, ces fragiles emblèmes champêtres ont retrouvé tout leur éclat.">
+        <div class="img-wrap">
+          <img src="images/02_les_fleurs_du_clair_obscur.jpg" alt="Les fleurs du clair-obscur" loading="lazy" />
+        </div>
+        <span class="artwork-num">02</span>
+        <h3>Les fleurs du clair-obscur</h3>
+        <p class="artwork-meta">2025 · Huile sur bois · 27 × 35 cm</p>
+      </article>
+
+      <!-- 03 — award -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Une ferme en Provence" data-year="2024" data-medium="Huile sur bois" data-format="29,7 × 42 cm"
+        data-desc="Ma ferme rêvée est un hommage à la Provence, cette terre de lumière et de couleurs. L'inspiration m'est venue de deux cartes postales : l'une représentant une vieille ferme au cœur du paysage provençal, et l'autre la majesté du mont Ventoux. Quatrième prix reçu au Concours Jeune Pinceau."
+        data-award="Lauréat AFCAC 2024">
+        <div class="img-wrap">
+          <span class="award-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>AFCAC 2024</span>
+          <img src="images/03_une_ferme_en_provence.jpg" alt="Une ferme en Provence" loading="lazy" />
+        </div>
+        <span class="artwork-num">03</span>
+        <h3>Une ferme en Provence</h3>
+        <p class="artwork-meta">2024 · Huile sur bois · 29,7 × 42 cm</p>
+      </article>
+
+      <!-- 04 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Icône sur verre" data-year="2024" data-medium="Huile sur verre" data-format="13 × 18 cm"
+        data-desc="Cette icône de la Vierge Marie tenant l'Enfant Jésus a été réalisée à la peinture à l'huile sur verre, une technique séculaire préservée dans l'atelier de Simona Dobocan, au sein de l'église orthodoxe du village de Hășdate Gherla, en Transylvanie. La peinture s'applique au dos du verre et le résultat final est visible sur la face avant.">
+        <div class="img-wrap">
+          <img src="images/04_icone_sur_verre.jpg" alt="Icône sur verre" loading="lazy" />
+        </div>
+        <span class="artwork-num">04</span>
+        <h3>Icône sur verre</h3>
+        <p class="artwork-meta">2024 · Huile sur verre · 13 × 18 cm</p>
+      </article>
+
+      <!-- 05 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Les coquillages" data-year="2024" data-medium="Huile sur bois" data-format="27 × 35 cm"
+        data-desc="Apprentissage de la peinture à l'huile, technique flamande, dans l'atelier de Richard Gautier. Un thème marin, mettant en avant deux coquillages, un ballon et une petite maquette de chalutier. Les coquillages sont un Lambis-Lambis et un Strombo Gigas.">
+        <div class="img-wrap">
+          <img src="images/05_les_coquillages.jpg" alt="Les coquillages" loading="lazy" />
+        </div>
+        <span class="artwork-num">05</span>
+        <h3>Les coquillages</h3>
+        <p class="artwork-meta">2024 · Huile sur bois · 27 × 35 cm</p>
+      </article>
+
+      <!-- 06 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Les couleurs" data-year="2023" data-medium="Huile sur bois" data-format="27 × 35 cm"
+        data-desc="Apprentissage de la peinture à l'huile, technique flamande, dans l'atelier de Richard Gautier. Richard Gautier écrit : « Tu as su finir sur les chapeaux de roues, savoir finir est primordial et tu as su FINIR, comme quoi, quand tu veux, tu peux ! Bravo EVAN ! »">
+        <div class="img-wrap">
+          <img src="images/06_les_couleurs.png" alt="Les couleurs" loading="lazy" />
+        </div>
+        <span class="artwork-num">06</span>
+        <h3>Les couleurs</h3>
+        <p class="artwork-meta">2023 · Huile sur bois · 27 × 35 cm</p>
+      </article>
+
+      <!-- 07 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Les gourmandises" data-year="2022" data-medium="Huile sur bois" data-format="27 × 35 cm"
+        data-desc="Apprentissage de la peinture à l'huile, technique flamande, dans l'atelier de Richard Gautier. La première peinture à l'huile d'Evan. Richard Gautier écrit : « Cette année c'est la découverte tant attendue de l'art pictural et pas n'importe lequel, l'art de la peinture flamande. »">
+        <div class="img-wrap">
+          <img src="images/07_les_gourmandises.png" alt="Les gourmandises" loading="lazy" />
+        </div>
+        <span class="artwork-num">07</span>
+        <h3>Les gourmandises</h3>
+        <p class="artwork-meta">2022 · Huile sur bois · 27 × 35 cm</p>
+      </article>
+
+      <!-- 08 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Les chapeaux" data-year="2021" data-medium="Pastel" data-format="27 × 35 cm"
+        data-desc="Apprentissage du pastel dans l'atelier de Richard Gautier – cours collectif. Une étude au pastel explorant les formes et les ombres à travers une collection de chapeaux.">
+        <div class="img-wrap">
+          <img src="images/08_les_chapeaux.png" alt="Les chapeaux" loading="lazy" />
+        </div>
+        <span class="artwork-num">08</span>
+        <h3>Les chapeaux</h3>
+        <p class="artwork-meta">2021 · Pastel · 27 × 35 cm</p>
+      </article>
+
+      <!-- 09 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Les outils" data-year="2020" data-medium="Pastel" data-format="27 × 35 cm"
+        data-desc="Apprentissage du pastel dans l'atelier de Richard Gautier – cours collectif. Exposé dans l'exposition de travaux d'élèves 2019. Mentionné dans l'article Ouest-France « Crayon, pastel et aquarelle » (2021).">
+        <div class="img-wrap">
+          <img src="images/09_les_outils.jpg" alt="Les outils" loading="lazy" />
+        </div>
+        <span class="artwork-num">09</span>
+        <h3>Les outils</h3>
+        <p class="artwork-meta">2020 · Pastel · 27 × 35 cm</p>
+      </article>
+
+      <!-- 10 — award -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="La nature à la reconquête de Niort" data-year="2023" data-medium="Aquarelle" data-format="29,7 × 42 cm"
+        data-desc="Grand Prix du Concours Franco-Chinois de Dessin Jeunesse AFCAC 2023. 150 œuvres lauréates sélectionnées parmi plus de 2000 participants de 5 pays. Mon aquarelle représente la nature sauvage qui reprend ses droits sur la ville de Niort. Exposée à Paris, Singapour et Hong Kong."
+        data-award="Grand Prix AFCAC 2023">
+        <div class="img-wrap">
+          <span class="award-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>Grand Prix 2023</span>
+          <img src="images/10_la_nature_niort.jpg" alt="La nature à la reconquête de Niort" loading="lazy" />
+        </div>
+        <span class="artwork-num">10</span>
+        <h3>La nature à la reconquête de Niort</h3>
+        <p class="artwork-meta">2023 · Aquarelle · 29,7 × 42 cm</p>
+      </article>
+
+      <!-- 11 — award -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Dans la peau d'un artiste chinois" data-year="2022" data-medium="Aquarelle" data-format="29 × 60 cm"
+        data-desc="D'après l'artiste chinois Ma Tai, dynastie Qing. Prix d'Excellence du Concours Franco-Chinois de Dessin Jeunesse AFCAC 2022. L'aquarelle a permis de traiter les dégradés d'une grande complexité chromatique et d'être fidèle aux détails minutieux. Exposée à Paris, Shanghai, Hong Kong et Xiamen."
+        data-award="Prix d'Excellence AFCAC 2022">
+        <div class="img-wrap">
+          <span class="award-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>Excellence 2022</span>
+          <img src="images/11_artiste_chinois.jpg" alt="Dans la peau d'un artiste chinois" loading="lazy" />
+        </div>
+        <span class="artwork-num">11</span>
+        <h3>Dans la peau d'un artiste chinois</h3>
+        <p class="artwork-meta">2022 · Aquarelle · 29 × 60 cm</p>
+      </article>
+
+      <!-- 12 — award -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Un autre regard sur la Chine" data-year="2021" data-medium="Crayon sur papier à grain" data-format="24 × 24 cm"
+        data-desc="Lauréat du Concours Franco-Chinois de Dessin Jeunesse AFCAC 2021. Ce dessin représente le cœur battant de la Chine, en recherche d'équilibre entre sa tradition et sa modernité. Ce cœur est protégé par un dragon majestueux, symbole de force et de chance. Exposé à Paris et Shanghai."
+        data-award="Lauréat AFCAC 2021">
+        <div class="img-wrap">
+          <span class="award-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>Lauréat 2021</span>
+          <img src="images/12_regard_chine.webp" alt="Un autre regard sur la Chine" loading="lazy" />
+        </div>
+        <span class="artwork-num">12</span>
+        <h3>Un autre regard sur la Chine</h3>
+        <p class="artwork-meta">2021 · Crayon · 24 × 24 cm</p>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<!-- Detail Modal -->
+<div class="detail-modal" id="detailModal">
+  <button class="modal-close" onclick="closeModal()">×</button>
+  <div class="modal-content">
+    <img class="modal-img" id="modalImg" src="" alt="" />
+    <div class="modal-info">
+      <h2 id="modalTitle"></h2>
+      <div class="meta-label">Année</div>
+      <div class="meta-value" id="modalYear"></div>
+      <div class="meta-label">Technique</div>
+      <div class="meta-value" id="modalMedium"></div>
+      <div class="meta-label">Format</div>
+      <div class="meta-value" id="modalFormat"></div>
+      <div id="modalAwardWrap" style="display:none;">
+        <div class="meta-label">Récompense</div>
+        <div class="meta-value" id="modalAward" style="color: #fbbf24;"></div>
+      </div>
+      <div class="meta-label">Description</div>
+      <div class="meta-value" id="modalDesc" style="opacity: 0.7; font-size: 0.875rem; line-height: 1.6;"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="max-w-site flex flex-col md:flex-row justify-between items-center gap-4">
+    <p>&copy; 2026 Evan Pavel. Tous droits réservés. Les images de ce site ne sont pas libres de droit.</p>
+    <div class="flex gap-6">
+      <a href="https://www.instagram.com/evanpavel_87" target="_blank" class="nav-link">Instagram</a>
+      <a href="https://evanpav.wordpress.com" target="_blank" class="nav-link">Blog</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.querySelectorAll('[data-artwork]').forEach(card => {
+  card.addEventListener('click', () => {
+    const img = card.querySelector('img');
+    document.getElementById('modalImg').src = img.src;
+    document.getElementById('modalImg').alt = img.alt;
+    document.getElementById('modalTitle').textContent = card.dataset.title;
+    document.getElementById('modalYear').textContent = card.dataset.year;
+    document.getElementById('modalMedium').textContent = card.dataset.medium;
+    document.getElementById('modalFormat').textContent = card.dataset.format || '';
+    document.getElementById('modalDesc').textContent = card.dataset.desc;
+    const award = card.dataset.award;
+    const wrap = document.getElementById('modalAwardWrap');
+    if (award) { document.getElementById('modalAward').textContent = award; wrap.style.display = 'block'; }
+    else { wrap.style.display = 'none'; }
+    document.getElementById('detailModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('detailModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+<script src="js/nav.js"></script>
+</body>
+</html>

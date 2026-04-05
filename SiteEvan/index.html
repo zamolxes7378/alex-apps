@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evan Pavel — Artiste Hyperréaliste</title>
+  <meta name="description" content="Evan Pavel, jeune artiste hyperréaliste. À travers le pastel, l'aquarelle et la peinture à l'huile, il explore les jeux de matière, de texture et de profondeur." />
+
+  <!-- Tailwind CSS v3 CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Sora', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Sora', 'Arial Black', 'sans-serif'],
+          },
+          colors: {
+            'brand-black': '#1a1a1a',
+            'brand-gray': '#717171',
+            'brand-light-gray': '#f8f8f8',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Detail modal */
+    .detail-modal {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease;
+      padding: 2rem;
+    }
+    .detail-modal.open { opacity: 1; pointer-events: auto; }
+    .detail-modal .modal-content {
+      display: flex; gap: 3rem; max-width: 85vw; max-height: 90vh; align-items: center;
+    }
+    .detail-modal .modal-img {
+      max-width: 60vw; max-height: 85vh; object-fit: contain; flex-shrink: 0;
+    }
+    .detail-modal .modal-info {
+      color: #fff; min-width: 220px; max-width: 340px;
+    }
+    .detail-modal .modal-info h2 {
+      font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2;
+    }
+    .detail-modal .modal-info .meta-label {
+      font-size: 0.625rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem;
+    }
+    .detail-modal .modal-info .meta-value {
+      font-size: 0.9375rem; margin-bottom: 1.25rem;
+    }
+    .detail-modal .modal-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      color: #fff; font-size: 2rem; background: none; border: none;
+      cursor: pointer; line-height: 1; z-index: 101;
+    }
+    @media (max-width: 768px) {
+      .detail-modal .modal-content { flex-direction: column; gap: 1.5rem; }
+      .detail-modal .modal-img { max-width: 90vw; max-height: 50vh; }
+      .detail-modal .modal-info { max-width: 90vw; }
+    }
+    /* Award badge */
+    .award-badge {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
+      color: #fbbf24; font-size: 0.625rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.35rem 0.65rem; border-radius: 2px;
+      display: flex; align-items: center; gap: 0.35rem;
+      z-index: 2;
+    }
+    .award-badge svg { width: 12px; height: 12px; fill: currentColor; }
+    .img-wrap { position: relative; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<header class="sticky-nav">
+  <nav class="max-w-site flex justify-between items-center md:items-baseline py-6">
+    <div class="logo">
+      <a class="heading-bold text-2xl tracking-tighter" href="index.html">Evan Pavel</a>
+    </div>
+    <div class="desktop-nav flex space-x-12">
+      <a class="nav-link active" href="index.html">Accueil</a>
+      <a class="nav-link" href="oeuvres.html">Œuvres</a>
+      <a class="nav-link" href="a-propos.html">À propos</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </div>
+    <button class="mobile-menu-btn" onclick="this.classList.toggle('open'); document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div id="mobileNav" class="mobile-nav max-w-site">
+    <a class="nav-link" href="index.html">Accueil</a>
+    <a class="nav-link" href="oeuvres.html">Œuvres</a>
+    <a class="nav-link" href="a-propos.html">À propos</a>
+    <a class="nav-link" href="contact.html">Contact</a>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<main>
+  <section class="max-w-site section-gap-lg">
+    <div class="hero-section">
+      <div class="fade-in">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-gray mb-4 block">Hyperréalisme Contemporain</span>
+        <h1 class="heading-bold text-6xl md:text-8xl mb-6">
+          Evan<br>Pavel.
+        </h1>
+        <h3 class="text-xl md:text-2xl font-bold mb-6 max-w-md">Matière, texture et profondeur.</h3>
+        <p class="text-brand-gray text-base md:text-lg max-w-md leading-relaxed mb-8">
+          Mon travail artistique s'inscrit dans une recherche autour de l'hyperréalisme. À travers le pastel, l'aquarelle et la peinture à l'huile, j'explore les jeux de matière, de texture et de profondeur.
+        </p>
+        <a href="oeuvres.html" class="inline-block border-2 border-brand-black text-brand-black px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-brand-black hover:text-white transition-all duration-300">
+          Découvrir les œuvres
+        </a>
+      </div>
+      <div class="hero-carousel-container fade-in hidden md:block">
+        <div class="hero-carousel-track">
+          <img src="images/01_lappel_du_grand_large.jpg" alt="L'appel du grand large" />
+          <img src="images/02_les_fleurs_du_clair_obscur.jpg" alt="Les fleurs du clair-obscur" />
+          <img src="images/03_une_ferme_en_provence.jpg" alt="Une ferme en Provence" />
+          <img src="images/04_icone_sur_verre.jpg" alt="Icône sur verre" />
+          <img src="images/05_les_coquillages.jpg" alt="Les coquillages" />
+          <img src="images/06_les_couleurs.png" alt="Les couleurs" />
+          <img src="images/07_les_gourmandises.png" alt="Les gourmandises" />
+          <img src="images/08_les_chapeaux.png" alt="Les chapeaux" />
+          <img src="images/09_les_outils.jpg" alt="Les outils" />
+          <img src="images/10_la_nature_niort.jpg" alt="La nature à Niort" />
+          <img src="images/11_artiste_chinois.jpg" alt="Artiste chinois" />
+          <img src="images/12_regard_chine.webp" alt="Regard sur la Chine" />
+          <!-- Duplicate all for seamless loop -->
+          <img src="images/01_lappel_du_grand_large.jpg" alt="L'appel du grand large" />
+          <img src="images/02_les_fleurs_du_clair_obscur.jpg" alt="Les fleurs du clair-obscur" />
+          <img src="images/03_une_ferme_en_provence.jpg" alt="Une ferme en Provence" />
+          <img src="images/04_icone_sur_verre.jpg" alt="Icône sur verre" />
+          <img src="images/05_les_coquillages.jpg" alt="Les coquillages" />
+          <img src="images/06_les_couleurs.png" alt="Les couleurs" />
+          <img src="images/07_les_gourmandises.png" alt="Les gourmandises" />
+          <img src="images/08_les_chapeaux.png" alt="Les chapeaux" />
+          <img src="images/09_les_outils.jpg" alt="Les outils" />
+          <img src="images/10_la_nature_niort.jpg" alt="La nature à Niort" />
+          <img src="images/11_artiste_chinois.jpg" alt="Artiste chinois" />
+          <img src="images/12_regard_chine.webp" alt="Regard sur la Chine" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GALLERY PREVIEW ═══════════════ -->
+  <section id="portfolio" class="max-w-site section-gap">
+    <div class="flex justify-between items-baseline mb-16 fade-in">
+      <h2 class="heading-bold text-4xl md:text-6xl">Portfolio<br>Sélectionné.</h2>
+      <a href="oeuvres.html" class="nav-link hidden md:inline-block">Voir tout →</a>
+    </div>
+
+    <div class="artwork-grid">
+      <!-- 01 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="L'appel du grand large"
+        data-year="2025" data-medium="Huile sur papier" data-format="29,7 × 42 cm"
+        data-desc="« L'appel du grand large » est né de l'envie d'exprimer le respect et l'émerveillement face à la beauté et à la force fragile de la vie sous-marine. Peinture réalisée à l'huile sur papier selon la technique flamande, apprise dans l'atelier de Richard Gautier.">
+        <div class="img-wrap">
+          <img src="images/01_lappel_du_grand_large.jpg" alt="L'appel du grand large" loading="lazy" />
+        </div>
+        <span class="artwork-num">01</span>
+        <h3>L'appel du grand large</h3>
+        <p class="artwork-meta">2025 · Huile sur papier · 29,7 × 42 cm</p>
+      </article>
+
+      <!-- 02 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Les fleurs du clair-obscur"
+        data-year="2025" data-medium="Huile sur bois" data-format="27 × 35 cm"
+        data-desc="Les élèves de Monsieur Gautier ont relevé le défi des sujets floraux. Bleuets, coquelicots et marguerites : sous leurs pinceaux méticuleux, ces fragiles emblèmes champêtres ont retrouvé tout leur éclat.">
+        <div class="img-wrap">
+          <img src="images/02_les_fleurs_du_clair_obscur.jpg" alt="Les fleurs du clair-obscur" loading="lazy" />
+        </div>
+        <span class="artwork-num">02</span>
+        <h3>Les fleurs du clair-obscur</h3>
+        <p class="artwork-meta">2025 · Huile sur bois · 27 × 35 cm</p>
+      </article>
+
+      <!-- 03 — award -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Une ferme en Provence"
+        data-year="2024" data-medium="Huile sur bois" data-format="29,7 × 42 cm"
+        data-desc="Ma ferme rêvée est un hommage à la Provence, cette terre de lumière et de couleurs. L'inspiration m'est venue de deux cartes postales : l'une représentant une vieille ferme, et l'autre la majesté du mont Ventoux."
+        data-award="Lauréat AFCAC 2024">
+        <div class="img-wrap">
+          <span class="award-badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>AFCAC 2024</span>
+          <img src="images/03_une_ferme_en_provence.jpg" alt="Une ferme en Provence" loading="lazy" />
+        </div>
+        <span class="artwork-num">03</span>
+        <h3>Une ferme en Provence</h3>
+        <p class="artwork-meta">2024 · Huile sur bois · 🏆 Lauréat AFCAC</p>
+      </article>
+
+      <!-- 04 -->
+      <article class="artwork-card fade-in" data-artwork
+        data-title="Icône sur verre"
+        data-year="2024" data-medium="Huile sur verre" data-format="13 × 18 cm"
+        data-desc="Cette icône de la Vierge Marie a été réalisée à la peinture à l'huile sur verre, une technique séculaire préservée dans l'atelier de Simona Dobocan, au sein de l'église orthodoxe du village de Hășdate Gherla, en Transylvanie.">
+        <div class="img-wrap">
+          <img src="images/04_icone_sur_verre.jpg" alt="Icône sur verre" loading="lazy" />
+        </div>
+        <span class="artwork-num">04</span>
+        <h3>Icône sur verre</h3>
+        <p class="artwork-meta">2024 · Huile sur verre · 13 × 18 cm</p>
+      </article>
+    </div>
+
+    <div class="text-center mt-12 md:hidden fade-in">
+      <a href="oeuvres.html" class="inline-block border-2 border-brand-black text-brand-black px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-brand-black hover:text-white transition-all duration-300">
+        Voir toutes les œuvres
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ABOUT PREVIEW ═══════════════ -->
+  <section class="bg-brand-light-gray" style="margin-top: 3rem;">
+    <div class="max-w-site section-gap-lg">
+      <div class="about-grid">
+        <div class="about-portrait fade-in">
+          <img src="images/artist_portrait.png" alt="Portrait d'Evan Pavel dans son atelier" loading="lazy" />
+        </div>
+        <div class="fade-in">
+          <span class="text-xs font-bold uppercase tracking-widest text-brand-gray mb-4 block">L'Artiste</span>
+          <h2 class="heading-bold text-4xl md:text-5xl mb-8">Evan<br>Pavel.</h2>
+          <p class="text-brand-gray text-base leading-relaxed mb-6">
+            Jeune artiste né en 2009 dans la région parisienne, Evan Pavel explore l'hyperréalisme en faisant appel à des techniques variées, allant du pastel et de l'aquarelle à la peinture à l'huile.
+          </p>
+          <p class="text-brand-gray text-base leading-relaxed mb-8">
+            Formé à la peinture à l'huile selon la technique flamande auprès de son maître niortais <a href="https://www.richard-gautier.fr" target="_blank" class="underline hover:opacity-70 transition-opacity">Richard Gautier</a>, il a acquis la rigueur technique et une sensibilité au détail.
+          </p>
+          <a href="a-propos.html" class="inline-block border-2 border-brand-black text-brand-black px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-brand-black hover:text-white transition-all duration-300">
+            En savoir plus
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PRESS & AWARDS ═══════════════ -->
+  <section class="max-w-site section-gap-lg" style="margin-top: 3rem;">
+    <div class="max-w-3xl fade-in">
+      <span class="text-xs font-bold uppercase tracking-widest text-brand-gray mb-4 block">Récompenses &amp; Presse</span>
+      <h2 class="heading-bold text-4xl md:text-5xl mb-8">Parcours &amp;<br>Reconnaissance.</h2>
+    </div>
+    <ul class="awards-list max-w-3xl fade-in">
+      <li>
+        <span>Lauréat — Concours Franco-Chinois de Dessin Jeunesse (AFCAC)</span>
+        <span class="award-year">2024</span>
+      </li>
+      <li>
+        <span>Grand Prix — Concours Franco-Chinois de Dessin Jeunesse (AFCAC)</span>
+        <span class="award-year">2023</span>
+      </li>
+      <li>
+        <span>Prix d'Excellence — Concours Franco-Chinois de Dessin Jeunesse (AFCAC)</span>
+        <span class="award-year">2022</span>
+      </li>
+      <li>
+        <span>Lauréat — Concours Franco-Chinois de Dessin Jeunesse (AFCAC)</span>
+        <span class="award-year">2021</span>
+      </li>
+    </ul>
+
+    <h3 class="font-bold text-lg mt-12 mb-6 max-w-3xl fade-in">La presse en parle</h3>
+    <ul class="awards-list max-w-3xl fade-in">
+      <li>
+        <a href="https://www.ouest-france.fr/nouvelle-aquitaine/bessines-79000/le-maitre-salue-et-encourage-leleve-evan-6184dc1c-51aa-493c-970b-a0344fdaf30e" target="_blank" class="hover:opacity-70 transition-opacity">Le maître salue et encourage son élève — Ouest-France</a>
+        <span class="award-year">2024</span>
+      </li>
+      <li>
+        <a href="https://www.ouest-france.fr/nouvelle-aquitaine/bessines-79000/quand-le-maitre-salue-son-eleve-e8e8bde1-66e1-4355-94ae-5a3dfe81f08b" target="_blank" class="hover:opacity-70 transition-opacity">Quand le maître salue son élève — Ouest-France</a>
+        <span class="award-year">2023</span>
+      </li>
+      <li>
+        <a href="https://www.ouest-france.fr/nouvelle-aquitaine/bessines-79000/je-vois-la-chine-par-ces-symboles-ebd9b460-3fef-4458-b73b-c75cd849a9ba" target="_blank" class="hover:opacity-70 transition-opacity">Je vois la Chine à travers ces symboles — Ouest-France</a>
+        <span class="award-year">2022</span>
+      </li>
+      <li>
+        <a href="https://www.ouest-france.fr/nouvelle-aquitaine/bessines-79000/crayon-pastel-et-aquarelle-e6cd48bf-2297-4f38-a44d-8dcc3f531035" target="_blank" class="hover:opacity-70 transition-opacity">Crayon, pastel et aquarelle — Ouest-France</a>
+        <span class="award-year">2021</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════ CONTACT CTA ═══════════════ -->
+  <section class="contact-section" style="margin-top: 4rem; padding: 5rem 0;">
+    <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; text-align: center;">
+      <span class="text-xs font-bold uppercase tracking-widest opacity-50 mb-4 block">Contact</span>
+      <h2 class="heading-bold text-5xl md:text-7xl mb-8">Travaillons<br>Ensemble.</h2>
+      <p class="opacity-60 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+        Envie de transmettre un mot d'appréciation ou une proposition de collaboration ?
+      </p>
+      <a href="contact.html" class="inline-block border-2 border-white text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-brand-black transition-all duration-300">
+        Me contacter
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- ═══════════════ DETAIL MODAL ═══════════════ -->
+<div class="detail-modal" id="detailModal">
+  <button class="modal-close" onclick="closeModal()">×</button>
+  <div class="modal-content">
+    <img class="modal-img" id="modalImg" src="" alt="" />
+    <div class="modal-info">
+      <h2 id="modalTitle"></h2>
+      <div class="meta-label">Année</div>
+      <div class="meta-value" id="modalYear"></div>
+      <div class="meta-label">Technique</div>
+      <div class="meta-value" id="modalMedium"></div>
+      <div class="meta-label">Format</div>
+      <div class="meta-value" id="modalFormat"></div>
+      <div id="modalAwardWrap" style="display:none;">
+        <div class="meta-label">Récompense</div>
+        <div class="meta-value" id="modalAward" style="color: #fbbf24;"></div>
+      </div>
+      <div class="meta-label">Description</div>
+      <div class="meta-value" id="modalDesc" style="opacity: 0.7; font-size: 0.875rem; line-height: 1.6;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="max-w-site flex flex-col md:flex-row justify-between items-center gap-4">
+    <p>&copy; 2026 Evan Pavel. Tous droits réservés. Les images de ce site ne sont pas libres de droit.</p>
+    <div class="flex gap-6">
+      <a href="https://www.instagram.com/evanpavel_87" target="_blank" class="nav-link">Instagram</a>
+      <a href="https://evanpav.wordpress.com" target="_blank" class="nav-link">Blog</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Detail modal
+document.querySelectorAll('[data-artwork]').forEach(card => {
+  card.addEventListener('click', () => {
+    const img = card.querySelector('img');
+    document.getElementById('modalImg').src = img.src;
+    document.getElementById('modalImg').alt = img.alt;
+    document.getElementById('modalTitle').textContent = card.dataset.title;
+    document.getElementById('modalYear').textContent = card.dataset.year;
+    document.getElementById('modalMedium').textContent = card.dataset.medium;
+    document.getElementById('modalFormat').textContent = card.dataset.format || '';
+    document.getElementById('modalDesc').textContent = card.dataset.desc;
+    const award = card.dataset.award;
+    const awardWrap = document.getElementById('modalAwardWrap');
+    if (award) {
+      document.getElementById('modalAward').textContent = award;
+      awardWrap.style.display = 'block';
+    } else {
+      awardWrap.style.display = 'none';
+    }
+    document.getElementById('detailModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('detailModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+// Carousel hover slow-down (only on images)
+const carouselTrack = document.querySelector('.hero-carousel-track');
+if (carouselTrack) {
+  carouselTrack.querySelectorAll('img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('mouseenter', () => {
+      carouselTrack.getAnimations().forEach(a => a.playbackRate = 0.3);
+    });
+    img.addEventListener('mouseleave', () => {
+      carouselTrack.getAnimations().forEach(a => a.playbackRate = 1);
+    });
+  });
+}
+</script>
+
+<script src="js/nav.js"></script>
+</body>
+</html>

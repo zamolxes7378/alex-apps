@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#004c46",
+              "on-error": "#690005",
+              "inverse-surface": "#d5e3ff",
+              "tertiary-container": "#ffdbcf",
+              "secondary": "#43e2d2",
+              "inverse-on-surface": "#193151",
+              "surface-variant": "#1e3555",
+              "error": "#ffb4ab",
+              "surface-bright": "#233a5a",
+              "primary": "#ffffff",
+              "on-surface": "#d5e3ff",
+              "surface": "#00132d",
+              "surface-container-lowest": "#000e23",
+              "secondary-fixed-dim": "#3adccc",
+              "primary-fixed-dim": "#00dddd",
+              "surface-container": "#05203f",
+              "on-surface-variant": "#b9cac9",
+              "error-container": "#93000a",
+              "surface-container-high": "#122a4a",
+              "on-tertiary-fixed": "#380c00",
+              "surface-container-low": "#011c3b",
+              "on-tertiary-container": "#ac4218",
+              "on-secondary": "#003732",
+              "primary-container": "#00fbfb",
+              "outline": "#839493",
+              "tertiary": "#ffffff",
+              "inverse-primary": "#006a6a",
+              "background": "#00132d",
+              "secondary-fixed": "#61f9e9",
+              "secondary-container": "#00c6b6",
+              "surface-tint": "#00dddd",
+              "on-tertiary": "#5c1a00",
+              "primary-fixed": "#00fbfb",
+              "on-primary-container": "#007070",
+              "surface-dim": "#00132d",
+              "on-secondary-fixed": "#00201d",
+              "on-primary-fixed-variant": "#004f4f",
+              "on-background": "#d5e3ff",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#ffdbcf",
+              "on-primary-fixed": "#002020",
+              "outline-variant": "#3a4a49",
+              "tertiary-fixed-dim": "#ffb59c",
+              "on-primary": "#003737",
+              "on-tertiary-fixed-variant": "#822800",
+              "on-secondary-fixed-variant": "#005049",
+              "surface-container-highest": "#1e3555"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(35, 58, 90, 0.4);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .biolume-glow {
+        box-shadow: 0 0 24px rgba(67, 226, 210, 0.1);
+      }
+      .blue-print-grid {
+        background-image: radial-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#00132d]/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(0,255,255,0.1)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black text-white tracking-tighter uppercase font-headline">
+                Bernard l’hermite
+            </div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-white/70 hover:text-white transition-colors font-headline font-bold tracking-tight" href="#">Home</a>
+<a class="text-white/70 hover:text-white transition-colors font-headline font-bold tracking-tight" href="#">Features</a>
+<a class="text-[#00ffff] border-b-2 border-[#00ffff] pb-1 font-headline font-bold tracking-tight" href="#">Innovation</a>
+<a class="text-white/70 hover:text-white transition-colors font-headline font-bold tracking-tight" href="#">Gallery</a>
+</nav>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-headline font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(67,226,210,0.3)]">
+                Contact
+            </button>
+</div>
+</header>
+<main class="pt-32 pb-20 overflow-hidden">
+<!-- Hero Section -->
+<section class="relative max-w-7xl mx-auto px-8 mb-32">
+<div class="absolute -top-20 -left-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-end justify-between gap-12">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-surface-container-highest border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-xs font-label uppercase tracking-widest text-secondary">Telemetry Active // Biomimicry Module</span>
+</div>
+<h1 class="font-headline font-black text-6xl md:text-8xl text-white leading-tight tracking-tighter mb-8">
+                        Robotic <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Innovation</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-lg leading-relaxed">
+                        Redefining autonomous mobility through the lens of oceanic evolution. We don't just build robots; we replicate 500 million years of crustacean survival intelligence.
+                    </p>
+</div>
+<div class="hidden lg:block">
+<div class="font-label text-right border-r-2 border-secondary pr-6 py-2">
+<p class="text-[10px] text-secondary opacity-50 uppercase tracking-[0.3em] mb-1">Current Focus</p>
+<p class="text-xl text-white font-bold uppercase tracking-tighter">Sub-Abyssal Shell Integration</p>
+<p class="text-xs text-secondary/70 font-mono mt-2 italic">VER: 0.9.4.CHITIN</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Innovation Grid: The Shell Strategy -->
+<section class="max-w-7xl mx-auto px-8 mb-40">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Main Strategy Card -->
+<div class="lg:col-span-7 relative group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-transparent rounded-3xl -m-1 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="relative h-full glass-card rounded-3xl p-10 overflow-hidden flex flex-col">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h2 class="font-headline font-bold text-4xl text-white mb-2 uppercase tracking-tight">The Shell Strategy</h2>
+<p class="text-secondary font-label text-sm tracking-widest">BIOMIMETIC HARDENING</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary-container" data-icon="shield">shield</span>
+</div>
+<div class="relative flex-grow min-h-[300px] mb-8 blue-print-grid border border-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
+<img alt="Robotic exoskeleton blueprint" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40" data-alt="Technical schematic of a futuristic robotic shell" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTasiQkAWd_-pI_pIMcVnGTT3dNIy5HZUmFNmgFqokRsN1nUBlmX-1eI7jWNUZoRsI7pypO0zSm-wiZ00n3HUu29Vmc2fzhVQhEMmKRDQHxX5aIiLdU7rEmTtx1QrQO4wAIEXKr58Uh0nhCLtu3IY6XJ-Qq_W96vkF8M7IL5w-V0pnrDkqK6OckQtjo1ls5ikLo-QIlhg7GshQBgcrhVf-b7AetmOOAlvPBCePsMKksjMMAFhNbfpmgV4InqOlPp73B12UABMQ0j2_"/>
+<div class="relative z-10 p-6 text-center">
+<div class="w-24 h-24 border-2 border-dashed border-secondary/30 rounded-full flex items-center justify-center mx-auto mb-4 animate-[spin_20s_linear_infinite]">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="settings">settings</span>
+</div>
+<p class="text-xs font-mono text-secondary/60">LAYER_01: POLYCARBONATE COMPOSITE // STRESS: 400MPa</p>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+                            Unlike rigid industrial frames, our "Shell Strategy" utilizes modular, swappable exterior casings inspired by the Hermit Crab's adaptive protection. Each shell is a bespoke piece of engineering designed for specific environmental pressures.
+                        </p>
+</div>
+</div>
+<!-- Technical Details Bento -->
+<div class="lg:col-span-5 grid grid-rows-2 gap-8">
+<div class="glass-card rounded-3xl p-8 flex flex-col justify-between hover:bg-surface-container-highest/60 transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-white">Dynamic Geometry</h3>
+</div>
+<p class="text-sm text-on-surface-variant mt-4">Structural integrity that shifts under load, distributing kinetic energy through interlocking bio-plates.</p>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex gap-1">
+<div class="w-8 h-1 bg-secondary rounded-full"></div>
+<div class="w-4 h-1 bg-secondary/30 rounded-full"></div>
+<div class="w-2 h-1 bg-secondary/10 rounded-full"></div>
+</div>
+<span class="text-[10px] font-label text-secondary tracking-widest uppercase">Opt-Flex Active</span>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-3xl p-8 flex flex-col justify-between border border-primary/5">
+<h3 class="font-headline font-bold text-xl text-white uppercase tracking-tight">Environmental Adapt</h3>
+<div class="space-y-4 my-4">
+<div class="flex items-center justify-between text-xs py-2 border-b border-white/5">
+<span class="text-white/50">Pressure Rating</span>
+<span class="text-secondary font-mono">12,000 PSI</span>
+</div>
+<div class="flex items-center justify-between text-xs py-2 border-b border-white/5">
+<span class="text-white/50">Corrosion Resistance</span>
+<span class="text-secondary font-mono">99.9% SALINE</span>
+</div>
+<div class="flex items-center justify-between text-xs py-2">
+<span class="text-white/50">Thermal Limit</span>
+<span class="text-secondary font-mono">-40°C / +120°C</span>
+</div>
+</div>
+<button class="text-xs font-label text-secondary uppercase tracking-[0.2em] flex items-center gap-2 group">
+                            Full Lab Report <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Neural Paths Section -->
+<section class="bg-surface-container-low py-32 relative">
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="flex flex-col lg:flex-row gap-20 items-center">
+<div class="lg:w-1/2">
+<p class="text-secondary font-label tracking-[0.4em] mb-4 uppercase">Bio-Processing</p>
+<h2 class="font-headline font-bold text-5xl text-white mb-8 leading-tight">Crustacean <br/>Neural Paths</h2>
+<div class="space-y-8">
+<div class="flex gap-6">
+<span class="text-4xl font-headline font-black text-secondary/20">01</span>
+<div>
+<h4 class="text-white font-bold mb-2">Decentralized Cognition</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">By offloading simple motor reflexes to local joint controllers, we reduce central CPU load by 45%, mimicking the distributed ganglia of a crab.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-4xl font-headline font-black text-secondary/20">02</span>
+<div>
+<h4 class="text-white font-bold mb-2">Proprioceptive Feedback</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Integrated strain sensors provide real-time spatial awareness, allowing the robot to "feel" its environment without visual confirmation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 relative">
+<div class="absolute inset-0 bg-secondary/5 blur-[80px] rounded-full"></div>
+<div class="relative glass-card rounded-[2rem] p-4 border-secondary/20 biolume-glow">
+<img alt="Circuitry resembling neural network" class="rounded-[1.5rem] w-full aspect-square object-cover" data-alt="Microchip circuitry glowing with blue light in a dark lab setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIWAxZHVpqoqRessvpsgKD9080zP_rl_cQbKkx684YlTrBdLdvy-N6kycdm0jyv4wYnnorqpLgh867qikOfF1Ep3Fz6EtPmgP1Oc-IkJNpPyeFBKr73hGANtDpSc8ePS2eQINfyKacxMizp16VT-a9DEDYKScYED9_Oqdx-e07uCGtVALq76jKw2SB_psQe2LGgD0eY47NeeYPihByzUAnSgBuskm1lMD-6w-oyptcbMQQ5Oxw8hn_un6_CNs7d6jr8aUgdqMyKIWk"/>
+<div class="absolute top-8 right-8 bg-surface/80 backdrop-blur px-4 py-2 rounded-full border border-secondary/30">
+<span class="text-[10px] font-mono text-secondary">CORE_PROCESSING_LOAD: 12%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Engineering with Chitin Section -->
+<section class="max-w-7xl mx-auto px-8 py-40">
+<div class="text-center mb-20">
+<h2 class="font-headline font-black text-5xl text-white mb-4 uppercase italic tracking-tighter">Engineering with Chitin</h2>
+<div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mb-8"></div>
+<p class="max-w-2xl mx-auto text-on-surface-variant">Exploring synthetic chitin composites—materials that offer the highest strength-to-weight ratio in the biological world, now translated to aerospace-grade polymers.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-8 rounded-3xl bg-surface-container border-b-4 border-secondary/20 hover:border-secondary transition-all group">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6 block" data-icon="opacity">opacity</span>
+<h3 class="font-headline font-bold text-xl text-white mb-3">Material Purity</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Synthetically engineered chitin layers provide flexibility in high-pressure aquatic environments where carbon fiber fails.</p>
+</div>
+<div class="p-8 rounded-3xl bg-surface-container border-b-4 border-secondary/20 hover:border-secondary transition-all group">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6 block" data-icon="eco">eco</span>
+<h3 class="font-headline font-bold text-xl text-white mb-3">Sustainable Core</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Our composite manufacturing process reduces carbon emissions by 30% compared to traditional robotic aluminum milling.</p>
+</div>
+<div class="p-8 rounded-3xl bg-surface-container border-b-4 border-secondary/20 hover:border-secondary transition-all group">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6 block" data-icon="bolt">bolt</span>
+<h3 class="font-headline font-bold text-xl text-white mb-3">Signal Conductivity</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">The molecular structure of our composite allows for embedded sensor pathways, effectively making the skin a sensor.</p>
+</div>
+</div>
+</section>
+<!-- Call to Action / Technical Inquiry -->
+<section class="max-w-7xl mx-auto px-8 mb-20">
+<div class="relative bg-gradient-to-br from-surface-container-highest to-surface-container p-12 md:p-20 rounded-[3rem] overflow-hidden border border-white/5">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-secondary/5 skew-x-12 translate-x-1/4"></div>
+<div class="relative z-10 max-w-xl">
+<h2 class="font-headline font-black text-4xl md:text-5xl text-white mb-6 uppercase">Ready to dive deeper?</h2>
+<p class="text-on-surface-variant mb-10 text-lg">Access our full technical whitepaper on biomimetic locomotion and crustacean-inspired robotics architecture.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary text-on-secondary px-8 py-4 rounded-full font-headline font-bold hover:shadow-[0_0_25px_rgba(67,226,210,0.4)] transition-all">
+                            Download Specs
+                        </button>
+<button class="border border-outline-variant text-white px-8 py-4 rounded-full font-headline font-bold hover:bg-white/5 transition-all">
+                            Partner with Us
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-20 bg-[#05203f]">
+<div class="bg-gradient-to-r from-transparent via-[#00fbfb]/20 to-transparent h-[1px] mb-8"></div>
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto">
+<div class="font-headline font-bold text-white mb-6 md:mb-0">
+                Bernard l’hermite
+            </div>
+<div class="text-center mb-6 md:mb-0">
+<p class="font-manrope text-sm text-white/50">© 2024 Bernard l’hermite Robotics Project | 9th Grade STEM Innovation</p>
+</div>
+<div class="flex space-x-8">
+<a class="text-white/50 hover:text-[#43e2d2] transition-colors font-manrope text-sm opacity-80 hover:opacity-100" href="#">Documentation</a>
+<a class="text-white/50 hover:text-[#43e2d2] transition-colors font-manrope text-sm opacity-80 hover:opacity-100" href="#">School Portal</a>
+<a class="text-white/50 hover:text-[#43e2d2] transition-colors font-manrope text-sm opacity-80 hover:opacity-100" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+</body></html>

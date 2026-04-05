@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Bernard l'Hermite — Robotics Project</title>
+  <meta name="description" content="Bernard l'Hermite — a hermit crab-inspired robot built by our 9th grade team using a Kitronik :MOVE Motor and BBC micro:bit."/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-container":"#004c46","on-error":"#690005","inverse-surface":"#d5e3ff",
+            "tertiary-container":"#ffdbcf","secondary":"#43e2d2","inverse-on-surface":"#193151",
+            "surface-variant":"#1e3555","error":"#ffb4ab","surface-bright":"#233a5a",
+            "primary":"#ffffff","on-surface":"#d5e3ff","surface":"#00132d",
+            "surface-container-lowest":"#000e23","secondary-fixed-dim":"#3adccc",
+            "primary-fixed-dim":"#00dddd","surface-container":"#05203f",
+            "on-surface-variant":"#b9cac9","error-container":"#93000a",
+            "surface-container-high":"#122a4a","on-tertiary-fixed":"#380c00",
+            "surface-container-low":"#011c3b","on-tertiary-container":"#ac4218",
+            "on-secondary":"#003732","primary-container":"#00fbfb","outline":"#839493",
+            "tertiary":"#ffffff","inverse-primary":"#006a6a","background":"#00132d",
+            "secondary-fixed":"#61f9e9","secondary-container":"#00c6b6",
+            "surface-tint":"#00dddd","on-tertiary":"#5c1a00","primary-fixed":"#00fbfb",
+            "on-primary-container":"#007070","surface-dim":"#00132d",
+            "on-secondary-fixed":"#00201d","on-primary-fixed-variant":"#004f4f",
+            "on-background":"#d5e3ff","on-error-container":"#ffdad6",
+            "tertiary-fixed":"#ffdbcf","on-primary-fixed":"#002020",
+            "outline-variant":"#3a4a49","tertiary-fixed-dim":"#ffb59c",
+            "on-primary":"#003737","on-tertiary-fixed-variant":"#822800",
+            "on-secondary-fixed-variant":"#005049","surface-container-highest":"#1e3555"
+          },
+          fontFamily: { "headline":["Space Grotesk"], "body":["Manrope"], "label":["Space Grotesk"] },
+          borderRadius: { "DEFAULT":"0.25rem", "lg":"0.5rem", "xl":"0.75rem", "full":"9999px" },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary/30">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 bg-[#00132d]/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(0,255,255,0.1)]">
+    <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
+      <a href="index-en.html" class="text-2xl font-black text-white tracking-tighter uppercase font-headline hover:text-primary-container transition-colors animate-slide-down">
+        Bernard l'hermite
+      </a>
+      <button class="md:hidden text-white" onclick="document.getElementById('mobile-nav-en').classList.toggle('hidden')">
+        <span class="material-symbols-outlined text-3xl">menu</span>
+      </button>
+      <nav class="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight animate-slide-down">
+        <a class="text-[#00ffff] border-b-2 border-[#00ffff] pb-1 px-3 rounded-lg" href="index-en.html">Home</a>
+        <a class="nav-link" href="features.html">Features</a>
+        <a class="nav-link" href="innovation.html">Innovation</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link text-xs flex items-center gap-1" href="index.html">
+          <span class="material-symbols-outlined text-sm">translate</span> FR
+        </a>
+      </nav>
+    </div>
+    <nav id="mobile-nav-en" class="hidden md:hidden flex-col gap-2 px-6 pb-4 font-headline font-bold">
+      <a class="block py-2 text-[#00ffff]" href="index-en.html">Home</a>
+      <a class="block py-2 text-white/70" href="features.html">Features</a>
+      <a class="block py-2 text-white/70" href="innovation.html">Innovation</a>
+      <a class="block py-2 text-white/70" href="gallery.html">Gallery</a>
+      <a class="block py-2 text-white/70" href="index.html">🇫🇷 Français</a>
+    </nav>
+  </header>
+
+  <main class="pt-28 pb-20">
+
+    <!-- Hero Section -->
+    <section class="relative max-w-7xl mx-auto px-6 md:px-8 mb-32">
+      <div class="particle particle-1" style="top:15%; left:10%;"></div>
+      <div class="particle particle-2" style="top:60%; left:85%;"></div>
+      <div class="particle particle-3" style="top:80%; left:30%;"></div>
+      <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none animate-pulse-glow"></div>
+      <div class="absolute -bottom-40 -right-40 w-[400px] h-[400px] bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12 py-16">
+        <div class="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-surface-container-highest border border-outline-variant/20 animate-fade-in animate-border-glow">
+            <span class="w-2 h-2 rounded-full bg-secondary animate-blink"></span>
+            <span class="text-xs font-label uppercase tracking-widest text-secondary">Mission Active // Robotics Competition 2026</span>
+          </div>
+
+          <h1 class="font-headline font-black text-6xl md:text-8xl text-white leading-none tracking-tighter mb-8 animate-slide-up">
+            Bernard<br/>
+            <span class="text-gradient-primary">l'Hermite</span>
+          </h1>
+
+          <p class="max-w-xl text-lg md:text-xl text-on-surface-variant font-light leading-relaxed mb-12 animate-slide-up-delay">
+            Meet our hermit crab robot! It's powered by a <strong class="text-secondary">Kitronik :MOVE Motor</strong> and controlled with a <strong class="text-secondary">BBC micro:bit</strong>. We coded everything in MakeCode and designed a custom 3D-printed shell for it.
+          </p>
+
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start animate-slide-up-delay-2">
+            <a href="features.html" class="btn-press bg-secondary text-on-secondary px-8 py-4 rounded-full font-headline font-bold">
+              Discover the Robot
+            </a>
+            <a href="innovation.html" class="btn-press border border-outline-variant text-white px-8 py-4 rounded-full font-headline font-bold hover:bg-white/5">
+              Our Innovation
+            </a>
+          </div>
+        </div>
+
+        <div class="flex-1 relative animate-slide-left">
+          <div class="absolute inset-0 bg-secondary/10 rounded-full blur-[100px] pointer-events-none animate-pulse-glow"></div>
+          <div class="relative glass-card rounded-[2rem] p-4 border-secondary/20 animate-float">
+            <img src="images/hero-robot.png" alt="Bernard l'Hermite Robot — Kitronik :MOVE Motor" class="rounded-[1.5rem] w-full object-cover"/>
+            <div class="absolute top-6 right-6 bg-surface/80 backdrop-blur px-4 py-2 rounded-full border border-secondary/30 animate-border-glow">
+              <span class="text-[10px] font-mono text-secondary">PLATFORM: KITRONIK :MOVE MOTOR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Quick Specs -->
+    <section class="max-w-7xl mx-auto px-6 md:px-8 mb-32">
+      <div class="reveal text-center mb-16">
+        <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold">Robotics Platform</span>
+        <h2 class="font-headline font-black text-4xl md:text-5xl text-white mt-4 tracking-tighter">Kitronik :MOVE Motor</h2>
+        <p class="text-on-surface-variant mt-4 max-w-xl mx-auto">At the heart of it all: a BBC micro:bit snapped into a Kitronik :MOVE Motor. All the coding happens in MakeCode.</p>
+        <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-6"></div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal-stagger">
+        <div class="reveal glass-card card-hover rounded-2xl p-6 text-center animate-pulse-glow">
+          <span class="material-symbols-outlined text-3xl text-secondary mb-3 block icon-bounce" style="font-variation-settings:'FILL' 1;">speed</span>
+          <span class="font-headline font-black text-3xl text-white block">2</span>
+          <span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">DC Motors</span>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-6 text-center">
+          <span class="material-symbols-outlined text-3xl text-secondary mb-3 block icon-bounce" style="font-variation-settings:'FILL' 1;">sensors</span>
+          <span class="font-headline font-black text-3xl text-white block">3</span>
+          <span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">Sensors</span>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-6 text-center">
+          <span class="material-symbols-outlined text-3xl text-secondary mb-3 block icon-bounce" style="font-variation-settings:'FILL' 1;">lightbulb</span>
+          <span class="font-headline font-black text-3xl text-white block">4</span>
+          <span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">ZIP LEDs</span>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-6 text-center">
+          <span class="material-symbols-outlined text-3xl text-secondary mb-3 block icon-bounce" style="font-variation-settings:'FILL' 1;">memory</span>
+          <span class="font-headline font-black text-3xl text-white block">micro:bit</span>
+          <span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">Brain</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Key Features -->
+    <section class="max-w-7xl mx-auto px-6 md:px-8 mb-32">
+      <div class="reveal text-center mb-16">
+        <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold">About the Project</span>
+        <h2 class="font-headline font-black text-4xl md:text-5xl text-white mt-4 tracking-tighter">What Our Robot Can Do</h2>
+        <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-6"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger">
+        <div class="reveal glass-card card-hover rounded-2xl p-8 group neon-glow-secondary">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce" style="font-variation-settings: 'FILL' 1;">radar</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Ultrasonic Sensor</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Up front, an ultrasonic sensor scans for obstacles ahead. It hooks up to pins 13 and 14 on the micro:bit.</p>
+          <div class="stat-bar mt-4"><div class="stat-bar-fill" style="--fill-width: 85%;"></div></div>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-8 group neon-glow-secondary">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce" style="font-variation-settings: 'FILL' 1;">route</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">IR Line Following</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Underneath, two infrared sensors (pins 1 and 2) track a black line on the ground so the robot can navigate on its own.</p>
+          <div class="stat-bar mt-4"><div class="stat-bar-fill" style="--fill-width: 90%;"></div></div>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-8 group neon-glow-secondary">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce" style="font-variation-settings: 'FILL' 1;">code</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">MakeCode Programming</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">With Kitronik's custom blocks in MakeCode, programming the robot's behaviour is straightforward — no complex coding needed.</p>
+          <div class="stat-bar mt-4"><div class="stat-bar-fill" style="--fill-width: 95%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="max-w-7xl mx-auto px-6 md:px-8 mb-32">
+      <div class="reveal text-center mb-16">
+        <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold">Our Team</span>
+        <h2 class="font-headline font-black text-4xl md:text-5xl text-white mt-4 tracking-tighter">Project Members</h2>
+        <p class="text-on-surface-variant mt-4 max-w-xl mx-auto">Everyone has a role — here's who does what on our team.</p>
+        <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-6"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 reveal-stagger">
+        <div class="reveal glass-card card-hover rounded-2xl p-6 text-center neon-glow-secondary">
+          <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-4">
+            <span class="material-symbols-outlined text-3xl text-secondary" style="font-variation-settings:'FILL' 1;">person</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg text-white">Alex</h3>
+          <p class="text-xs text-secondary font-label uppercase tracking-widest mt-1">Project Leader</p>
+          <p class="text-xs text-on-surface-variant mt-2">Leads the team, handles design and manages the website</p>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-6 text-center neon-glow-secondary">
+          <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-4">
+            <span class="material-symbols-outlined text-3xl text-secondary" style="font-variation-settings:'FILL' 1;">engineering</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg text-white">Name 2</h3>
+          <p class="text-xs text-secondary font-label uppercase tracking-widest mt-1">Mechanics</p>
+          <p class="text-xs text-on-surface-variant mt-2">Puts the robot together and runs the 3D printer</p>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-6 text-center neon-glow-secondary">
+          <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-4">
+            <span class="material-symbols-outlined text-3xl text-secondary" style="font-variation-settings:'FILL' 1;">code</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg text-white">Name 3</h3>
+          <p class="text-xs text-secondary font-label uppercase tracking-widest mt-1">Programming</p>
+          <p class="text-xs text-on-surface-variant mt-2">Writes the MakeCode programs and fine-tunes the sensors</p>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-6 text-center neon-glow-secondary">
+          <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-4">
+            <span class="material-symbols-outlined text-3xl text-secondary" style="font-variation-settings:'FILL' 1;">draw</span>
+          </div>
+          <h3 class="font-headline font-bold text-lg text-white">Name 4</h3>
+          <p class="text-xs text-secondary font-label uppercase tracking-widest mt-1">Design & Comms</p>
+          <p class="text-xs text-on-surface-variant mt-2">Designs the shell and takes care of the documentation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status Bar -->
+    <section class="max-w-7xl mx-auto px-6 md:px-8 mb-20">
+      <div class="reveal from-scale flex flex-wrap gap-8 justify-between items-center py-6 px-10 glass-card rounded-full animate-border-glow">
+        <div class="flex items-center gap-4">
+          <div class="w-2 h-2 rounded-full bg-secondary animate-blink"></div>
+          <span class="font-label text-xs font-bold tracking-[0.2em] text-on-surface-variant">SYSTEM STATUS: NOMINAL</span>
+        </div>
+        <div class="flex gap-12">
+          <div class="flex flex-col">
+            <span class="font-label text-[10px] text-secondary/60 tracking-widest uppercase">Battery</span>
+            <span class="font-headline font-bold text-white">4×AA</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-label text-[10px] text-secondary/60 tracking-widest uppercase">Voltage</span>
+            <span class="font-headline font-bold text-white">6V</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-label text-[10px] text-secondary/60 tracking-widest uppercase">Dimensions</span>
+            <span class="font-headline font-bold text-white">111×90 mm</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-12 mt-20 bg-[#05203f]">
+    <div class="bg-gradient-to-r from-transparent via-[#00fbfb]/20 to-transparent h-[1px] mb-8 mx-auto max-w-7xl animate-shimmer"></div>
+    <div class="reveal flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-7xl mx-auto gap-8">
+      <div class="font-headline font-bold text-white text-lg">Bernard l'hermite</div>
+      <p class="font-body text-sm text-white/50 text-center md:text-left">
+        © 2026 Bernard l'hermite Robotics Project — Kitronik :MOVE Motor + BBC micro:bit | 9th Grade
+      </p>
+      <p class="font-body text-[10px] text-white/30 text-center md:text-left mt-1">
+        AI-generated images. Kitronik™ Kitronik Ltd. BBC micro:bit™ BBC.
+      </p>
+      <div class="flex gap-8 font-body text-sm">
+        <a class="text-white/50 hover:text-[#43e2d2] transition-colors" href="features.html">Features</a>
+        <a class="text-white/50 hover:text-[#43e2d2] transition-colors" href="innovation.html">Innovation</a>
+        <a class="text-white/50 hover:text-[#43e2d2] transition-colors" href="gallery.html">Gallery</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.querySelectorAll('.stat-bar-fill').forEach(bar => bar.classList.add('visible'));
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+</body>
+</html>

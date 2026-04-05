@@ -1,0 +1,528 @@
+/* ============================================
+   ABOUT PAGE — CUSTOM STYLES
+   ============================================ */
+
+/* ---------- INTRO / PORTRAIT SECTION ---------- */
+.ab-intro {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface);
+}
+
+.ab-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .ab-intro-grid {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+  }
+}
+
+.ab-intro-image {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+}
+
+.ab-intro-image img {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.ab-intro-image:hover img {
+  transform: scale(1.03);
+}
+
+.ab-intro-image-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--on-background);
+}
+
+.ab-intro-image-badge .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--primary);
+  font-variation-settings: 'FILL' 1, 'wght' 400;
+}
+
+.ab-intro-content .label {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.ab-intro-content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.ab-intro-lead {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  margin-bottom: 1rem;
+  color: var(--on-background);
+}
+
+.ab-intro-content > p {
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* Stats strip */
+.ab-intro-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.ab-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ab-stat-number {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.ab-stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  font-weight: 500;
+}
+
+/* ---------- STORY SECTION ---------- */
+.ab-story {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface-container-low);
+}
+
+.ab-story-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.ab-story-header h2 {
+  margin-top: 0.75rem;
+}
+
+.ab-story-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+/* Vertical timeline line */
+.ab-story-content::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+  opacity: 0.15;
+}
+
+.ab-story-chapter {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.ab-story-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.ab-story-icon .material-symbols-outlined {
+  font-size: 1.3rem;
+  color: var(--primary);
+  font-variation-settings: 'FILL' 1, 'wght' 400;
+}
+
+.ab-story-chapter h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--on-background);
+}
+
+.ab-story-chapter p {
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+/* ---------- VALUES / PHILOSOPHY ---------- */
+.ab-values {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface);
+}
+
+.ab-values-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.ab-values-header h2 {
+  margin-top: 0.75rem;
+}
+
+.ab-values-header p {
+  max-width: 600px;
+  margin: 1rem auto 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.ab-values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .ab-values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .ab-values-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ab-value-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  transition: all var(--transition-slow);
+}
+
+.ab-value-card:hover {
+  transform: translateY(-4px);
+  background: var(--glass-bg-strong);
+  box-shadow: 0 16px 48px rgba(26, 29, 34, 0.08);
+}
+
+.ab-value-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(74, 96, 120, 0.06);
+  border-radius: 1rem;
+  margin: 0 auto 1.25rem;
+}
+
+.ab-value-icon .material-symbols-outlined {
+  font-size: 1.6rem;
+  color: var(--primary);
+  font-variation-settings: 'FILL' 0, 'wght' 300;
+}
+
+.ab-value-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.ab-value-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* ---------- CERTIFICATIONS ---------- */
+.ab-certifications {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface-container-low);
+}
+
+.ab-certifications-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.ab-certifications-header h2 {
+  margin-top: 0.75rem;
+}
+
+.ab-certifications-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .ab-certifications-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ab-cert-card {
+  padding: 2rem 1.75rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  text-align: center;
+  transition: all var(--transition-slow);
+}
+
+.ab-cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(26, 29, 34, 0.08);
+}
+
+.ab-cert-year {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.ab-cert-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  color: var(--on-background);
+}
+
+.ab-cert-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* ---------- TESTIMONIALS ---------- */
+.ab-testimonials {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface);
+}
+
+.ab-testimonials-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.ab-testimonials-header h2 {
+  margin-top: 0.75rem;
+}
+
+.ab-testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .ab-testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ab-testimonial-card {
+  padding: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all var(--transition-slow);
+}
+
+.ab-testimonial-card:hover {
+  transform: translateY(-4px);
+  background: var(--glass-bg-strong);
+  box-shadow: 0 16px 48px rgba(26, 29, 34, 0.08);
+}
+
+.ab-testimonial-stars {
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+}
+
+.ab-testimonial-card > p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.ab-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.ab-testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.ab-testimonial-author strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--on-background);
+}
+
+.ab-testimonial-author span {
+  font-size: 0.72rem;
+  color: var(--on-surface-variant);
+  letter-spacing: 0.05em;
+}
+
+/* ---------- CTA CARD ---------- */
+.ab-cta {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background: var(--surface-container-low);
+}
+
+.ab-cta-card {
+  position: relative;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 4rem 3rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 2.5rem;
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+}
+
+.ab-cta-glow {
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 200px;
+  height: 200px;
+  background: rgba(74, 96, 120, 0.06);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.ab-cta-card h2 {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ab-cta-card > p {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.ab-cta-signature {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.ab-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 767px) {
+  .ab-intro-stats {
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .ab-story-content::before {
+    display: none;
+  }
+
+  .ab-story-chapter {
+    padding: 1.5rem 0;
+  }
+
+  .ab-cta-card {
+    padding: 2.5rem 1.5rem;
+  }
+}

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Innovation — Bernard l'Hermite</title>
+  <meta name="description"
+    content="Découvrez l'approche biomimétique du robot Bernard l'Hermite — comment nous nous sommes inspirés de la nature pour construire notre robot avec le Kitronik :MOVE Motor." />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-container": "#004c46", "on-error": "#690005", "inverse-surface": "#d5e3ff",
+            "tertiary-container": "#ffdbcf", "secondary": "#43e2d2", "inverse-on-surface": "#193151",
+            "surface-variant": "#1e3555", "error": "#ffb4ab", "surface-bright": "#233a5a",
+            "primary": "#ffffff", "on-surface": "#d5e3ff", "surface": "#00132d",
+            "surface-container-lowest": "#000e23", "secondary-fixed-dim": "#3adccc",
+            "primary-fixed-dim": "#00dddd", "surface-container": "#05203f",
+            "on-surface-variant": "#b9cac9", "error-container": "#93000a",
+            "surface-container-high": "#122a4a", "on-tertiary-fixed": "#380c00",
+            "surface-container-low": "#011c3b", "on-tertiary-container": "#ac4218",
+            "on-secondary": "#003732", "primary-container": "#00fbfb", "outline": "#839493",
+            "tertiary": "#ffffff", "inverse-primary": "#006a6a", "background": "#00132d",
+            "secondary-fixed": "#61f9e9", "secondary-container": "#00c6b6",
+            "surface-tint": "#00dddd", "on-tertiary": "#5c1a00", "primary-fixed": "#00fbfb",
+            "on-primary-container": "#007070", "surface-dim": "#00132d",
+            "on-secondary-fixed": "#00201d", "on-primary-fixed-variant": "#004f4f",
+            "on-background": "#d5e3ff", "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#ffdbcf", "on-primary-fixed": "#002020",
+            "outline-variant": "#3a4a49", "tertiary-fixed-dim": "#ffb59c",
+            "on-primary": "#003737", "on-tertiary-fixed-variant": "#822800",
+            "on-secondary-fixed-variant": "#005049", "surface-container-highest": "#1e3555"
+          },
+          fontFamily: { "headline": ["Space Grotesk"], "body": ["Manrope"], "label": ["Space Grotesk"] },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- En-tête -->
+  <header
+    class="fixed top-0 w-full z-50 bg-[#00132d]/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(0,255,255,0.1)]">
+    <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
+      <a href="index.html"
+        class="text-2xl font-black text-white tracking-tighter uppercase font-headline hover:text-primary-container transition-colors animate-slide-down">Bernard
+        l'hermite</a>
+      <button class="md:hidden text-white" onclick="document.getElementById('mobile-nav-i').classList.toggle('hidden')">
+        <span class="material-symbols-outlined text-3xl">menu</span>
+      </button>
+      <nav class="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight animate-slide-down">
+        <a class="nav-link" href="index.html">Accueil</a>
+        <a class="nav-link" href="features.html">Caractéristiques</a>
+        <a class="text-[#00ffff] border-b-2 border-[#00ffff] pb-1 px-3 rounded-lg" href="innovation.html">Innovation</a>
+        <a class="nav-link" href="gallery.html">Galerie</a>
+        <a class="nav-link text-xs flex items-center gap-1" href="index-en.html">
+          <span class="material-symbols-outlined text-sm">translate</span> EN
+        </a>
+      </nav>
+    </div>
+    <nav id="mobile-nav-i" class="hidden md:hidden flex-col gap-2 px-6 pb-4 font-headline font-bold">
+      <a class="block py-2 text-white/70" href="index.html">Accueil</a>
+      <a class="block py-2 text-white/70" href="features.html">Caractéristiques</a>
+      <a class="block py-2 text-[#00ffff]" href="innovation.html">Innovation</a>
+      <a class="block py-2 text-white/70" href="gallery.html">Galerie</a>
+    </nav>
+  </header>
+
+  <main class="pt-32 pb-20 overflow-hidden">
+
+    <!-- Section Héro -->
+    <section class="relative max-w-7xl mx-auto px-8 mb-32">
+      <div class="particle particle-1" style="top:10%; left:5%;"></div>
+      <div class="particle particle-2" style="top:50%; right:10%;"></div>
+      <div class="absolute -top-20 -left-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse-glow">
+      </div>
+      <div class="relative z-10 flex flex-col md:flex-row items-end justify-between gap-12">
+        <div class="max-w-2xl">
+          <div
+            class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-surface-container-highest border border-outline-variant/20 animate-fade-in animate-border-glow">
+            <span class="w-2 h-2 rounded-full bg-secondary animate-blink"></span>
+            <span class="text-xs font-label uppercase tracking-widest text-secondary">Innovation Active // Module
+              Biomimétisme</span>
+          </div>
+          <h1
+            class="font-headline font-black text-6xl md:text-8xl text-white leading-tight tracking-tighter mb-8 animate-slide-up">
+            Innovation<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Robotique</span>
+          </h1>
+          <p class="text-lg text-on-surface-variant max-w-lg leading-relaxed animate-slide-up-delay">
+            Nous sommes partis d'un <strong class="text-secondary">Kitronik :MOVE Motor</strong> avec un BBC micro:bit
+            et nous l'avons transformé en robot bernard-l'hermite. Voici les idées et les choix que nous avons faits.
+          </p>
+        </div>
+        <div class="hidden lg:block animate-slide-left">
+          <div class="font-label text-right border-r-2 border-secondary pr-6 py-2">
+            <p class="text-[10px] text-secondary opacity-50 uppercase tracking-[0.3em] mb-1">Focus Actuel</p>
+            <p class="text-xl text-white font-bold uppercase tracking-tighter">Comportement Autonome</p>
+            <p class="text-xs text-secondary/70 font-mono mt-2 italic">MAKECODE : V2.HERMITE</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Plan du Projet et Recherches -->
+    <section class="max-w-7xl mx-auto px-8 mb-32">
+      <div class="reveal text-center mb-16">
+        <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold">Plan du Projet</span>
+        <h2 class="font-headline font-black text-4xl md:text-5xl text-white mt-4 tracking-tighter">Recherches &
+          Solutions</h2>
+        <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-6"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-stagger">
+        <div class="reveal glass-card card-hover rounded-2xl p-8 neon-glow-secondary">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-4 block icon-bounce"
+            style="font-variation-settings:'FILL' 1;">science</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Phase de Recherche</h3>
+          <ul class="text-sm text-on-surface-variant space-y-3 leading-relaxed">
+            <li class="flex items-start gap-2"><span class="text-secondary mt-0.5">•</span> Nous avons cherché parmi plusieurs animaux pour trouver notre inspiration</li>
+            <li class="flex items-start gap-2"><span class="text-secondary mt-0.5">•</span> Le bernard-l'hermite nous a plu : c'est un concept simple et original</li>
+            <li class="flex items-start gap-2"><span class="text-secondary mt-0.5">•</span> En plus, la forme de la coquille se prête bien à l'impression 3D en PLA</li>
+            <li class="flex items-start gap-2"><span class="text-secondary mt-0.5">•</span> Nous avons donc décidé de créer un robot avec une coquille imprimée en 3D</li>
+          </ul>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-8 neon-glow-secondary">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-4 block icon-bounce"
+            style="font-variation-settings:'FILL' 1;">check_circle</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Solutions Retenues</h3>
+          <ul class="text-sm text-on-surface-variant space-y-3 leading-relaxed">
+            <li class="flex items-start gap-2"><span class="text-secondary mt-0.5">•</span> <strong
+                class="text-white">Kitronik :MOVE Motor</strong> — assemblage rapide, zéro soudure</li>
+            <li class="flex items-start gap-2"><span class="text-secondary mt-0.5">•</span> <strong
+                class="text-white">MakeCode (blocs)</strong> — programmation visuelle par blocs</li>
+            <li class="flex items-start gap-2"><span class="text-secondary mt-0.5">•</span> <strong
+                class="text-white">Impression 3D</strong> — coquille et pinces fabriquées en PLA</li>
+            <li class="flex items-start gap-2"><span class="text-secondary mt-0.5">•</span> <strong
+                class="text-white">Deux types de capteurs</strong> — ultrasonique pour les obstacles, infrarouge pour le
+              suivi de ligne</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- La Stratégie de la Carapace -->
+    <section class="max-w-7xl mx-auto px-8 mb-40">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div class="reveal from-left lg:col-span-7 relative group">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-transparent rounded-3xl -m-1 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative h-full glass-card card-hover rounded-3xl p-10 overflow-hidden flex flex-col">
+            <div class="flex justify-between items-start mb-12">
+              <div>
+                <h2 class="font-headline font-bold text-4xl text-white mb-2 uppercase tracking-tight">La Stratégie de la
+                  Carapace</h2>
+                <p class="text-secondary font-label text-sm tracking-widest">PROTECTION ADAPTATIVE</p>
+              </div>
+              <span class="material-symbols-outlined text-4xl text-primary-container icon-bounce">shield</span>
+            </div>
+            <div
+              class="relative flex-grow min-h-[250px] mb-8 blue-print-grid border border-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
+              <div class="relative z-10 p-6 text-center">
+                <div
+                  class="w-24 h-24 border-2 border-dashed border-secondary/30 rounded-full flex items-center justify-center mx-auto mb-4 animate-rotate-slow">
+                  <span class="material-symbols-outlined text-secondary text-3xl">settings</span>
+                </div>
+                <p class="text-xs font-mono text-secondary/60">CARAPACE_MODULE → KITRONIK_CHASSIS // ADAPTABLE</p>
+              </div>
+            </div>
+            <p class="text-on-surface-variant leading-relaxed">
+              Comme le vrai bernard-l'hermite porte sa coquille, notre robot a la sienne : une coquille imprimée en 3D en PLA, fixée sur le châssis.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 grid grid-rows-2 gap-8">
+          <div class="reveal from-right glass-card card-hover rounded-3xl p-8 flex flex-col justify-between">
+            <div class="flex gap-4 items-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary icon-bounce">
+                <span class="material-symbols-outlined">architecture</span>
+              </div>
+              <h3 class="font-headline font-bold text-xl text-white">Navigation Autonome</h3>
+            </div>
+            <p class="text-sm text-on-surface-variant mt-4">En combinant le capteur ultrasonique et les capteurs IR, le
+              robot navigue et évite les obstacles sans intervention humaine.</p>
+            <div class="mt-6 flex items-center justify-between">
+              <div class="stat-bar flex-1 mr-4">
+                <div class="stat-bar-fill" style="--fill-width: 88%;"></div>
+              </div>
+              <span class="text-[10px] font-label text-secondary tracking-widest uppercase">Micro:bit I2C</span>
+            </div>
+          </div>
+          <div
+            class="reveal from-right bg-surface-container-high card-hover rounded-3xl p-8 flex flex-col justify-between border border-primary/5">
+            <h3 class="font-headline font-bold text-xl text-white uppercase tracking-tight">Données du Robot</h3>
+            <div class="space-y-4 my-4">
+              <div class="flex items-center justify-between text-xs py-2 border-b border-white/5">
+                <span class="text-white/50">Plateforme</span>
+                <span class="text-secondary font-mono">Kitronik :MOVE Motor</span>
+              </div>
+              <div class="flex items-center justify-between text-xs py-2 border-b border-white/5">
+                <span class="text-white/50">Cerveau</span>
+                <span class="text-secondary font-mono">BBC micro:bit</span>
+              </div>
+              <div class="flex items-center justify-between text-xs py-2 border-b border-white/5">
+                <span class="text-white/50">Code</span>
+                <span class="text-secondary font-mono">MakeCode (blocs)</span>
+              </div>
+              <div class="flex items-center justify-between text-xs py-2">
+                <span class="text-white/50">Alimentation</span>
+                <span class="text-secondary font-mono">4×AA (6V)</span>
+              </div>
+            </div>
+            <a href="features.html"
+              class="text-xs font-label text-secondary uppercase tracking-[0.2em] flex items-center gap-2 group/link">
+              Spécifications Complètes <span
+                class="material-symbols-outlined text-sm transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comportement Biomimétique -->
+    <section class="bg-surface-container-low py-32 relative">
+      <div class="max-w-7xl mx-auto px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row gap-20 items-center">
+          <div class="reveal from-left lg:w-1/2">
+            <p class="text-secondary font-label tracking-[0.4em] mb-4 uppercase">Programmation MakeCode</p>
+            <h2 class="font-headline font-bold text-5xl text-white mb-8 leading-tight">Comportements<br />Biomimétiques
+            </h2>
+            <div class="space-y-8">
+              <div class="flex gap-6 group">
+                <span
+                  class="text-4xl font-headline font-black text-secondary/20 group-hover:text-secondary/50 transition-colors">01</span>
+                <div>
+                  <h4 class="text-white font-bold mb-2">Évitement d'Obstacles</h4>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">Dès qu'un obstacle est détecté, le robot
+                    stoppe, recule, puis pivote pour contourner. Un peu comme un vrai bernard-l'hermite qui se réfugie
+                    dans sa coquille face au danger.</p>
+                </div>
+              </div>
+              <div class="flex gap-6 group">
+                <span
+                  class="text-4xl font-headline font-black text-secondary/20 group-hover:text-secondary/50 transition-colors">02</span>
+                <div>
+                  <h4 class="text-white font-bold mb-2">Suivi de Trajectoire</h4>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">Les capteurs IR repèrent les lignes noires
+                    tracées au sol. Le robot corrige sa trajectoire en temps réel grâce à la communication I2C avec ses
+                    moteurs.</p>
+                </div>
+              </div>
+              <div class="flex gap-6 group">
+                <span
+                  class="text-4xl font-headline font-black text-secondary/20 group-hover:text-secondary/50 transition-colors">03</span>
+                <div>
+                  <h4 class="text-white font-bold mb-2">Communication Lumineuse</h4>
+                  <p class="text-sm text-on-surface-variant leading-relaxed">Les 4 LEDs ZIP s'illuminent de différentes
+                    couleurs pour indiquer l'action en cours du robot.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal from-right lg:w-1/2 relative">
+            <div class="absolute inset-0 bg-secondary/5 blur-[80px] rounded-full animate-pulse-glow"></div>
+            <div class="relative glass-card rounded-[2rem] p-4 border-secondary/20 animate-float">
+              <img alt="Circuits du robot imitant un réseau neuronal"
+                class="rounded-[1.5rem] w-full aspect-square object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIWAxZHVpqoqRessvpsgKD9080zP_rl_cQbKkx684YlTrBdLdvy-N6kycdm0jyv4wYnnorqpLgh867qikOfF1Ep3Fz6EtPmgP1Oc-IkJNpPyeFBKr73hGANtDpSc8ePS2eQINfyKacxMizp16VT-a9DEDYKScYED9_Oqdx-e07uCGtVALq76jKw2SB_psQe2LGgD0eY47NeeYPihByzUAnSgBuskm1lMD-6w-oyptcbMQQ5Oxw8hn_un6_CNs7d6jr8aUgdqMyKIWk" />
+              <div
+                class="absolute top-8 right-8 bg-surface/80 backdrop-blur px-4 py-2 rounded-full border border-secondary/30 animate-border-glow">
+                <span class="text-[10px] font-mono text-secondary">MAKECODE : COMPILÉ ✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approche d'ingénierie -->
+    <section class="max-w-7xl mx-auto px-8 py-40">
+      <div class="reveal text-center mb-20">
+        <h2 class="font-headline font-black text-5xl text-white mb-4 uppercase italic tracking-tighter">Ingénierie &
+          Construction</h2>
+        <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mb-8"></div>
+        <p class="max-w-2xl mx-auto text-on-surface-variant">Nous avons pris le Kitronik :MOVE Motor comme base et nous
+          l'avons transformé pour qu'il ressemble à un bernard-l'hermite, avec des pièces sur mesure.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger">
+        <div
+          class="reveal p-8 rounded-3xl bg-surface-container border-b-4 border-secondary/20 hover:border-secondary transition-all card-hover group">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce">construction</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Assemblage Sans Soudure</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Le Kitronik :MOVE Motor s'assemble sans soudure —
+            juste des vis et c'est parti.</p>
+          <div class="stat-bar mt-4">
+            <div class="stat-bar-fill" style="--fill-width: 95%;"></div>
+          </div>
+        </div>
+        <div
+          class="reveal p-8 rounded-3xl bg-surface-container border-b-4 border-secondary/20 hover:border-secondary transition-all card-hover group">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce">draw</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Personnalisation 3D</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Nous avons conçu une coquille et des pinces en PLA,
+            imprimées en 3D, puis fixées sur le châssis du robot.</p>
+          <div class="stat-bar mt-4">
+            <div class="stat-bar-fill" style="--fill-width: 80%;"></div>
+          </div>
+        </div>
+        <div
+          class="reveal p-8 rounded-3xl bg-surface-container border-b-4 border-secondary/20 hover:border-secondary transition-all card-hover group">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce">terminal</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Code MakeCode</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Les blocs MakeCode avec les extensions Kitronik
+            permettent de piloter moteurs, capteurs et LEDs simplement.</p>
+          <div class="stat-bar mt-4">
+            <div class="stat-bar-fill" style="--fill-width: 92%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programmation et Stratégie de Compétition -->
+    <section class="max-w-7xl mx-auto px-8 py-20">
+      <div class="reveal text-center mb-16">
+        <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold">Stratégie</span>
+        <h2 class="font-headline font-black text-4xl md:text-5xl text-white mt-4 tracking-tighter">Programmation &
+          Stratégie</h2>
+        <p class="text-on-surface-variant mt-4 max-w-xl mx-auto">Voici comment le programme fonctionne et notre plan
+          d'attaque pour le jour J.</p>
+        <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-6"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-stagger">
+        <div class="reveal glass-card card-hover rounded-2xl p-8 neon-glow-secondary">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-4 block icon-bounce"
+            style="font-variation-settings:'FILL' 1;">terminal</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Structure du Programme</h3>
+          <div class="space-y-3 text-sm text-on-surface-variant">
+            <div class="flex items-center gap-3 py-2 px-3 bg-surface-container rounded-lg border border-white/5">
+              <span class="text-secondary font-mono text-xs w-8">01</span> <span>Au démarrage → initialiser moteurs +
+                LEDs + capteurs</span>
+            </div>
+            <div class="flex items-center gap-3 py-2 px-3 bg-surface-container rounded-lg border border-white/5">
+              <span class="text-secondary font-mono text-xs w-8">02</span> <span>Boucle principale → lire capteur
+                ultrasonique</span>
+            </div>
+            <div class="flex items-center gap-3 py-2 px-3 bg-surface-container rounded-lg border border-white/5">
+              <span class="text-secondary font-mono text-xs w-8">03</span> <span>Si obstacle &lt; 15 cm → reculer +
+                tourner</span>
+            </div>
+            <div class="flex items-center gap-3 py-2 px-3 bg-surface-container rounded-lg border border-white/5">
+              <span class="text-secondary font-mono text-xs w-8">04</span> <span>Sinon → suivre ligne IR (ajuster
+                gauche/droite)</span>
+            </div>
+            <div class="flex items-center gap-3 py-2 px-3 bg-surface-container rounded-lg border border-white/5">
+              <span class="text-secondary font-mono text-xs w-8">05</span> <span>Bouton A/B → activer/désactiver
+                pinces</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal glass-card card-hover rounded-2xl p-8 neon-glow-secondary">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-4 block icon-bounce"
+            style="font-variation-settings:'FILL' 1;">flag</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Stratégie de Compétition</h3>
+          <div class="space-y-4 text-sm text-on-surface-variant">
+            <div>
+              <h4 class="text-white font-bold mb-1">Épreuve de Navigation</h4>
+              <p>Le robot s'appuie sur les capteurs IR pour suivre le parcours, utilise l'ultrason pour éviter les
+                parois, et les LEDs ZIP indiquent son mode actif.</p>
+            </div>
+            <div>
+              <h4 class="text-white font-bold mb-1">Épreuve de Manipulation</h4>
+              <p>Grâce aux pinces, le robot attrape et déplace les objets. Tout se contrôle
+                avec les boutons A et B du micro:bit.</p>
+            </div>
+            <div>
+              <h4 class="text-white font-bold mb-1">Gestion du Temps</h4>
+              <p>Un bip du buzzer retentit toutes les 30 secondes pour aider à gérer le temps restant pendant l'épreuve.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Appel à l'action -->
+    <section class="max-w-7xl mx-auto px-8 mb-20">
+      <div
+        class="reveal from-scale relative bg-gradient-to-br from-surface-container-highest to-surface-container p-12 md:p-20 rounded-[3rem] overflow-hidden border border-white/5 animate-gradient-bg"
+        style="background-size:200% 200%;">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-secondary/5 skew-x-12 translate-x-1/4"></div>
+        <div class="relative z-10 max-w-xl">
+          <h2 class="font-headline font-black text-4xl md:text-5xl text-white mb-6 uppercase">Prêt à Voir le Robot ?
+          </h2>
+          <p class="text-on-surface-variant mb-10 text-lg">Consultez la fiche technique complète ou parcourez nos photos
+            de construction et de compétition.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="features.html"
+              class="btn-press bg-secondary text-on-secondary px-8 py-4 rounded-full font-headline font-bold">
+              Voir les Spécifications
+            </a>
+            <a href="gallery.html"
+              class="btn-press border border-outline-variant text-white px-8 py-4 rounded-full font-headline font-bold hover:bg-white/5">
+              Voir la Galerie
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pied de page -->
+  <footer class="w-full py-12 mt-20 bg-[#05203f]">
+    <div class="bg-gradient-to-r from-transparent via-[#00fbfb]/20 to-transparent h-[1px] mb-8 animate-shimmer"></div>
+    <div class="reveal flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-7xl mx-auto gap-8">
+      <div class="font-headline font-bold text-white text-lg">Bernard l'hermite</div>
+      <p class="text-sm text-white/50 text-center md:text-left">© 2026 Projet Robotique Bernard l'hermite — Kitronik
+        :MOVE Motor + BBC micro:bit | Classe de 3ème</p>
+      <p class="font-body text-[10px] text-white/30 text-center md:text-left mt-1">Images générées par IA. Kitronik™
+        Kitronik Ltd. BBC micro:bit™ BBC.</p>
+      <div class="flex gap-8 text-sm">
+        <a class="text-white/50 hover:text-[#43e2d2] transition-colors" href="index.html">Accueil</a>
+        <a class="text-white/50 hover:text-[#43e2d2] transition-colors" href="features.html">Caractéristiques</a>
+        <a class="text-white/50 hover:text-[#43e2d2] transition-colors" href="gallery.html">Galerie</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.querySelectorAll('.stat-bar-fill').forEach(bar => bar.classList.add('visible'));
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+</body>
+
+</html>

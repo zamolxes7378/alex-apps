@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-container": "#004c46",
+            "on-error": "#690005",
+            "inverse-surface": "#d5e3ff",
+            "tertiary-container": "#ffdbcf",
+            "secondary": "#43e2d2",
+            "inverse-on-surface": "#193151",
+            "surface-variant": "#1e3555",
+            "error": "#ffb4ab",
+            "surface-bright": "#233a5a",
+            "primary": "#ffffff",
+            "on-surface": "#d5e3ff",
+            "surface": "#00132d",
+            "surface-container-lowest": "#000e23",
+            "secondary-fixed-dim": "#3adccc",
+            "primary-fixed-dim": "#00dddd",
+            "surface-container": "#05203f",
+            "on-surface-variant": "#b9cac9",
+            "error-container": "#93000a",
+            "surface-container-high": "#122a4a",
+            "on-tertiary-fixed": "#380c00",
+            "surface-container-low": "#011c3b",
+            "on-tertiary-container": "#ac4218",
+            "on-secondary": "#003732",
+            "primary-container": "#00fbfb",
+            "outline": "#839493",
+            "tertiary": "#ffffff",
+            "inverse-primary": "#006a6a",
+            "background": "#00132d",
+            "secondary-fixed": "#61f9e9",
+            "secondary-container": "#00c6b6",
+            "surface-tint": "#00dddd",
+            "on-tertiary": "#5c1a00",
+            "primary-fixed": "#00fbfb",
+            "on-primary-container": "#007070",
+            "surface-dim": "#00132d",
+            "on-secondary-fixed": "#00201d",
+            "on-primary-fixed-variant": "#004f4f",
+            "on-background": "#d5e3ff",
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#ffdbcf",
+            "on-primary-fixed": "#002020",
+            "outline-variant": "#3a4a49",
+            "tertiary-fixed-dim": "#ffb59c",
+            "on-primary": "#003737",
+            "on-tertiary-fixed-variant": "#822800",
+            "on-secondary-fixed-variant": "#005049",
+            "surface-container-highest": "#1e3555"
+          },
+          fontFamily: {
+            "headline": ["Space Grotesk"],
+            "body": ["Manrope"],
+            "label": ["Space Grotesk"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .glass-card {
+      background: rgba(35, 58, 90, 0.4);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+    .neon-glow-secondary {
+      box-shadow: 0 0 24px rgba(67, 226, 210, 0.1);
+    }
+    .neon-glow-secondary:hover {
+      box-shadow: 0 0 32px rgba(67, 226, 210, 0.2);
+    }
+    .text-gradient-primary {
+      background: linear-gradient(to right, #ffffff, #00fbfb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary/30">
+<!-- Shared Component: TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#00132d]/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(0,255,255,0.1)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black text-white tracking-tighter uppercase font-headline">
+        Bernard l’hermite
+      </div>
+<nav class="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight">
+<a class="text-white/70 hover:text-white transition-colors hover:bg-white/5 px-3 py-1 rounded-lg" href="#">Home</a>
+<a class="text-[#00ffff] border-b-2 border-[#00ffff] pb-1 hover:bg-white/5 px-3 rounded-lg" href="#">Features</a>
+<a class="text-white/70 hover:text-white transition-colors hover:bg-white/5 px-3 py-1 rounded-lg" href="#">Innovation</a>
+<a class="text-white/70 hover:text-white transition-colors hover:bg-white/5 px-3 py-1 rounded-lg" href="#">Gallery</a>
+</nav>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-headline font-bold text-sm tracking-widest uppercase hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(67,226,210,0.4)]">
+        Contact
+      </button>
+</div>
+</header>
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-24">
+<div class="flex flex-col items-start gap-4">
+<span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold px-3 py-1 bg-secondary/10 rounded-full border border-secondary/20">
+          Telemetry &amp; Hardware
+        </span>
+<h1 class="font-headline text-6xl md:text-8xl font-black tracking-tighter text-gradient-primary leading-tight">
+          System Specifications
+        </h1>
+<p class="max-w-2xl text-lg text-on-surface-variant font-light leading-relaxed">
+          The Bernard l'hermite robotics project integrates bioluminescent indicators with precise 6-servo kinematics to redefine oceanic-inspired automation.
+        </p>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Feature 1: Obstacle Detection -->
+<div class="md:col-span-8 group glass-card rounded-xl p-8 overflow-hidden relative transition-all duration-500 hover:border-secondary/40 neon-glow-secondary">
+<div class="flex flex-col h-full justify-between relative z-10">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">radar</span>
+<span class="font-label text-secondary/60 text-sm tracking-widest font-bold">MODULE: SENSOR_ARRAY_V1</span>
+</div>
+<h2 class="font-headline text-4xl font-bold mb-4 tracking-tight text-white">Obstacle Detection Sensors</h2>
+<p class="text-on-surface-variant max-w-md leading-relaxed">
+              Equipped with precision ultrasonic transducers, the unit maps its environment in real-time, detecting obstacles up to 400cm away with 3mm accuracy.
+            </p>
+</div>
+<div class="mt-12 flex gap-4">
+<div class="px-4 py-2 bg-surface-container rounded-lg border border-white/5">
+<span class="block font-label text-[10px] text-secondary/50 tracking-tighter uppercase">Frequency</span>
+<span class="font-headline font-bold text-xl text-primary">40 kHz</span>
+</div>
+<div class="px-4 py-2 bg-surface-container rounded-lg border border-white/5">
+<span class="block font-label text-[10px] text-secondary/50 tracking-tighter uppercase">FOV</span>
+<span class="font-headline font-bold text-xl text-primary">15°</span>
+</div>
+</div>
+</div>
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-colors"></div>
+<img class="absolute top-0 right-0 w-1/3 h-full object-cover opacity-20 mask-gradient-to-l mix-blend-screen group-hover:scale-110 transition-transform duration-700" data-alt="Futuristic robotic sensor glowing neon cyan circles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE-DncLeCY2WRUAINw_C_JlSmdUo-8mOarClVIolk736PECpSxyfgGbbWJp-CnpCsEanShwKpWBA8jLhsFLcBKCapd4Vha3pVbtysTKFCMv6LCjveOXTLj54IV4kXo3PsdTkA1422x04Cz7pwNW0oho2A6cYpxtIuQOA7N8tTAwHjk2O3GrgEgbM4_Gxyy-mk0wpYRsx_PHM9IgHtkrqZB7Mk2HoLb6qkP53JLxmbzrRncidYpee0zFgcHFWUIQ5V3rlC2zsF1YSqc"/>
+</div>
+<!-- Feature 2: Shell Protection -->
+<div class="md:col-span-4 group glass-card rounded-xl p-8 relative transition-all duration-500 hover:border-secondary/40 neon-glow-secondary overflow-hidden">
+<div class="flex flex-col h-full justify-between relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">security</span>
+</div>
+<div>
+<h2 class="font-headline text-2xl font-bold mb-3 tracking-tight text-white">Shell-Inspired Protection</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+              Contractible limb architecture allows the unit to retreat into its armored chassis during high-threat telemetry readings.
+            </p>
+<div class="w-full h-[1px] bg-gradient-to-r from-secondary/50 to-transparent mb-6"></div>
+<span class="font-label text-[10px] text-secondary/80 font-bold uppercase tracking-widest">Protocol: DEFENSIVE_RETRACT</span>
+</div>
+</div>
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-white/5 blur-3xl"></div>
+</div>
+<!-- Feature 3: Smooth Movement -->
+<div class="md:col-span-4 group glass-card rounded-xl p-8 relative transition-all duration-500 hover:border-secondary/40 neon-glow-secondary flex flex-col justify-between">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">settings_motion_mode</span>
+</div>
+<h2 class="font-headline text-2xl font-bold mb-3 tracking-tight text-white">6-Servo Kinematics</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+            Proprietary inverse kinematics engine ensures fluid, lifelike movement across uneven terrain using high-torque metal gear servos.
+          </p>
+</div>
+<div class="mt-8 relative h-32 w-full flex items-center justify-center">
+<div class="absolute w-full h-full border-t border-b border-white/5 flex flex-col justify-between py-2">
+<div class="w-full h-px bg-white/5"></div>
+<div class="w-full h-px bg-white/5"></div>
+</div>
+<span class="font-headline text-5xl font-black text-white/5 select-none">ACTUATOR</span>
+<div class="absolute w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_#43e2d2]"></div>
+</div>
+</div>
+<!-- Feature 4: Bio-Inspired Design -->
+<div class="md:col-span-8 group glass-card rounded-xl p-8 relative transition-all duration-500 hover:border-secondary/40 neon-glow-secondary overflow-hidden">
+<div class="grid md:grid-cols-2 gap-8 relative z-10">
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">biotech</span>
+<span class="font-label text-secondary/60 text-xs font-bold">DESIGN PHILOSOPHY</span>
+</div>
+<h2 class="font-headline text-4xl font-bold mb-4 tracking-tight text-white">Bio-Inspired Design</h2>
+<p class="text-on-surface-variant leading-relaxed">
+              Every curve and joint in the Bernard l'hermite is meticulously crafted to replicate the natural resilience and efficiency of decapod crustaceans.
+            </p>
+<button class="mt-8 flex items-center gap-2 group/btn text-secondary font-headline font-bold text-sm tracking-wide">
+              VIEW SCHEMATICS
+              <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="relative aspect-square md:aspect-auto">
+<img class="w-full h-full object-cover rounded-xl opacity-40 group-hover:opacity-60 transition-opacity" data-alt="Complex blue circuit board with glowing traces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACyqpzb4uPf6r9tyHcYOEDm1QkjXVRAzdtm-51T2CjP1JHYkCEV4y7t0ArZslguweHBgrMFtEHB_80ZR63le5WEh55DAdkjrDPUN5fJJDorHcz2ex35Bz1Yy2ey2jAdoiPakAJprdTZP7kRKPRu6Ctcri1qvWJADp7NhPbzM9IEHF17qSovbqiaZe6UYEvprvTpOBAeRHwlXoVqYJ_Nl1tFf_A_rNIh8apWnduGBe-RbQh35FIEpAhlCfxSq-0LYIktywUZmg0zmI7"/>
+<div class="absolute inset-0 border border-white/10 rounded-xl pointer-events-none"></div>
+<!-- Tech Overlays -->
+<div class="absolute top-4 left-4 font-label text-[8px] text-white/40 p-1 border border-white/20 bg-black/20 backdrop-blur-sm">
+              LAT: 23.44 N <br/> LNG: 12.02 W
+            </div>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div class="w-2 h-2 rounded-full bg-secondary/30"></div>
+<div class="w-2 h-2 rounded-full bg-secondary/30"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Status Bar -->
+<div class="mt-20 flex flex-wrap gap-8 justify-between items-center py-6 px-10 glass-card rounded-full border-none">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="font-label text-xs font-bold tracking-[0.2em] text-on-surface-variant">SYSTEM STATUS: NOMINAL</span>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/60 tracking-widest uppercase">Battery</span>
+<span class="font-headline font-bold text-white">94.2%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/60 tracking-widest uppercase">Temp</span>
+<span class="font-headline font-bold text-white">32°C</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/60 tracking-widest uppercase">Processing</span>
+<span class="font-headline font-bold text-white">12.4 TFLOPs</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="w-full py-12 mt-20 bg-[#05203f]">
+<div class="bg-gradient-to-r from-transparent via-[#00fbfb]/20 to-transparent h-[1px] mb-8 mx-auto max-w-7xl"></div>
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto gap-8">
+<div class="font-headline font-bold text-white text-lg">
+        Bernard l’hermite
+      </div>
+<p class="font-body text-sm text-white/50 text-center md:text-left">
+        © 2024 Bernard l’hermite Robotics Project | 9th Grade STEM Innovation
+      </p>
+<div class="flex gap-8 font-body text-sm">
+<a class="text-white/50 hover:text-[#43e2d2] transition-colors opacity-80 hover:opacity-100" href="#">Documentation</a>
+<a class="text-white/50 hover:text-[#43e2d2] transition-colors opacity-80 hover:opacity-100" href="#">School Portal</a>
+<a class="text-white/50 hover:text-[#43e2d2] transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+</body></html>
