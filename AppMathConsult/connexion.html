@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Connexion — Math Consult</title>
+    <meta name="description"
+        content="Connectez-vous ou créez votre compte pour accéder à la base de données pédagogique Math Consult." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "mc-primary": "#E93F85",
+                        "mc-primary-dark": "#C2185B",
+                        "mc-ebony": "#240814",
+                        "mc-body": "#333333",
+                        "mc-pink-light": "#FBD9E7",
+                        "mc-pink-bg": "#FDF3F6",
+                        "mc-surface": "#FFFFFF",
+                        "mc-yellow": "#FBD600",
+                        "mc-border": "#F0C4D4",
+                    },
+                    fontFamily: {
+                        "josefin": ["Josefin Sans", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="modern.css" />
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        p,
+        .text-body {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #E93F85;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #E93F85;
+        }
+
+        /* ── Auth Card ── */
+        .auth-card {
+            background: white;
+            box-shadow: 0 20px 60px rgba(233, 63, 133, 0.08), 0 2px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(240, 196, 212, 0.25);
+            position: relative;
+        }
+
+        .auth-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #E93F85 0%, #F472B6 40%, #FBD9E7 100%);
+            z-index: 2;
+        }
+
+        /* ── Tabs ── */
+        .auth-tabs {
+            display: flex;
+            padding: 24px 32px 0;
+            gap: 4px;
+            background: linear-gradient(180deg, #FDF3F6 0%, #FFFFFF 100%);
+            position: relative;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 13px 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'Josefin Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #999;
+            cursor: pointer;
+            background: transparent;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            position: relative;
+            letter-spacing: 0.01em;
+        }
+
+        .tab-btn.active {
+            color: #E93F85;
+            background: white;
+            border-color: rgba(233, 63, 133, 0.15);
+            box-shadow: 0 2px 8px rgba(233, 63, 133, 0.08);
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: #240814;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ── Input Groups ── */
+        .input-group {
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #240814;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper .material-symbols-outlined {
+            position: absolute;
+            left: 14px;
+            color: #ccc;
+            font-size: 20px;
+            transition: color 0.2s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .input-wrapper .input-field {
+            width: 100%;
+            padding: 15px 16px 15px 48px !important;
+            border: 1.5px solid #F0C4D4;
+            background: #FDFAFC;
+            color: #240814;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            outline: none;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px 16px !important;
+            border: 1.5px solid #F0C4D4;
+            background: #FDFAFC;
+            color: #240814;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            outline: none;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .input-field:focus {
+            border-color: #E93F85;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(233, 63, 133, 0.08), 0 2px 8px rgba(233, 63, 133, 0.06);
+        }
+
+        .input-wrapper:focus-within .material-symbols-outlined {
+            color: #E93F85;
+        }
+
+        .input-field::placeholder {
+            color: #c4a0b3;
+            font-weight: 300;
+        }
+
+        /* Inputs without icons (register form) */
+        .input-field.no-icon {
+            padding-left: 16px;
+        }
+
+        /* ── Submit Button ── */
+        .btn-primary {
+            color: white;
+            padding: 15px 28px;
+            font-weight: 600;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit {
+            background: #E93F85;
+            box-shadow: 0 4px 16px rgba(233, 63, 133, 0.3);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-submit:hover {
+            box-shadow: 0 6px 24px rgba(233, 63, 133, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(233, 63, 133, 0.3);
+        }
+
+        .btn-primary:not(.btn-submit) {
+            background-color: #E93F85;
+        }
+
+        .btn-primary:not(.btn-submit):hover {
+            background-color: #D1306F;
+        }
+
+        /* ── Forgot Password ── */
+        .forgot-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #999;
+            font-size: 0.85rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .forgot-link:hover {
+            color: #E93F85;
+        }
+
+        /* ── Divider ── */
+        .form-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 4px 0;
+        }
+
+        .form-divider::before,
+        .form-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #F0C4D4, transparent);
+        }
+
+        .form-divider span {
+            font-size: 0.75rem;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        /* ── Background ── */
+        .triangle-bg {
+            position: absolute;
+            width: 500px;
+            height: 440px;
+            background: linear-gradient(135deg, #E93F85 0%, #FBD9E7 100%);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            opacity: 0.08;
+        }
+
+        /* ── Alerts ── */
+        .alert-success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-family: 'Work Sans', sans-serif;
+            display: none;
+            border-radius: 12px;
+            border: 1px solid rgba(21, 87, 36, 0.1);
+        }
+
+        .alert-error {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-family: 'Work Sans', sans-serif;
+            display: none;
+            border-radius: 12px;
+            border: 1px solid rgba(114, 28, 36, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-mc-body min-h-screen flex flex-col">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b border-mc-border/30">
+        <div class="max-w-[1140px] mx-auto flex justify-between items-center px-6 h-20">
+            <a href="index.html" class="flex items-center group">
+                <img src="logo-math-consult.webp" alt="Math Consult"
+                    class="h-14 group-hover:opacity-70 transition-opacity" />
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Accueil</a>
+                <a href="programme.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Programme</a>
+                <a href="exercices.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Exercices</a>
+                <a href="ressources.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Ressources</a>
+                <a href="espace-eleve.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Mon
+                    Espace</a>
+            </div>
+            <div id="nav-auth">
+                <a href="connexion.html" class="btn-primary hidden lg:inline-block">Se connecter</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow mt-20">
+        <section class="relative overflow-hidden min-h-[calc(100vh-80px)] flex items-center"
+            style="background: linear-gradient(180deg, #FDF3F6 0%, #FDF3F6 30%, #FFFFFF 100%);">
+            <div class="triangle-bg" style="top: -100px; right: -100px; transform: rotate(15deg);"></div>
+            <div class="triangle-bg"
+                style="bottom: -80px; left: -60px; width: 300px; height: 260px; transform: rotate(-10deg); opacity: 0.05;">
+            </div>
+
+            <div class="max-w-[1140px] mx-auto px-6 w-full relative z-10 py-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <!-- Left: Messaging -->
+                    <div>
+                        <h1 class="text-4xl lg:text-5xl font-bold text-mc-ebony leading-tight mb-6">
+                            Accédez à votre <span class="text-mc-primary">espace personnel</span>
+                        </h1>
+                        <p class="text-lg text-mc-body leading-relaxed mb-8 max-w-md">
+                            Connectez-vous pour retrouver vos cours favoris, suivre votre progression et accéder à
+                            l'ensemble de la base de données.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-mc-primary">check_circle</span>
+                                <span class="text-mc-body font-medium">Sauvegardez vos fiches favorites</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-mc-primary">check_circle</span>
+                                <span class="text-mc-body font-medium">Suivez votre progression par chapitre</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-mc-primary">check_circle</span>
+                                <span class="text-mc-body font-medium">Accédez à votre historique d'exercices</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Auth Card -->
+                    <div class="auth-card p-0 max-w-md mx-auto w-full lg:mx-0 lg:ml-auto">
+                        <!-- Tabs -->
+                        <div class="auth-tabs">
+                            <button class="tab-btn active" id="tab-login" onclick="showTab('login')">
+                                <span class="material-symbols-outlined"
+                                    style="font-size:18px;vertical-align:-3px;margin-right:4px;">login</span>
+                                Se connecter
+                            </button>
+                            <button class="tab-btn" id="tab-register" onclick="showTab('register')">
+                                <span class="material-symbols-outlined"
+                                    style="font-size:18px;vertical-align:-3px;margin-right:4px;">person_add</span>
+                                Créer un compte
+                            </button>
+                        </div>
+
+                        <!-- Alerts -->
+                        <div id="alert-success" class="alert-success mx-8 mt-6"></div>
+                        <div id="alert-error" class="alert-error mx-8 mt-6"></div>
+
+                        <!-- Login Form -->
+                        <form id="form-login" class="p-8 pt-6 space-y-5" onsubmit="handleLogin(event)">
+                            <div class="input-group">
+                                <label>Adresse email</label>
+                                <div class="input-wrapper">
+                                    <span class="material-symbols-outlined">mail</span>
+                                    <input type="email" id="login-email" class="input-field"
+                                        placeholder="votre@email.fr" required />
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Mot de passe</label>
+                                <div class="input-wrapper">
+                                    <span class="material-symbols-outlined">lock</span>
+                                    <input type="password" id="login-password" class="input-field"
+                                        placeholder="••••••••" required minlength="6" />
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary btn-submit w-full text-center" id="btn-login">
+                                Se connecter
+                            </button>
+                            <div class="form-divider"><span>ou</span></div>
+                            <p class="text-center">
+                                <a href="#" class="forgot-link mx-auto" onclick="handleForgotPassword(event)">
+                                    <span class="material-symbols-outlined" style="font-size:16px;">help</span>
+                                    Mot de passe oublié ?
+                                </a>
+                            </p>
+                        </form>
+
+                        <!-- Register Form -->
+                        <form id="form-register" class="p-8 pt-6 space-y-5 hidden" onsubmit="handleRegister(event)">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="input-group">
+                                    <label>Prénom</label>
+                                    <div class="input-wrapper">
+                                        <span class="material-symbols-outlined">person</span>
+                                        <input type="text" id="register-firstname" class="input-field"
+                                            placeholder="Marie" required />
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label>Nom</label>
+                                    <div class="input-wrapper">
+                                        <span class="material-symbols-outlined">badge</span>
+                                        <input type="text" id="register-lastname" class="input-field"
+                                            placeholder="Dupont" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Adresse email</label>
+                                <div class="input-wrapper">
+                                    <span class="material-symbols-outlined">mail</span>
+                                    <input type="email" id="register-email" class="input-field"
+                                        placeholder="votre@email.fr" required />
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Niveau</label>
+                                <div class="input-wrapper">
+                                    <span class="material-symbols-outlined">school</span>
+                                    <select id="register-level" class="input-field" required>
+                                        <option value="">Sélectionnez votre niveau</option>
+                                        <optgroup label="Collège">
+                                            <option value="6eme">6ème</option>
+                                            <option value="5eme">5ème</option>
+                                            <option value="4eme">4ème</option>
+                                            <option value="3eme">3ème</option>
+                                        </optgroup>
+                                        <optgroup label="Lycée">
+                                            <option value="seconde">Seconde</option>
+                                            <option value="premiere-spe">Première Spé</option>
+                                            <option value="terminale-spe">Terminale Spé</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Mot de passe</label>
+                                <div class="input-wrapper">
+                                    <span class="material-symbols-outlined">lock</span>
+                                    <input type="password" id="register-password" class="input-field"
+                                        placeholder="Minimum 6 caractères" required minlength="6" />
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary btn-submit w-full text-center" id="btn-register">
+                                Créer mon compte
+                            </button>
+                            <p class="text-center text-xs"
+                                style="color: rgba(51,51,51,0.4); font-family: 'Work Sans', sans-serif;">
+                                En créant un compte, vous acceptez nos <a href="mentions-legales.html"
+                                    style="color:#E93F85;text-decoration:none;">conditions d'utilisation</a>.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-mc-border/30" style="padding: 40px 0 30px;">
+        <div class="max-w-[1140px] mx-auto px-6">
+            <div class="text-center">
+                <p class="text-xs text-mc-body/40"><a href="https://mathconsult-niort.fr" target="_blank"
+                        class="hover:text-mc-primary transition-colors">Math Consult</a> 2026 | <a
+                        href="mentions-legales.html" class="hover:text-mc-primary transition-colors">Mentions légales et
+                        conformité</a> | Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Tab switching
+        function showTab(tab) {
+            document.getElementById('form-login').classList.toggle('hidden', tab !== 'login');
+            document.getElementById('form-register').classList.toggle('hidden', tab !== 'register');
+            document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+            document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+            hideAlerts();
+        }
+
+        function showAlert(type, message) {
+            hideAlerts();
+            const el = document.getElementById('alert-' + type);
+            el.textContent = message;
+            el.style.display = 'block';
+        }
+
+        function hideAlerts() {
+            document.getElementById('alert-success').style.display = 'none';
+            document.getElementById('alert-error').style.display = 'none';
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-login');
+            btn.textContent = 'Connexion...';
+            btn.disabled = true;
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const { data, error } = await mcAuth.signIn(email, password);
+
+            if (error) {
+                showAlert('error', error.message === 'Invalid login credentials'
+                    ? 'Email ou mot de passe incorrect.'
+                    : error.message);
+                btn.textContent = 'Se connecter';
+                btn.disabled = false;
+            } else {
+                showAlert('success', 'Connexion réussie ! Redirection...');
+                setTimeout(() => window.location.href = 'espace-eleve.html', 1000);
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-register');
+            btn.textContent = 'Création...';
+            btn.disabled = true;
+
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const firstname = document.getElementById('register-firstname').value;
+            const lastname = document.getElementById('register-lastname').value;
+            const level = document.getElementById('register-level').value;
+
+            const { data, error } = await mcAuth.signUp(email, password, {
+                first_name: firstname,
+                last_name: lastname,
+                level: level
+            });
+
+            if (error) {
+                showAlert('error', error.message);
+                btn.textContent = 'Créer mon compte';
+                btn.disabled = false;
+            } else {
+                showAlert('success', 'Compte créé ! Vérifiez votre email pour confirmer votre inscription.');
+                btn.textContent = 'Créer mon compte';
+                btn.disabled = false;
+            }
+        }
+
+        async function handleForgotPassword(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            if (!email) {
+                showAlert('error', 'Saisissez votre email puis cliquez sur "Mot de passe oublié".');
+                return;
+            }
+            const { error } = await mcAuth.resetPassword(email);
+            if (error) {
+                showAlert('error', error.message);
+            } else {
+                showAlert('success', 'Un email de réinitialisation vous a été envoyé.');
+            }
+        }
+
+        // If already logged in, redirect
+        document.addEventListener('DOMContentLoaded', async () => {
+            const user = await mcAuth.getUser();
+            if (user) {
+                window.location.href = 'espace-eleve.html';
+            }
+        });
+
+    </script>
+</body>
+
+</html>

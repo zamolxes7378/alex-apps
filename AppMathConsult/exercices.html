@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Exercices — Math Consult</title>
+    <meta name="description"
+        content="Exercices de mathématiques classés par niveau et par thème. Découverte, application et approfondissement pour collège et lycée." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "mc-primary": "#E93F85",
+                        "mc-primary-dark": "#C2185B",
+                        "mc-ebony": "#240814",
+                        "mc-body": "#333333",
+                        "mc-pink-light": "#FBD9E7",
+                        "mc-pink-bg": "#FDF3F6",
+                        "mc-surface": "#FFFFFF",
+                        "mc-yellow": "#FBD600",
+                        "mc-border": "#F0C4D4",
+                    },
+                    fontFamily: {
+                        "josefin": ["Josefin Sans", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="modern.css" />
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        p,
+        .text-body {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #E93F85;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #E93F85;
+        }
+
+
+
+        .filter-chip {
+            padding: 10px 22px;
+            font-size: 0.8rem;
+            font-weight: 600;
+
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background: white;
+            color: #333;
+            border: 1px solid #F0C4D4;
+            border-radius: 9999px;
+        }
+
+        .filter-chip:hover,
+        .filter-chip.active {
+            background: #E93F85;
+            color: white;
+            border-color: #E93F85;
+        }
+
+        .exercise-card {
+            background: white;
+            padding: 36px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .exercise-card:hover {
+            box-shadow: 0 8px 30px rgba(233, 63, 133, 0.08);
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            border-radius: 4px;
+        }
+
+        .difficulty-decouverte {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .difficulty-application {
+            background: #FFF3E0;
+            color: #E65100;
+        }
+
+        .difficulty-approfondissement {
+            background: #FCE4EC;
+            color: #C2185B;
+        }
+
+        .star-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 300;
+            color: #E93F85;
+        }
+
+        .star-empty {
+            font-variation-settings: 'FILL' 0, 'wght' 300;
+            color: #F0C4D4;
+        }
+    </style>
+</head>
+
+<body class="bg-mc-pink-bg text-mc-body min-h-screen flex flex-col">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b border-mc-border/30">
+        <div class="max-w-[1140px] mx-auto flex justify-between items-center px-6 h-20">
+            <a href="index.html" class="flex items-center group">
+                <img src="logo-math-consult.webp" alt="Math Consult"
+                    class="h-14 group-hover:opacity-70 transition-opacity" />
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Accueil</a>
+                <a href="programme.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Programme</a>
+                <a href="exercices.html"
+                    class="nav-link active font-josefin text-sm font-semibold text-mc-ebony">Exercices</a>
+                <a href="ressources.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Ressources</a>
+                <a href="espace-eleve.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Mon
+                    Espace</a>
+            </div>
+            <div id="nav-auth">
+                <a href="connexion.html" class="btn-primary hidden lg:inline-block">Se connecter</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow mt-20">
+
+        <!-- HEADER + FILTERS -->
+        <header class="relative overflow-hidden"
+            style="padding: 80px 0 0; background: linear-gradient(180deg, #FDF3F6 0%, #FDF3F6 40%, #FFFFFF 100%);">
+            <div class="absolute top-0 right-0 w-72 h-72 opacity-5"
+                style="clip-path: polygon(50% 0%, 100% 100%, 0% 100%); background: linear-gradient(135deg, #E93F85, #FBD9E7); transform: rotate(15deg) translate(60px, -60px);">
+            </div>
+            <div class="max-w-[1140px] mx-auto px-6 text-center relative z-10">
+                <div class="inline-flex items-center gap-2 bg-white/80 text-mc-primary text-xs font-bold uppercase px-5 py-2 mb-6"
+                    style="border-radius:9999px; letter-spacing:0.08em;">
+                    <span class="material-symbols-outlined text-sm">edit_note</span>
+                    Banque d'exercices
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-bold text-mc-ebony mb-6">
+                    S'entraîner en <span class="text-mc-primary">mathématiques</span>
+                </h1>
+                <p class="text-lg text-mc-body max-w-2xl mx-auto leading-relaxed"
+                    style="font-family:'Work Sans',sans-serif;">
+                    Des centaines de fiches d'exercices classées par chapitre : fiches Bristol (cours), fiches
+                    d'exercices progressifs, devoirs surveillés et devoirs maison.
+                </p>
+            </div>
+            <!-- FILTERS -->
+            <div class="max-w-[1140px] mx-auto px-6" style="padding: 32px 24px 48px;">
+                <div class="bg-white/80 p-8"
+                    style="border-radius:16px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid rgba(240,196,212,0.25);">
+                    <!-- Search -->
+                    <div class="flex items-center gap-4 bg-white px-6 mb-6 border border-mc-border/30 focus-within:border-mc-primary/50 transition-colors"
+                        style="border-radius:12px; height:52px; box-shadow:0 2px 8px rgba(0,0,0,0.02);">
+                        <span class="material-symbols-outlined text-mc-primary"
+                            style="font-size:22px; line-height:1;">search</span>
+                        <input
+                            class="w-full bg-transparent border-none focus:ring-0 font-josefin placeholder:text-mc-body/40"
+                            style="padding:0; margin:0; font-size:18px; line-height:1; height:auto; transform:translateY(1px);"
+                            placeholder="Rechercher un chapitre (ex: Thalès, équations, SCRATCH...)" type="text" />
+                    </div>
+                    <!-- Filter Chips -->
+                    <div class="flex flex-wrap items-center gap-3 mb-4">
+                        <span class="text-xs font-bold text-mc-primary uppercase w-16 flex-shrink-0"
+                            style="letter-spacing:0.05em;">Niveau :</span>
+                        <button class="filter-chip active">Tous</button>
+                        <button class="filter-chip">6ème</button>
+                        <button class="filter-chip">5ème</button>
+                        <button class="filter-chip">4ème</button>
+                        <button class="filter-chip">3ème</button>
+                        <button class="filter-chip">Seconde</button>
+                        <button class="filter-chip">Première Spé</button>
+                        <button class="filter-chip">Terminale Spé</button>
+                        <button class="filter-chip">Bac Pro</button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-xs font-bold text-mc-primary uppercase w-16 flex-shrink-0"
+                            style="letter-spacing:0.05em;">Type :</span>
+                        <button class="filter-chip active">Tous</button>
+                        <button class="filter-chip">Fiche Bristol</button>
+                        <button class="filter-chip">Exercices</button>
+                        <button class="filter-chip">Devoirs</button>
+                        <button class="filter-chip">Devoirs Maison</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- EXERCISE GRID -->
+        <section id="ex-grid-section" class="bg-white" style="padding: 60px 0 100px;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8" id="ex-cards">
+
+                    <!-- Featured Exercise: Théorème de Thalès -->
+                    <div class="md:col-span-8 exercise-card relative" data-level="3ème" data-type="tous"
+                        data-search="théorème thalès géométrie fiche bristol exercices devoirs devoirs maison brevet papillon réciproque produit en croix">
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="difficulty-badge difficulty-approfondissement">18 fiches</span>
+                            <span class="text-mc-primary text-xs font-bold uppercase">3ème — Géométrie</span>
+                            <div class="flex gap-0.5 ml-auto">
+                                <span class="material-symbols-outlined text-sm star-filled">star</span>
+                                <span class="material-symbols-outlined text-sm star-filled">star</span>
+                                <span class="material-symbols-outlined text-sm star-filled">star</span>
+                                <span class="material-symbols-outlined text-sm star-filled">star</span>
+                                <span class="material-symbols-outlined text-sm star-empty">star</span>
+                            </div>
+                        </div>
+                        <h3 class="text-3xl font-bold text-mc-ebony mb-4 leading-tight">
+                            Théorème de Thalès — Le chapitre le plus complet
+                        </h3>
+                        <p class="text-mc-body/70 mb-4 max-w-lg">
+                            Fiche Bristol (cours), 4 fiches d'exercices progressifs, devoir surveillé, 8 devoirs maison
+                            et fiches de préparation au brevet — le module le plus fourni de la base.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-mc-pink-bg px-3 py-1 text-mc-body/60">Thalès direct</span>
+                            <span class="text-xs bg-mc-pink-bg px-3 py-1 text-mc-body/60">Thalès papillon</span>
+                            <span class="text-xs bg-mc-pink-bg px-3 py-1 text-mc-body/60">Réciproque</span>
+                            <span class="text-xs bg-mc-pink-bg px-3 py-1 text-mc-body/60">Produit en croix</span>
+                            <span class="text-xs bg-mc-pink-bg px-3 py-1 text-mc-body/60">Sujets type brevet</span>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <button class="btn-primary flex items-center gap-3">
+                                <span>Accéder aux fiches</span>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                        <!-- Decorative -->
+                        <div class="absolute -right-12 -bottom-12 opacity-5">
+                            <svg width="200" height="200" viewBox="0 0 100 100">
+                                <polygon points="50,5 95,90 5,90" fill="#E93F85" stroke="#E93F85" stroke-width="0.5" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Side Card - DNB Prep -->
+                    <div class="md:col-span-4 bg-mc-primary text-white relative overflow-hidden"
+                        style="padding: 36px; border-radius:14px;" data-level="3ème" data-type="tous"
+                        data-search="brevet dnb examen sujets métropole asie amérique nord centre étranger qcm pgcd scratch probabilités statistiques">
+                        <span class="text-xs font-bold uppercase opacity-80 mb-4 block">Préparation Brevet</span>
+                        <h3 class="text-2xl font-bold mb-3">Sujets DNB</h3>
+                        <p class="text-sm text-white/70 leading-relaxed mb-4">7 sujets d'entraînement complets + 4
+                            sujets officiels corrigés (Métropole, Asie, Am. du Nord, Centre étranger 2021).</p>
+                        <div class="text-xs text-white/50 mb-6 space-y-1">
+                            <p>• QCM, PGCD, Thalès, Pythagore</p>
+                            <p>• SCRATCH, Probabilités, Statistiques</p>
+                            <p>• Problèmes à prise d'initiative</p>
+                        </div>
+                        <button
+                            class="w-full py-3.5 bg-white/15 backdrop-blur-md text-white font-bold uppercase text-xs border border-white/20 hover:bg-white/25 transition-all">
+                            Accéder aux sujets
+                        </button>
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 opacity-10"
+                            style="clip-path: polygon(50% 0%, 100% 100%, 0% 100%); background: white;"></div>
+                    </div>
+
+                    <!-- Chapter Cards Row 1 -->
+                    <div class="md:col-span-4 exercise-card group" data-level="3ème" data-type="exercices"
+                        data-search="équations algèbre linéaire fractions produit nul mise en équation">
+                        <span class="text-xs font-bold uppercase text-mc-primary mb-3 block">3ème — Algèbre</span>
+                        <h4 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Équations</h4>
+                        <p class="text-sm text-mc-body/50 mb-4">Équations linéaires, fractions, produit nul et mise en
+                            équation de problèmes.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="difficulty-badge difficulty-application">8 fiches</span>
+                            <span class="text-xs text-mc-body/40">+ Fiche Bristol</span>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-mc-pink-bg text-mc-primary font-bold uppercase text-xs hover:bg-mc-primary hover:text-white transition-all">
+                            Accéder
+                        </button>
+                    </div>
+
+                    <div class="md:col-span-4 exercise-card group" data-level="3ème" data-type="exercices"
+                        data-search="scratch algorithmique missions lutin casse-brique vidéo programmation">
+                        <span class="text-xs font-bold uppercase text-mc-primary mb-3 block">3ème — Algorithmique</span>
+                        <h4 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            SCRATCH — 30 Missions</h4>
+                        <p class="text-sm text-mc-body/50 mb-4">Du déplacement du lutin au jeu de casse-brique : 30
+                            missions progressives avec vidéos.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="difficulty-badge difficulty-decouverte">30 missions</span>
+                            <span class="text-xs text-mc-body/40">+ 4 cours vidéo</span>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-mc-pink-bg text-mc-primary font-bold uppercase text-xs hover:bg-mc-primary hover:text-white transition-all">
+                            Accéder
+                        </button>
+                    </div>
+
+                    <div class="md:col-span-4 exercise-card group" data-level="3ème" data-type="exercices"
+                        data-search="trigonométrie géométrie cos sin tan">
+                        <span class="text-xs font-bold uppercase text-mc-primary mb-3 block">3ème — Géométrie</span>
+                        <h4 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Trigonométrie</h4>
+                        <p class="text-sm text-mc-body/50 mb-4">Cos, sin, tan — exercices progressifs et formules de
+                            trigonométrie avancées.</p>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="difficulty-badge difficulty-approfondissement">11 fiches</span>
+                            <span class="text-xs text-mc-body/40">+ Fiche Bristol</span>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-mc-pink-bg text-mc-primary font-bold uppercase text-xs hover:bg-mc-primary hover:text-white transition-all">
+                            Accéder
+                        </button>
+                    </div>
+
+                    <!-- Chapter Cards Row 2 -->
+                    <div class="md:col-span-3 exercise-card group" data-level="3ème" data-type="exercices"
+                        data-search="fonctions affines analyse droites linéaires">
+                        <span class="text-xs font-bold uppercase text-mc-primary mb-3 block">3ème — Analyse</span>
+                        <h4 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Fonctions affines</h4>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="difficulty-badge difficulty-application">8 fiches</span>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-mc-pink-bg text-mc-primary font-bold uppercase text-xs hover:bg-mc-primary hover:text-white transition-all">Accéder</button>
+                    </div>
+
+                    <div class="md:col-span-3 exercise-card group" data-level="3ème" data-type="exercices"
+                        data-search="racines carrées algèbre simplification">
+                        <span class="text-xs font-bold uppercase text-mc-primary mb-3 block">3ème — Algèbre</span>
+                        <h4 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Racines carrées</h4>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="difficulty-badge difficulty-approfondissement">7 fiches</span>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-mc-pink-bg text-mc-primary font-bold uppercase text-xs hover:bg-mc-primary hover:text-white transition-all">Accéder</button>
+                    </div>
+
+                    <div class="md:col-span-3 exercise-card group" data-level="3ème" data-type="exercices"
+                        data-search="systèmes algèbre résolution substitution">
+                        <span class="text-xs font-bold uppercase text-mc-primary mb-3 block">3ème — Algèbre</span>
+                        <h4 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Systèmes</h4>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="difficulty-badge difficulty-application">7 fiches</span>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-mc-pink-bg text-mc-primary font-bold uppercase text-xs hover:bg-mc-primary hover:text-white transition-all">Accéder</button>
+                    </div>
+
+                    <div class="md:col-span-3 exercise-card group" data-level="3ème" data-type="exercices"
+                        data-search="puissances calculs notation scientifique">
+                        <span class="text-xs font-bold uppercase text-mc-primary mb-3 block">3ème — Calculs</span>
+                        <h4 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Puissances</h4>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="difficulty-badge difficulty-decouverte">7 fiches</span>
+                        </div>
+                        <button
+                            class="w-full py-3 bg-mc-pink-bg text-mc-primary font-bold uppercase text-xs hover:bg-mc-primary hover:text-white transition-all">Accéder</button>
+                    </div>
+
+                    <!-- Full-width all chapters -->
+                    <div class="md:col-span-12 exercise-card flex flex-col md:flex-row items-center justify-between gap-6"
+                        data-level="3ème" data-type="tous"
+                        data-search="tous chapitres affines agrandissement angles arithmétique calcul littéral développement factorisation fractions géométrie inéquations pgcd probabilités pythagore rotation sections sphère statistiques vecteurs">
+                        <div class="flex items-center gap-6">
+                            <div
+                                class="w-16 h-16 bg-mc-pink-light flex items-center justify-center text-mc-primary flex-shrink-0">
+                                <span class="material-symbols-outlined text-3xl">folder_open</span>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-mc-primary mb-1 block">3ème
+                                    Mathématiques</span>
+                                <h4 class="text-2xl font-bold text-mc-ebony">Voir les 25+ chapitres</h4>
+                                <p class="text-mc-body/50 text-sm">Affines, Agrandissement, Angles, Arithmétique, Calcul
+                                    littéral, Développement, Droites linéaires, Factorisation, Fractions, Géométrie,
+                                    Inéquations, PGCD, Probabilités, Proportionnalités, Pythagore, Rotation, Sections,
+                                    Sphère, Statistiques, Vecteurs…</p>
+                            </div>
+                        </div>
+                        <button class="btn-primary whitespace-nowrap flex items-center gap-3">
+                            Tout parcourir
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- No results -->
+                <div id="ex-no-results" class="hidden text-center py-20">
+                    <span class="material-symbols-outlined text-mc-border text-6xl mb-4 block">search_off</span>
+                    <h3 class="text-2xl font-bold text-mc-ebony mb-2">Aucun résultat</h3>
+                    <p class="text-mc-body/50">Essayez un autre terme ou modifiez les filtres.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-mc-border/30" style="padding: 60px 0 40px;">
+        <div class="max-w-[1140px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="inline-block mb-4">
+                        <img src="logo-math-consult.webp" alt="Math Consult" class="h-12" />
+                    </a>
+                    <p class="text-sm text-mc-body/60 leading-relaxed">Banque de données pédagogique — Fiches de cours,
+                        exercices, devoirs et sujets d'examen en math et sciences physiques.</p>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Plan de l'application</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Accueil</a></li>
+                        <li><a href="programme.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Programme</a>
+                        </li>
+                        <li><a href="exercices.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Exercices</a>
+                        </li>
+                        <li><a href="ressources.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Ressources</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Liens utiles</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Bilan
+                                pédagogique</a></li>
+                        <li><a href="https://mathconsult-niort.fr/stages/" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Nos
+                                stages</a></li>
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Être
+                                rappelé(e)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Informations</h4>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Tél :</strong> 05 49 28 03 08
+                        </li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Mail :</strong>
+                            contact@mathconsult-niort.fr</li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Lieu :</strong> 25b rue du 24
+                            février, 79000 Niort</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-mc-border/30 pt-6 text-center">
+                <p class="text-xs text-mc-body/40"><a href="https://mathconsult-niort.fr" target="_blank"
+                        class="hover:text-mc-primary transition-colors">Math Consult</a> 2026 | <a
+                        href="mentions-legales.html" class="hover:text-mc-primary transition-colors">Mentions légales et
+                        conformité</a> | Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script>
+            (function () {
+                const searchInput = document.querySelector('input[type="text"]');
+                const cards = document.querySelectorAll('#ex-cards > [data-level]');
+                const noResults = document.getElementById('ex-no-results');
+                const container = document.getElementById('ex-cards');
+
+                // Identify filter groups by label
+                const allChipGroups = document.querySelectorAll('.flex.flex-wrap.gap-3');
+                const levelGroup = allChipGroups[0];
+                const typeGroup = allChipGroups[1];
+
+                let activeLevel = 'tous';
+                let activeType = 'tous';
+
+                function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+
+                function setupChips(group, cb) {
+                    if (!group) return;
+                    const chips = group.querySelectorAll('.filter-chip');
+                    chips.forEach(chip => {
+                        chip.addEventListener('click', () => {
+                            chips.forEach(c => c.classList.remove('active'));
+                            chip.classList.add('active');
+                            cb(norm(chip.textContent.trim()));
+                            applyFilters();
+                        });
+                    });
+                }
+                setupChips(levelGroup, v => activeLevel = v);
+                setupChips(typeGroup, v => activeType = v);
+
+                if (searchInput) searchInput.addEventListener('input', () => applyFilters());
+
+                function applyFilters() {
+                    const q = norm(searchInput ? searchInput.value : '');
+                    let visible = 0;
+                    cards.forEach(card => {
+                        const lv = norm(card.dataset.level);
+                        const tp = norm(card.dataset.type);
+                        const sr = norm(card.dataset.search);
+                        const tx = norm(card.textContent);
+                        const levelOk = activeLevel === 'tous' || lv === activeLevel;
+                        const typeOk = activeType === 'tous' || tp === activeType || tp === 'tous';
+                        const searchOk = !q || sr.includes(q) || tx.includes(q);
+                        if (levelOk && typeOk && searchOk) { card.style.display = ''; visible++; }
+                        else { card.style.display = 'none'; }
+                    });
+                    noResults && noResults.classList.toggle('hidden', visible > 0);
+                    container && container.classList.toggle('hidden', visible === 0);
+                }
+                // ===== URL PARAMS (from programme.html links) =====
+                const params = new URLSearchParams(window.location.search);
+                const urlLevel = params.get('level');
+                const urlSearch = params.get('search');
+                if (urlLevel && levelGroup) {
+                    const chips = levelGroup.querySelectorAll('.filter-chip');
+                    chips.forEach(c => {
+                        if (norm(c.textContent.trim()) === norm(urlLevel)) {
+                            c.click();
+                        }
+                    });
+                }
+                if (urlSearch && searchInput) {
+                    searchInput.value = urlSearch;
+                    applyFilters();
+                }
+            })();
+    </script>
+
+</body>
+
+</html>

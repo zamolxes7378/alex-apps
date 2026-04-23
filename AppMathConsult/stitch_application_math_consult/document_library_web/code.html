@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#ece7e9",
+                    "outline": "#8e6f74",
+                    "inverse-primary": "#ffb2bf",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#f2b6cb",
+                    "on-tertiary-container": "#dcffdd",
+                    "tertiary": "#006630",
+                    "secondary-fixed": "#ffd9e4",
+                    "tertiary-fixed-dim": "#73dc8e",
+                    "surface-container-highest": "#e7e1e3",
+                    "surface-container-low": "#f8f2f4",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#330f1f",
+                    "on-tertiary-fixed": "#00210b",
+                    "on-secondary-container": "#7b4c5e",
+                    "on-primary-fixed-variant": "#90003b",
+                    "on-primary-container": "#fff2f3",
+                    "error-container": "#ffdad6",
+                    "surface": "#fef8fa",
+                    "on-background": "#1d1b1d",
+                    "primary-fixed-dim": "#ffb2bf",
+                    "primary-fixed": "#ffd9de",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1d1b1d",
+                    "inverse-on-surface": "#f5eff1",
+                    "tertiary-container": "#00823f",
+                    "surface-tint": "#bc004f",
+                    "surface-container": "#f2ecee",
+                    "on-primary-fixed": "#3f0016",
+                    "on-secondary-fixed-variant": "#65394b",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#5a4044",
+                    "surface-bright": "#fef8fa",
+                    "inverse-surface": "#323031",
+                    "on-tertiary-fixed-variant": "#005226",
+                    "primary-container": "#d81b60",
+                    "secondary": "#805062",
+                    "secondary-container": "#fec1d6",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#8ff9a8",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e7e1e3",
+                    "outline-variant": "#e3bdc3",
+                    "surface-dim": "#ded9db",
+                    "on-primary": "#ffffff",
+                    "background": "#fef8fa",
+                    "primary": "#b0004a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "josefin": ["Josefin Sans", "sans-serif"],
+                    "headline": ["Josefin Sans", "sans-serif"],
+                    "body": ["Josefin Sans", "sans-serif"],
+                    "label": ["Josefin Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Josefin Sans', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); }
+        .math-gradient { background: linear-gradient(135deg, #b0004a 0%, #d81b60 100%); }
+    </style>
+</head>
+<body class="bg-surface text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<div class="flex justify-between items-center px-8 h-20 max-w-[1440px] mx-auto">
+<div class="text-xl font-bold tracking-tight text-[#b0004a] dark:text-[#d81b60]">
+                The Academic Atelier
+            </div>
+<div class="hidden md:flex items-center space-x-12 font-josefin text-sm tracking-widest uppercase">
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-[#b0004a] pb-2 transition-all" href="#">Lessons</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-[#b0004a] pb-2 transition-all" href="#">Exercises</a>
+<a class="text-[#b0004a] border-b-2 border-[#b0004a] pb-2 transition-all" href="#">Categories</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-[#b0004a] pb-2 transition-all" href="#">Favorites</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="font-josefin text-sm tracking-widest uppercase text-zinc-600 hover:opacity-80 transition-opacity">Sign In</button>
+<button class="math-gradient text-on-primary px-8 py-3 rounded-full font-josefin text-sm tracking-widest uppercase shadow-lg active:scale-95 duration-200">Join Now</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-32 pb-20 px-8 max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-16">
+<div class="flex items-end justify-between mb-8">
+<div>
+<span class="text-primary font-semibold tracking-[0.2em] uppercase text-xs mb-4 block">Knowledge Repository</span>
+<h1 class="text-5xl font-bold tracking-tight text-on-background max-w-2xl leading-tight">
+                        MathConsult Open <br/><span class="text-primary">Document Library</span>
+</h1>
+</div>
+<div class="hidden lg:block">
+<p class="text-on-surface-variant max-w-xs text-right body-lg italic leading-relaxed">
+                        "Mathematics is the music of reason." – Curated resources for the modern atelier.
+                    </p>
+</div>
+</div>
+</header>
+<!-- Horizontal Filter Bar -->
+<section class="bg-surface-container-low rounded-xl p-6 mb-16 flex flex-wrap items-center gap-8">
+<div class="flex flex-col gap-2">
+<label class="text-[10px] uppercase tracking-[0.15em] font-bold text-primary px-1">Filter by Topic</label>
+<div class="flex gap-3">
+<button class="bg-surface-container-lowest text-primary font-medium px-5 py-2 rounded-full border-b-2 border-primary shadow-sm">All Topics</button>
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary px-5 py-2 rounded-full transition-all">Calculus</button>
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary px-5 py-2 rounded-full transition-all">Linear Algebra</button>
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary px-5 py-2 rounded-full transition-all">Number Theory</button>
+</div>
+</div>
+<div class="h-12 w-px bg-outline-variant/30 hidden md:block"></div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] uppercase tracking-[0.15em] font-bold text-primary px-1">Academic Level</label>
+<div class="flex gap-3">
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary px-5 py-2 rounded-full transition-all">Undergraduate</button>
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary px-5 py-2 rounded-full transition-all">Graduate</button>
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary px-5 py-2 rounded-full transition-all">Post-Doctoral</button>
+</div>
+</div>
+<div class="ml-auto flex items-center gap-4 bg-surface-container-lowest px-4 py-2 rounded-xl border-b border-outline-variant/20">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-josefin w-48" placeholder="Search resources..." type="text"/>
+</div>
+</section>
+<!-- Document Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 flex flex-col group transition-all hover:shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<div class="flex justify-between items-start mb-8">
+<div class="w-16 h-20 bg-secondary-fixed rounded-lg flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-on-secondary-fixed text-4xl">description</span>
+<div class="absolute bottom-0 right-0 p-1 bg-primary text-[8px] text-white font-bold uppercase tracking-tighter">PDF</div>
+</div>
+<span class="px-3 py-1 bg-surface-container-low text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">Advanced</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Riemannian Geometry Fundamentals</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">An exploration of smooth manifolds, metric tensors, and the curvature of space-time within Euclidean frameworks.</p>
+<div class="mt-auto space-y-4">
+<div class="flex items-center gap-2 text-xs font-medium text-outline">
+<span class="material-symbols-outlined text-sm">category</span>
+<span>Differential Geometry</span>
+</div>
+<div class="pt-6 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest overflow-hidden bg-zinc-200">
+<img alt="Contributor" class="w-full h-full object-cover" data-alt="portrait of a professional academic woman with glasses in a scholarly environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYA1oZ4RAXFFy-UsJWiiq8ljTCCD18zrYCXESzJ7M1be4UxPVewoskc9M4vysL-VZjzk_8WyJ2KjNc8_vTEUfjbZXH_KdWeBhnrc5TN5gTc6wdY_08lccn4LwgZe8s9VafLAlfBaeeowvRLWDvwpnnT0K3mENBrgx52i3gXLdw372pNW9HkXqO0_0wfNoZRgULp85-FnF8SXTINM87Cll0dG43ErPTH1Kk8Wb-kKa7wKVfNBcs384pazD6DrbN4ppBm6a0TFfEQHM"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest overflow-hidden bg-zinc-200">
+<img alt="Contributor" class="w-full h-full object-cover" data-alt="portrait of a focused male mathematician in a minimalist office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV1PJz9_41Nt6o9wukh8D-v72KxxPASlus9BmcDyBr8Hlc81fNJc5pDPDtKEU1VVQkqHvrtl0zP0d65KZjj5gPTiNN759ZvZpVE-9kQqvxkYC5Bn9pjSxqnkLQCPpr0oK7trWuKLSmZIb-7zrnVJq1UGxE5kFY9dLbY5GflscbzUBCVr8oOHPeju26RJIxtvsBoBHbcH6CNUKFCrejMBMX4GeDtPQ3EmJbjxN4Ra8nXW5UBVoqbKd8UNPMFAlUNbrVq7FfhMDQK0Q"/>
+</div>
+</div>
+<button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:opacity-70">
+                            Download <span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 flex flex-col group transition-all hover:shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<div class="flex justify-between items-start mb-8">
+<div class="w-16 h-20 bg-tertiary-fixed rounded-lg flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-4xl">functions</span>
+<div class="absolute bottom-0 right-0 p-1 bg-primary text-[8px] text-white font-bold uppercase tracking-tighter">LATEX</div>
+</div>
+<span class="px-3 py-1 bg-surface-container-low text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">Intermediate</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Complex Analysis &amp; Residues</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">Mastering Cauchy's integral theorem and its applications to real-world definite integrals and series expansions.</p>
+<div class="mt-auto space-y-4">
+<div class="flex items-center gap-2 text-xs font-medium text-outline">
+<span class="material-symbols-outlined text-sm">category</span>
+<span>Analysis</span>
+</div>
+<div class="pt-6 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest overflow-hidden bg-zinc-200">
+<img alt="Contributor" class="w-full h-full object-cover" data-alt="portrait of an elderly academic mentor with white hair and wise expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoy19qaCFhm59ooq4i0Yav5pUPXsEd7qieMdGVsbqB2-mIgw964wJ3vVzveXLTiy2LZAxD99mTbqKoz47IbzIdAx8uE3ueLeL_-Rw_xW1pMFgOZDt3JcBOoHypfReKe9mVa2II-EwDA8hziAebgXF0P00sS5VKgV63m5M6L94mbPGhYlaeK-GPrRtWCqLSuMdWt5YOl2yw2eYPKM1yDyoisNV8nYET3cX583ehTjq_UVOUuJv4zMswhZJw5ks0dBF8j7EOIzqc6cQ"/>
+</div>
+</div>
+<button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:opacity-70">
+                            Download <span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 flex flex-col group transition-all hover:shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<div class="flex justify-between items-start mb-8">
+<div class="w-16 h-20 bg-secondary-fixed-dim rounded-lg flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-on-secondary-fixed text-4xl">grid_4x4</span>
+<div class="absolute bottom-0 right-0 p-1 bg-primary text-[8px] text-white font-bold uppercase tracking-tighter">XLXS</div>
+</div>
+<span class="px-3 py-1 bg-surface-container-low text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">Introductory</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Matrix Algebra Worksheets</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">A comprehensive set of exercises covering determinants, Eigenvalues, and linear transformations for beginners.</p>
+<div class="mt-auto space-y-4">
+<div class="flex items-center gap-2 text-xs font-medium text-outline">
+<span class="material-symbols-outlined text-sm">category</span>
+<span>Linear Algebra</span>
+</div>
+<div class="pt-6 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest overflow-hidden bg-zinc-200">
+<img alt="Contributor" class="w-full h-full object-cover" data-alt="portrait of a young female graduate student in a library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsetJks5Vk-z-3Y6hABH2Bnn9u2aEh-6qKxXUEir653DoOTqCPvYEfBlkH5Xv0mD_cCC_w9V0w4rt-OoACwe4gvrTtLocR7Iy8g1fsiRnLI5JUq3Zp9ifEiOiMb_8Izw_WlYNxhXRucSt6kXjXKrIbeirPtLrIhUqd4SeDWvQrKvRrA3sF2ew2rlicVb2Qn19rJ3UpKVQOtPQ_GVTLAu9x8aMkisW-GJWlj0kx3tEKUowjndmXMOBczK1f3Bqp-WRDwB7WFWznrA0"/>
+</div>
+</div>
+<button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:opacity-70">
+                            Download <span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 flex flex-col group transition-all hover:shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<div class="flex justify-between items-start mb-8">
+<div class="w-16 h-20 bg-primary-fixed rounded-lg flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-on-primary-fixed text-4xl">auto_graph</span>
+<div class="absolute bottom-0 right-0 p-1 bg-primary text-[8px] text-white font-bold uppercase tracking-tighter">NOTE</div>
+</div>
+<span class="px-3 py-1 bg-surface-container-low text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">Expert</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Quantum Field Theory Notes</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">Advanced derivations of path integrals and renormalization techniques applied to particle physics mathematics.</p>
+<div class="mt-auto space-y-4">
+<div class="flex items-center gap-2 text-xs font-medium text-outline">
+<span class="material-symbols-outlined text-sm">category</span>
+<span>Mathematical Physics</span>
+</div>
+<div class="pt-6 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest overflow-hidden bg-zinc-200">
+<img alt="Contributor" class="w-full h-full object-cover" data-alt="creative portrait of a researcher in front of a chalkboard filled with complex equations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_thh2Xk2efY0SHT6-yss77ZEQyvrbMEvWso4UNA-0CtIlvnUVnBNcXcPjft4GGLZorknfKh9L1vwOjD79_kMLN3lOVVcJc-S9SNGbeq55WHNe031aU5CmwJXn8FJbcBSf9uyQ_XSFK4aLEFkGRJXPSSiLroY7TFoGo91MmYrTLiKl8mlIiBH18QG5xVkyFOWbOR5dwBogCyp47T2CCD6w1jfIVX9iCfT2h8Sx_4PMvATwAOC67FInmh8kAcQLXg3gDrpzdpjolik"/>
+</div>
+</div>
+<button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:opacity-70">
+                            Download <span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 5 (Asymmetric Spotlight) -->
+<article class="bg-primary-container rounded-xl p-8 flex flex-col col-span-1 lg:col-span-2 overflow-hidden relative group">
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-700"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-8">
+<div class="px-4 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-[0.3em] rounded-full">Spotlight Resource</div>
+<span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">Premium Access</span>
+</div>
+<h3 class="text-4xl font-bold text-white mb-6 leading-tight">The Grand Unified Theory <br/>Resource Pack</h3>
+<p class="text-white/80 text-lg max-w-xl mb-12">A curated collection of papers, visualization tools, and datasets exploring the intersection of topology and string theory.</p>
+<div class="flex gap-4">
+<button class="bg-white text-primary px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-surface transition-colors">Access Pack</button>
+<button class="border border-white/30 text-white px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-colors">Preview Content</button>
+</div>
+</div>
+</article>
+</section>
+<!-- Pagination (Minimalist) -->
+<nav class="mt-20 flex justify-center items-center gap-8 font-josefin">
+<button class="text-outline hover:text-primary transition-colors flex items-center gap-2 group">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-xs uppercase tracking-widest font-bold">Previous</span>
+</button>
+<div class="flex gap-6 items-center">
+<span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">1</span>
+<span class="text-outline text-xs font-bold hover:text-primary cursor-pointer">2</span>
+<span class="text-outline text-xs font-bold hover:text-primary cursor-pointer">3</span>
+<span class="text-outline text-xs">...</span>
+<span class="text-outline text-xs font-bold hover:text-primary cursor-pointer">12</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors flex items-center gap-2 group">
+<span class="text-xs uppercase tracking-widest font-bold">Next</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</nav>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-50 dark:bg-zinc-900 w-full py-16 px-8 mt-auto">
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
+<div>
+<div class="text-lg font-semibold text-[#b0004a] mb-4">The Academic Atelier</div>
+<p class="text-zinc-500 dark:text-zinc-400 font-josefin text-sm tracking-normal leading-relaxed">
+                    Dedicated to the pursuit of mathematical elegance and the sharing of open-source knowledge.
+                </p>
+<p class="mt-6 font-josefin text-xs text-zinc-400 uppercase tracking-widest">
+                    © 2024 The Academic Atelier. Mathematics as Art.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-4">
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors font-josefin text-sm" href="#">Mathematical Proofs</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors font-josefin text-sm" href="#">Research Papers</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors font-josefin text-sm" href="#">Community Forum</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors font-josefin text-sm" href="#">Privacy Policy</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors font-josefin text-sm" href="#">Open Source</a>
+</div>
+</div>
+</footer>
+</body></html>

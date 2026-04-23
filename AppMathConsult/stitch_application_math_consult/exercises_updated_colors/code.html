@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MathAtelier | Exercises</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&amp;family=Plus+Jakarta+Sans:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#9d2053",
+                    "on-secondary-fixed": "#330f1f",
+                    "on-tertiary-fixed-variant": "#005226",
+                    "on-background": "#231f20",
+                    "on-tertiary-container": "#dcffdd",
+                    "tertiary-fixed": "#8ff9a8",
+                    "on-surface": "#231f20",
+                    "on-primary-fixed": "#3f0016",
+                    "on-primary-container": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#323031",
+                    "background": "#fce4ec",
+                    "inverse-on-surface": "#f5eff1",
+                    "tertiary-container": "#00823f",
+                    "surface-container-highest": "#f8bbd0",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#f48fb1",
+                    "secondary-container": "#f8bbd0",
+                    "tertiary": "#006630",
+                    "surface-dim": "#f8bbd0",
+                    "surface-container": "#ffffff",
+                    "on-tertiary-fixed": "#00210b",
+                    "surface-container-low": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#fce4ec",
+                    "secondary-fixed-dim": "#f2b6cb",
+                    "surface": "#ffffff",
+                    "on-primary-fixed-variant": "#90003b",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#65394b",
+                    "surface-bright": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#f48fb1",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#fce4ec",
+                    "primary-fixed-dim": "#f06292",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#f8bbd0",
+                    "primary": "#e91e63",
+                    "surface-tint": "#e91e63",
+                    "inverse-primary": "#f06292",
+                    "on-secondary-container": "#880e4f",
+                    "primary-container": "#ad1457",
+                    "tertiary-fixed-dim": "#73dc8e",
+                    "outline": "#880e4f",
+                    "on-surface-variant": "#231f20"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Josefin Sans", "sans-serif"],
+                    "body": ["Josefin Sans", "sans-serif"],
+                    "label": ["Josefin Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Josefin Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-background min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-secondary-container/30">
+<div class="flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-primary uppercase font-['Josefin_Sans']">MathAtelier</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-on-background/70 font-['Josefin_Sans'] tracking-widest uppercase text-xs font-semibold hover:text-primary pb-2 transition-all" href="#">Lessons</a>
+<a class="text-primary font-['Josefin_Sans'] tracking-widest uppercase text-xs font-semibold border-b-2 border-primary pb-2 transition-all" href="#">Exercises</a>
+<a class="text-on-background/70 font-['Josefin_Sans'] tracking-widest uppercase text-xs font-semibold hover:text-primary pb-2 transition-all" href="#">Categories</a>
+<a class="text-on-background/70 font-['Josefin_Sans'] tracking-widest uppercase text-xs font-semibold hover:text-primary pb-2 transition-all" href="#">Favorites</a>
+</div>
+<div class="flex items-center space-x-6">
+<div class="hidden lg:flex items-center bg-background px-4 py-2 rounded-full border border-secondary-container">
+<span class="material-symbols-outlined text-primary/50 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-['Josefin_Sans']" placeholder="Search proofs..." type="text"/>
+</div>
+<button class="bg-primary text-white px-8 py-2.5 rounded-full font-['Josefin_Sans'] tracking-widest uppercase text-xs font-bold hover:bg-primary-container transition-all">
+                Sign In
+            </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 max-w-6xl mx-auto">
+<!-- Hero Section -->
+<header class="mb-20 text-center">
+<h1 class="text-6xl md:text-7xl font-bold tracking-tight text-on-background mb-6 font-['Josefin_Sans']">Mathematical <span class="text-primary italic">Gymnasium.</span></h1>
+<p class="text-on-background/60 max-w-2xl mx-auto text-lg leading-relaxed font-['Josefin_Sans']">
+            Refine your intuition through curated problem sets. From foundational logic to advanced differential geometry, explore the architecture of thought.
+        </p>
+</header>
+<!-- Search & Filter Bar -->
+<div class="mb-16">
+<div class="bg-surface-container-lowest p-2 rounded-full border border-secondary-container shadow-sm flex flex-wrap md:flex-nowrap items-center gap-2">
+<div class="flex-grow flex items-center px-6">
+<span class="material-symbols-outlined text-primary mr-3">manage_search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-4 font-['Josefin_Sans'] text-lg" placeholder="Filter by topic (e.g. Topology, Calculus...)" type="text"/>
+</div>
+<div class="h-8 w-px bg-secondary-container hidden md:block"></div>
+<div class="flex items-center px-4 space-x-2 overflow-x-auto no-scrollbar py-2">
+<button class="px-6 py-2 rounded-full bg-primary text-white font-bold text-xs tracking-widest uppercase whitespace-nowrap font-['Josefin_Sans']">All</button>
+<button class="px-6 py-2 rounded-full text-on-background/40 hover:bg-secondary-fixed font-bold text-xs tracking-widest uppercase whitespace-nowrap transition-colors font-['Josefin_Sans']">Beginner</button>
+<button class="px-6 py-2 rounded-full text-on-background/40 hover:bg-secondary-fixed font-bold text-xs tracking-widest uppercase whitespace-nowrap transition-colors font-['Josefin_Sans']">Intermediate</button>
+<button class="px-6 py-2 rounded-full text-on-background/40 hover:bg-secondary-fixed font-bold text-xs tracking-widest uppercase whitespace-nowrap transition-colors font-['Josefin_Sans']">Advanced</button>
+</div>
+</div>
+</div>
+<!-- Exercise Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Featured Exercise -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-full p-12 relative overflow-hidden group border border-secondary-container">
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex items-center space-x-4 mb-8">
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-widest uppercase font-['Josefin_Sans']">Abstract Algebra</span>
+<div class="flex space-x-1">
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary-container text-xs">star</span>
+<span class="material-symbols-outlined text-secondary-container text-xs">star</span>
+</div>
+</div>
+<h3 class="text-4xl font-bold mb-4 leading-tight font-['Josefin_Sans'] text-on-background">Sylow's Theorems and Group Structure Analysis</h3>
+<p class="text-on-background/60 mb-12 max-w-md font-['Josefin_Sans']">An advanced exploration into p-groups and the classification of finite simple groups. Requires proficiency in Lagrange's Theorem.</p>
+<div class="mt-auto">
+<button class="bg-primary text-white px-10 py-4 rounded-full font-bold tracking-widest uppercase text-xs flex items-center space-x-4 hover:bg-primary-container transition-all font-['Josefin_Sans']">
+<span>Start Exercise</span>
+<span class="material-symbols-outlined">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<!-- Decorative Geometry -->
+<div class="absolute -right-20 -bottom-20 opacity-10 group-hover:opacity-20 transition-opacity">
+<svg height="400" viewbox="0 0 100 100" width="400">
+<circle class="text-primary" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="0.5"></circle>
+<polygon class="text-primary" fill="none" points="50,5 95,75 5,75" stroke="currentColor" stroke-width="0.5"></polygon>
+</svg>
+</div>
+</div>
+<!-- Side Card 1 -->
+<div class="md:col-span-4 bg-primary-container text-white rounded-full p-10 flex flex-col justify-between relative overflow-hidden shadow-lg shadow-primary/20">
+<div class="relative z-10">
+<span class="text-xs font-bold tracking-[0.2em] uppercase opacity-80 mb-4 block font-['Josefin_Sans']">Today's Challenge</span>
+<h3 class="text-2xl font-bold mb-2 font-['Josefin_Sans']">Prime Number Distribution</h3>
+<p class="text-sm text-white/70 leading-relaxed font-['Josefin_Sans']">Uncover the patterns within the Riemann Zeta function across critical lines.</p>
+</div>
+<div class="mt-8 relative z-10">
+<button class="w-full py-4 bg-white/10 backdrop-blur-md rounded-full font-bold uppercase text-[10px] tracking-widest border border-white/20 hover:bg-white/20 transition-all font-['Josefin_Sans']">Solve Now</button>
+</div>
+</div>
+<!-- Standard Cards -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-full p-10 border border-secondary-container hover:border-primary transition-all group">
+<span class="text-[10px] font-extrabold tracking-widest uppercase text-primary mb-4 block font-['Josefin_Sans']">Calculus III</span>
+<h4 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors font-['Josefin_Sans'] text-on-background">Stokes' Theorem in R³</h4>
+<div class="flex items-center justify-between mb-8">
+<span class="text-xs text-on-background/40 font-semibold font-['Josefin_Sans']">Intermediate</span>
+<span class="text-xs text-on-background/40 font-['Josefin_Sans']">12 Problems</span>
+</div>
+<button class="w-full py-3 bg-secondary-fixed rounded-full text-primary font-bold uppercase text-[10px] tracking-widest hover:bg-primary hover:text-white transition-all font-['Josefin_Sans']">Select</button>
+</div>
+<div class="md:col-span-4 bg-surface-container-lowest rounded-full p-10 border border-secondary-container hover:border-primary transition-all group">
+<span class="text-[10px] font-extrabold tracking-widest uppercase text-primary mb-4 block font-['Josefin_Sans']">Discrete Math</span>
+<h4 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors font-['Josefin_Sans'] text-on-background">Graph Coloring and Planarity</h4>
+<div class="flex items-center justify-between mb-8">
+<span class="text-xs text-on-background/40 font-semibold font-['Josefin_Sans']">Beginner</span>
+<span class="text-xs text-on-background/40 font-['Josefin_Sans']">8 Problems</span>
+</div>
+<button class="w-full py-3 bg-secondary-fixed rounded-full text-primary font-bold uppercase text-[10px] tracking-widest hover:bg-primary hover:text-white transition-all font-['Josefin_Sans']">Select</button>
+</div>
+<div class="md:col-span-4 bg-surface-container-lowest rounded-full p-10 border border-secondary-container hover:border-primary transition-all group">
+<span class="text-[10px] font-extrabold tracking-widest uppercase text-primary mb-4 block font-['Josefin_Sans']">Topology</span>
+<h4 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors font-['Josefin_Sans'] text-on-background">Homeomorphisms &amp; Donuts</h4>
+<div class="flex items-center justify-between mb-8">
+<span class="text-xs text-on-background/40 font-semibold font-['Josefin_Sans']">Advanced</span>
+<span class="text-xs text-on-background/40 font-['Josefin_Sans']">5 Problems</span>
+</div>
+<button class="w-full py-3 bg-secondary-fixed rounded-full text-primary font-bold uppercase text-[10px] tracking-widest hover:bg-primary hover:text-white transition-all font-['Josefin_Sans']">Select</button>
+</div>
+<!-- List Style Card (Variation) -->
+<div class="md:col-span-12 bg-white rounded-full p-8 md:p-12 flex flex-col md:flex-row items-center justify-between border border-secondary-container">
+<div class="flex items-center space-x-8 mb-6 md:mb-0">
+<div class="w-20 h-20 rounded-full bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">functions</span>
+</div>
+<div>
+<span class="text-[10px] font-bold tracking-widest uppercase text-primary mb-1 block font-['Josefin_Sans']">Quick Practice</span>
+<h4 class="text-2xl font-bold font-['Josefin_Sans'] text-on-background">Random Integral Generator</h4>
+<p class="text-on-background/40 text-sm font-['Josefin_Sans']">Keep your derivation skills sharp with endless procedural problems.</p>
+</div>
+</div>
+<button class="px-12 py-4 bg-on-background text-white rounded-full font-bold uppercase text-xs tracking-widest hover:bg-black transition-colors font-['Josefin_Sans']">Launch Sandbox</button>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-24 flex flex-col items-center">
+<div class="flex items-center space-x-4 mb-8">
+<button class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-background/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="font-bold text-sm tracking-widest px-6 font-['Josefin_Sans'] text-on-background">Page 01 <span class="text-secondary-container mx-2">/</span> 12</span>
+<button class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-background/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<p class="text-[10px] font-bold tracking-[0.3em] uppercase text-on-background/20 font-['Josefin_Sans']">End of current selection</p>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-24 bg-white border-t border-secondary-container/50">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-12 py-16 max-w-screen-2xl mx-auto font-['Josefin_Sans']">
+<div class="space-y-6">
+<div class="text-lg font-bold text-on-background uppercase tracking-widest font-['Josefin_Sans']">MathAtelier</div>
+<p class="text-on-background/50 leading-relaxed max-w-sm text-sm font-['Josefin_Sans']">
+                © 2024 MathAtelier. Curating mathematical beauty through open-source rigor.
+            </p>
+<div class="flex space-x-6">
+<a class="text-on-background/30 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-on-background/30 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">code</span></a>
+<a class="text-on-background/30 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">forum</span></a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<h5 class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-on-background/40 mb-6 font-['Josefin_Sans']">Archive</h5>
+<ul class="space-y-3 text-sm font-['Josefin_Sans']">
+<li><a class="text-on-background/60 hover:text-primary transition-colors" href="#">About the Atelier</a></li>
+<li><a class="text-on-background/60 hover:text-primary transition-colors" href="#">Contribution Guide</a></li>
+<li><a class="text-on-background/60 hover:text-primary transition-colors" href="#">LaTeX Documentation</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-on-background/40 mb-6 font-['Josefin_Sans']">Legal</h5>
+<ul class="space-y-3 text-sm font-['Josefin_Sans']">
+<li><a class="text-on-background/60 hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-on-background/60 hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+<li><a class="text-on-background/60 hover:text-primary transition-colors" href="#">Terms of Proof</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="h-1 bg-gradient-to-r from-primary via-primary-container to-on-background"></div>
+</footer>
+</body></html>

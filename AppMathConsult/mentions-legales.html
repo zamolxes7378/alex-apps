@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mentions légales — Math Consult</title>
+    <meta name="description"
+        content="Mentions légales du site Math Consult — Informations éditeur, hébergement, politique de confidentialité et cookies." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "mc-primary": "#E93F85",
+                        "mc-primary-dark": "#C2185B",
+                        "mc-ebony": "#240814",
+                        "mc-body": "#333333",
+                        "mc-pink-light": "#FBD9E7",
+                        "mc-pink-bg": "#FDF3F6",
+                        "mc-surface": "#FFFFFF",
+                        "mc-yellow": "#FBD600",
+                        "mc-border": "#F0C4D4",
+                    },
+                    fontFamily: {
+                        "josefin": ["Josefin Sans", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="modern.css" />
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        p,
+        .text-body,
+        li {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #E93F85;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #E93F85;
+        }
+
+
+
+        .legal-section {
+            margin-bottom: 48px;
+        }
+
+        .legal-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #240814;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FBD9E7;
+        }
+
+        .legal-section p,
+        .legal-section li {
+            line-height: 1.8;
+            color: #333;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-mc-body min-h-screen flex flex-col">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b border-mc-border/30">
+        <div class="max-w-[1140px] mx-auto flex justify-between items-center px-6 h-20">
+            <a href="index.html" class="flex items-center group">
+                <img src="logo-math-consult.webp" alt="Math Consult"
+                    class="h-14 group-hover:opacity-70 transition-opacity" />
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Accueil</a>
+                <a href="programme.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Programme</a>
+                <a href="exercices.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Exercices</a>
+                <a href="ressources.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Ressources</a>
+                <a href="espace-eleve.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Mon
+                    Espace</a>
+            </div>
+            <div id="nav-auth">
+                <a href="connexion.html" class="btn-primary hidden lg:inline-block">Se connecter</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow mt-20">
+
+        <!-- HEADER -->
+        <header class="relative overflow-hidden"
+            style="padding: 80px 0 60px; background: linear-gradient(180deg, #FDF3F6 0%, #FDF3F6 50%, #FFFFFF 100%);">
+            <div class="absolute top-0 right-0 w-72 h-72 opacity-5"
+                style="clip-path: polygon(50% 0%, 100% 100%, 0% 100%); background: linear-gradient(135deg, #E93F85, #FBD9E7); transform: rotate(15deg) translate(60px, -60px);">
+            </div>
+            <div class="max-w-[1140px] mx-auto px-6 relative z-10">
+                <div class="inline-flex items-center gap-2 bg-white/80 text-mc-primary text-xs font-bold uppercase px-5 py-2 mb-6"
+                    style="border-radius:9999px; letter-spacing:0.08em;">
+                    <span class="material-symbols-outlined text-sm">gavel</span>
+                    Informations légales
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-bold text-mc-ebony mb-4">Mentions <span
+                        class="text-mc-primary">légales</span></h1>
+                <p class="text-mc-body/60 text-lg">Informations légales relatives au site mathconsult-niort.fr</p>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <section style="padding: 60px 0 100px;">
+            <div class="max-w-[800px] mx-auto px-6">
+
+                <div class="legal-section">
+                    <h2>Éditeur</h2>
+                    <p><strong>Dénomination sociale :</strong> MONSIEUR OLIVIER BRILLAUD – Math Consult</p>
+                    <p><strong>Forme juridique :</strong> Entrepreneur individuel</p>
+                    <p><strong>Activité (Code NAF) :</strong> 8559B – Autres enseignements</p>
+                    <p><strong>Adresse du siège social :</strong> 25 BIS RUE DU 24 FEVRIER 79000 NIORT</p>
+                    <p><strong>Téléphone :</strong> <a href="tel:0549280308" class="text-mc-primary hover:underline">05
+                            49 28 03 08</a></p>
+                    <p><strong>Email :</strong> contact[at]mathconsult-niort.fr</p>
+                    <p><strong>SIREN :</strong> 504917444</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>Directeur de la publication</h2>
+                    <p>MONSIEUR OLIVIER BRILLAUD</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>Hébergement</h2>
+                    <p><strong>Hostinger</strong></p>
+                    <p>Siège social : 61 Lordou Vironos str. 6023 Chypre</p>
+                    <p><a href="https://www.hostinger.fr/" target="_blank"
+                            class="text-mc-primary hover:underline">https://www.hostinger.fr/</a></p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>Conception du site et stratégie éditoriale</h2>
+                    <p><strong>Konverseo.com</strong></p>
+                    <p>SAS au capital de 10 000 euros — RCS Niort 824 422 760</p>
+                    <p>Siège social : 325 avenue de Paris – 79000 Niort</p>
+                    <p>Téléphone : 05 79 68 02 08</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>Liens hypertextes</h2>
+                    <p>Math Consult ne contrôle pas les sites en connexion avec le sien, et ne saurait donc être
+                        responsable de leur contenu. Les risques liés à l'utilisation de ces sites incombent pleinement
+                        à l'utilisateur. Il se conformera à leurs conditions d'utilisation.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>Droit d'auteur et plagiat</h2>
+                    <p>Le site <a href="https://mathconsult-niort.fr" target="_blank"
+                            class="text-mc-primary hover:underline">mathconsult-niort.fr</a>, son contenu intégral
+                        (textes, visuels, photos…) est protégé par les droits d'auteurs.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>Utilisation de cookies</h2>
+                    <p>La gestion des commandes nécessite l'utilisation de cookies. Des informations non personnelles
+                        sont enregistrées par ce système de cookies (fichiers texte utilisés pour reconnaître un
+                        utilisateur et ainsi faciliter son utilisation du site). Ceux-ci n'ont aucune signification en
+                        dehors de leur utilisation sur le site <a href="https://mathconsult-niort.fr" target="_blank"
+                            class="text-mc-primary hover:underline">mathconsult-niort.fr</a>.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>Politique de confidentialité</h2>
+                    <p>Les données à caractère personnel collectées font l'objet d'un traitement dont le responsable est
+                        Math Consult.</p>
+                    <p>Ces données sont exclusivement destinées à Math Consult et nécessaires au traitement de votre
+                        demande. Elles ne sont en aucun cas transmises à des tiers.</p>
+                    <p>Elles sont conservées pendant 1 an à compter de la réception de la demande ou tout au long de la
+                        durée du contrat à compter de sa date de signature par le client.</p>
+                    <p>Conformément à la loi 78.17 relative à l'informatique, aux fichiers et aux libertés, vous
+                        disposez d'un droit d'accès, de rectification, d'opposition, de limitation du traitement,
+                        d'effacement et de portabilité de vos données que vous pouvez exercer par courrier à l'adresse
+                        25 b rue du 24 février, 79000 NIORT, France, en précisant vos nom, prénom, adresse ou email, et
+                        en joignant une photocopie recto/verso de votre pièce d'identité.</p>
+                    <p>En cas de difficulté en lien avec la gestion de vos données personnelles, vous pouvez adresser
+                        une réclamation auprès de la CNIL.</p>
+                    <p>Math Consult pourra procéder à des analyses statistiques sans que celles-ci soient nominatives et
+                        pourra en informer des tiers (organismes d'évaluation de fréquentation) sous une forme résumée
+                        et non nominative.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>Litige — Médiation de la consommation</h2>
+                    <p>En cas de litige entre le client et l'entreprise, ceux-ci s'efforceront de le résoudre à
+                        l'amiable (le Client adressera une réclamation écrite auprès du professionnel ou, le cas
+                        échéant, auprès du Service Relations Clientèle du professionnel). À défaut d'accord amiable ou
+                        en l'absence de réponse du professionnel dans un délai raisonnable d'un (1) mois, le Client
+                        consommateur au sens de l'article L.133-4 du code de la consommation a la possibilité de saisir
+                        gratuitement, si un désaccord subsiste, le médiateur compétent inscrit sur la liste des
+                        médiateurs établie par la Commission d'évaluation et de contrôle de la médiation de la
+                        consommation en application de l'article L.615-1 du code de la consommation.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-mc-border/30" style="padding: 60px 0 40px;">
+        <div class="max-w-[1140px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="inline-block mb-4">
+                        <img src="logo-math-consult.webp" alt="Math Consult" class="h-12" />
+                    </a>
+                    <p class="text-sm text-mc-body/60 leading-relaxed">Banque de données pédagogique — Fiches de cours,
+                        exercices, devoirs et sujets d'examen en math et sciences physiques.</p>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Plan de l'application</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Accueil</a></li>
+                        <li><a href="programme.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Programme</a>
+                        </li>
+                        <li><a href="exercices.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Exercices</a>
+                        </li>
+                        <li><a href="ressources.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Ressources</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Liens utiles</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" target="_blank"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Bilan
+                                pédagogique</a></li>
+                        <li><a href="https://mathconsult-niort.fr/stages" target="_blank"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Nos stages</a>
+                        </li>
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" target="_blank"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Être
+                                rappelé(e)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Informations</h4>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Tél :</strong> 05 49 28 03 08
+                        </li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Mail :</strong>
+                            contact@mathconsult-niort.fr</li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Lieu :</strong> 25b rue du 24
+                            février, 79000 Niort</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-mc-border/30 pt-6 text-center">
+                <p class="text-xs text-mc-body/40"><a href="https://mathconsult-niort.fr" target="_blank"
+                        class="hover:text-mc-primary transition-colors">Math Consult</a> 2026 | <a
+                        href="mentions-legales.html" class="hover:text-mc-primary transition-colors">Mentions légales et
+                        conformité</a> | Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+
+</body>
+
+</html>

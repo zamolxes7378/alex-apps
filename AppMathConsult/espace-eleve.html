@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mon Espace — Math Consult</title>
+    <meta name="description"
+        content="Espace personnel élève : suivi de progression, historique d'activité et ressources favorites." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "mc-primary": "#E93F85",
+                        "mc-primary-dark": "#C2185B",
+                        "mc-ebony": "#240814",
+                        "mc-body": "#333333",
+                        "mc-pink-light": "#FBD9E7",
+                        "mc-pink-bg": "#FDF3F6",
+                        "mc-surface": "#FFFFFF",
+                        "mc-yellow": "#FBD600",
+                        "mc-border": "#F0C4D4",
+                    },
+                    fontFamily: {
+                        "josefin": ["Josefin Sans", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="modern.css" />
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        p,
+        .text-body {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #E93F85;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #E93F85;
+        }
+
+
+
+        .stat-card {
+            background: white;
+            padding: 24px;
+            text-align: center;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .progress-card {
+            background: white;
+            padding: 32px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .activity-row {
+            display: flex;
+            align-items: center;
+            padding: 20px 24px;
+            background: #FDF3F6;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .activity-row:hover {
+            background: white;
+            box-shadow: 0 8px 30px rgba(233, 63, 133, 0.06);
+        }
+
+        .fav-card {
+            background: white;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .fav-card:hover {
+            box-shadow: 0 8px 30px rgba(233, 63, 133, 0.08);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-mc-body min-h-screen flex flex-col">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b border-mc-border/30">
+        <div class="max-w-[1140px] mx-auto flex justify-between items-center px-6 h-20">
+            <a href="index.html" class="flex items-center group">
+                <img src="logo-math-consult.webp" alt="Math Consult"
+                    class="h-14 group-hover:opacity-70 transition-opacity" />
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Accueil</a>
+                <a href="programme.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Programme</a>
+                <a href="exercices.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Exercices</a>
+                <a href="ressources.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Ressources</a>
+                <a href="espace-eleve.html" class="nav-link active font-josefin text-sm font-semibold text-mc-ebony">Mon
+                    Espace</a>
+            </div>
+            <div id="nav-auth">
+                <a href="connexion.html" class="btn-primary hidden lg:inline-block">Se connecter</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow mt-20">
+
+        <!-- PROFILE HEADER -->
+        <header class="relative overflow-hidden"
+            style="padding: 80px 0 60px; background: linear-gradient(180deg, #FDF3F6 0%, #FDF3F6 40%, #FFFFFF 100%);">
+            <div class="absolute top-0 right-0 w-72 h-72 opacity-5"
+                style="clip-path: polygon(50% 0%, 100% 100%, 0% 100%); background: linear-gradient(135deg, #E93F85, #FBD9E7); transform: rotate(15deg) translate(60px, -60px);">
+            </div>
+            <div class="max-w-[1140px] mx-auto px-6 relative z-10">
+                <div class="inline-flex items-center gap-2 bg-white/80 text-mc-primary text-xs font-bold uppercase px-5 py-2 mb-6"
+                    style="border-radius:9999px; letter-spacing:0.08em;">
+                    <span class="material-symbols-outlined text-sm">person</span>
+                    Espace personnel
+                </div>
+                <div class="flex flex-col md:flex-row items-center md:items-end gap-8">
+                    <!-- Avatar -->
+                    <div class="relative">
+                        <div class="w-28 h-28 bg-mc-pink-light flex items-center justify-center overflow-hidden"
+                            style="border: 4px solid white; box-shadow: 0 8px 30px rgba(233,63,133,0.1); border-radius: 14px;">
+                            <span class="material-symbols-outlined text-mc-primary text-5xl">person</span>
+                        </div>
+                    </div>
+                    <!-- Info -->
+                    <div class="text-center md:text-left flex-grow">
+                        <h1 class="text-5xl lg:text-6xl font-bold text-mc-ebony mb-2">Espace <span
+                                class="text-mc-primary">Élève</span></h1>
+                        <p class="text-mc-body/60 text-lg" id="profile-level">3ème — Collège</p>
+                    </div>
+                    <!-- Stats -->
+                    <div class="flex gap-4">
+                        <div class="stat-card">
+                            <div class="text-2xl font-bold text-mc-primary" id="stat-exercises">0</div>
+                            <div class="text-xs uppercase text-mc-body/40 font-semibold mt-1">Exercices</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="text-2xl font-bold text-mc-primary" id="stat-hours">0h</div>
+                            <div class="text-xs uppercase text-mc-body/40 font-semibold mt-1">Étude</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="text-2xl font-bold text-mc-primary" id="stat-favs">0</div>
+                            <div class="text-xs uppercase text-mc-body/40 font-semibold mt-1">Favoris</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <section class="bg-white" style="padding: 60px 0 100px;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                    <!-- LEFT: Progress & Quote -->
+                    <div class="lg:col-span-4 space-y-8">
+                        <!-- Progress -->
+                        <div class="progress-card">
+                            <h2 class="text-sm font-bold uppercase text-mc-primary mb-6 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-lg">trending_up</span>
+                                Progression
+                            </h2>
+                            <div class="space-y-6" id="progress-bars">
+                                <!-- Rendered by JS -->
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-mc-border/20">
+                                <div class="flex justify-between text-xs uppercase text-mc-body/50 font-semibold mb-2">
+                                    <span>Progression globale</span>
+                                    <span id="global-progress-pct">0%</span>
+                                </div>
+                                <div class="h-3 w-full bg-mc-pink-bg overflow-hidden" style="border-radius:6px;">
+                                    <div class="h-full bg-mc-primary transition-all duration-700"
+                                        id="global-progress-bar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Quote -->
+                        <div class="bg-mc-pink-light p-8" style="border-radius:14px;">
+                            <h2 class="text-sm font-bold uppercase text-mc-ebony mb-4">Citation du jour</h2>
+                            <p class="text-mc-ebony leading-relaxed font-medium italic" id="quote-text">
+                                « L'essence des mathématiques réside dans sa liberté. »
+                            </p>
+                            <div class="mt-4 text-xs text-mc-body/50" id="quote-author">— Georg Cantor</div>
+                        </div>
+                        <!-- Quick Actions -->
+                        <div class="bg-white p-8" style="border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                            <h2 class="text-sm font-bold uppercase text-mc-primary mb-6 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-lg">bolt</span>
+                                Actions rapides
+                            </h2>
+                            <div class="space-y-3">
+                                <a href="exercices.html"
+                                    class="flex items-center gap-3 p-3 bg-mc-pink-bg hover:bg-mc-pink-light transition-colors group">
+                                    <span class="material-symbols-outlined text-mc-primary">edit_note</span>
+                                    <span
+                                        class="text-sm font-semibold text-mc-ebony group-hover:text-mc-primary transition-colors">Faire
+                                        des exercices</span>
+                                    <span
+                                        class="material-symbols-outlined text-mc-border ml-auto group-hover:text-mc-primary transition-colors text-lg">chevron_right</span>
+                                </a>
+                                <a href="ressources.html"
+                                    class="flex items-center gap-3 p-3 bg-mc-pink-bg hover:bg-mc-pink-light transition-colors group">
+                                    <span class="material-symbols-outlined text-mc-primary">description</span>
+                                    <span
+                                        class="text-sm font-semibold text-mc-ebony group-hover:text-mc-primary transition-colors">Consulter
+                                        les fiches</span>
+                                    <span
+                                        class="material-symbols-outlined text-mc-border ml-auto group-hover:text-mc-primary transition-colors text-lg">chevron_right</span>
+                                </a>
+                                <a href="programme.html"
+                                    class="flex items-center gap-3 p-3 bg-mc-pink-bg hover:bg-mc-pink-light transition-colors group">
+                                    <span class="material-symbols-outlined text-mc-primary">menu_book</span>
+                                    <span
+                                        class="text-sm font-semibold text-mc-ebony group-hover:text-mc-primary transition-colors">Voir
+                                        le programme</span>
+                                    <span
+                                        class="material-symbols-outlined text-mc-border ml-auto group-hover:text-mc-primary transition-colors text-lg">chevron_right</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Library & Activity -->
+                    <div class="lg:col-span-8 space-y-12">
+                        <!-- My Library -->
+                        <section>
+                            <div class="flex justify-between items-end mb-8">
+                                <h2 class="text-2xl font-bold text-mc-ebony">Mes favoris</h2>
+                                <a href="ressources.html"
+                                    class="text-sm font-bold uppercase text-mc-primary hover:opacity-70 transition-opacity">Voir
+                                    tout</a>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="favorites-grid">
+                                <!-- Rendered by JS -->
+                            </div>
+                            <div id="no-favs" class="hidden text-center py-12 bg-white" style="border-radius:14px;">
+                                <span
+                                    class="material-symbols-outlined text-mc-border text-5xl mb-3 block">bookmark_border</span>
+                                <p class="text-mc-body/50 mb-4">Aucun favori pour le moment.</p>
+                                <a href="ressources.html" class="btn-primary inline-block text-sm">Parcourir les
+                                    ressources</a>
+                            </div>
+                        </section>
+
+                        <!-- Recent Activity -->
+                        <section>
+                            <div class="flex justify-between items-end mb-8">
+                                <h2 class="text-2xl font-bold text-mc-ebony">Activité récente</h2>
+                            </div>
+                            <div class="space-y-3" id="activity-log">
+                                <!-- Rendered by JS -->
+                            </div>
+                            <div id="no-activity" class="hidden text-center py-12 bg-mc-pink-bg"
+                                style="border-radius:14px;">
+                                <span
+                                    class="material-symbols-outlined text-mc-border text-5xl mb-3 block">history</span>
+                                <p class="text-mc-body/50">Aucune activité récente.</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-mc-border/30" style="padding: 60px 0 40px;">
+        <div class="max-w-[1140px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="inline-block mb-4">
+                        <img src="logo-math-consult.webp" alt="Math Consult" class="h-12" />
+                    </a>
+                    <p class="text-sm text-mc-body/60 leading-relaxed">Banque de données pédagogique — Fiches de cours,
+                        exercices, devoirs et sujets d'examen en math et sciences physiques.</p>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Plan de l'application</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Accueil</a></li>
+                        <li><a href="programme.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Programme</a>
+                        </li>
+                        <li><a href="exercices.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Exercices</a>
+                        </li>
+                        <li><a href="ressources.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Ressources</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Liens utiles</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" target="_blank"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Bilan
+                                pédagogique</a></li>
+                        <li><a href="https://mathconsult-niort.fr/stages" target="_blank"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Nos stages</a>
+                        </li>
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" target="_blank"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Être
+                                rappelé(e)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Informations</h4>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Tél :</strong> 05 49 28 03 08
+                        </li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Mail :</strong>
+                            contact@mathconsult-niort.fr</li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Lieu :</strong> 25b rue du 24
+                            février, 79000 Niort</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-mc-border/30 pt-6 text-center">
+                <p class="text-xs text-mc-body/40"><a href="https://mathconsult-niort.fr" target="_blank"
+                        class="hover:text-mc-primary transition-colors">Math Consult</a> 2026 | <a
+                        href="mentions-legales.html" class="hover:text-mc-primary transition-colors">Mentions légales et
+                        conformité</a> | Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script>
+            (function () {
+                // ===== STORAGE HELPERS =====
+                const KEY = 'mc_profile';
+                const defaults = {
+                    name: 'Espace Élève',
+                    level: '3ème',
+                    exercises: 24,
+                    hours: 12,
+                    progress: { 'Algèbre': 72, 'Géométrie': 58, 'Fonctions': 35, 'Probabilités': 89 },
+                    favorites: [
+                        { id: 'f1', title: 'Introduction aux fonctions', category: 'Cours — 3ème', desc: 'Notion de fonction, image et antécédent, représentation graphique.', icon: 'functions' },
+                        { id: 'f2', title: 'Théorème de Thalès', category: 'Méthode — Géométrie', desc: 'Fiche méthodologique : application directe et réciproque du théorème.', icon: 'change_history' },
+                        { id: 'f3', title: 'Fiche Bristol — Trigonométrie', category: 'Fiche Bristol — 3ème', desc: 'Cos, sin, tan : formulaire complet et méthode de résolution.', icon: 'straighten' },
+                    ],
+                    activity: [
+                        { type: 'menu_book', title: 'Cours : Théorème de Pythagore', detail: 'Consulté il y a 2 heures • Durée : 25 min', ts: Date.now() - 7200000 },
+                        { type: 'edit_note', title: 'Exercices : Équations du 1er degré', detail: 'Terminé hier • Score : 8/10', ts: Date.now() - 86400000 },
+                        { type: 'description', title: 'Fiche Bristol : Trigonométrie', detail: 'Ajouté aux favoris • Il y a 3 jours', ts: Date.now() - 259200000 },
+                    ]
+                };
+
+                function load() {
+                    try { const d = JSON.parse(localStorage.getItem(KEY)); return d || { ...defaults }; }
+                    catch { return { ...defaults }; }
+                }
+                function save(d) { localStorage.setItem(KEY, JSON.stringify(d)); }
+
+                let data = load();
+                if (!data.favorites) data = { ...defaults, ...data };
+                save(data);
+
+                // ===== QUOTES =====
+                const quotes = [
+                    { text: '« L\'essence des mathématiques réside dans sa liberté. »', author: '— Georg Cantor' },
+                    { text: '« Les mathématiques sont la reine des sciences. »', author: '— Carl Friedrich Gauss' },
+                    { text: '« La nature est un livre écrit en langage mathématique. »', author: '— Galilée' },
+                    { text: '« Là où il y a de la matière, il y a de la géométrie. »', author: '— Johannes Kepler' },
+                    { text: '« La logique est l\'hygiène des mathématiques. »', author: '— André Weil' },
+                    { text: '« Les maths, c\'est comme l\'amour : une idée simple mais qui peut se compliquer. »', author: '— R. Drabek' },
+                ];
+                const q = quotes[Math.floor(Math.random() * quotes.length)];
+                document.getElementById('quote-text').textContent = q.text;
+                document.getElementById('quote-author').textContent = q.author;
+
+                // ===== PROFILE (read-only) =====
+                const levelMap = { '6ème': '6ème — Collège', '5ème': '5ème — Collège', '4ème': '4ème — Collège', '3ème': '3ème — Collège', 'Seconde': 'Seconde — Lycée', 'Première Spé': 'Première Spé — Lycée', 'Terminale Spé': 'Terminale Spé — Lycée', 'Bac Pro': 'Bac Pro' };
+                document.getElementById('profile-level').textContent = levelMap[data.level] || data.level;
+
+                // ===== STATS =====
+                document.getElementById('stat-exercises').textContent = data.exercises;
+                document.getElementById('stat-hours').textContent = data.hours + 'h';
+                document.getElementById('stat-favs').textContent = data.favorites.length;
+
+                // ===== PROGRESS =====
+                function renderProgress() {
+                    const container = document.getElementById('progress-bars');
+                    container.innerHTML = '';
+                    let total = 0, count = 0;
+                    for (const [name, pct] of Object.entries(data.progress)) {
+                        total += pct; count++;
+                        const div = document.createElement('div');
+                        div.innerHTML = `
+                <div class="flex justify-between text-xs uppercase text-mc-body/50 mb-2 font-semibold">
+                    <span>${name}</span>
+                    <span>${pct}%</span>
+                </div>
+                <div class="h-2 w-full bg-mc-pink-bg overflow-hidden">
+                    <div class="h-full bg-mc-primary transition-all duration-700" style="width: ${pct}%;"></div>
+                </div>`;
+                        container.appendChild(div);
+                    }
+                    const avg = count ? Math.round(total / count) : 0;
+                    document.getElementById('global-progress-pct').textContent = avg + '%';
+                    document.getElementById('global-progress-bar').style.width = avg + '%';
+
+                }
+                renderProgress();
+
+                // ===== FAVORITES =====
+                function renderFavorites() {
+                    const grid = document.getElementById('favorites-grid');
+                    const noFavs = document.getElementById('no-favs');
+                    grid.innerHTML = '';
+                    document.getElementById('stat-favs').textContent = data.favorites.length;
+                    if (!data.favorites.length) {
+                        grid.classList.add('hidden'); noFavs.classList.remove('hidden'); return;
+                    }
+                    grid.classList.remove('hidden'); noFavs.classList.add('hidden');
+                    data.favorites.forEach(fav => {
+                        const div = document.createElement('div');
+                        div.className = 'fav-card group';
+                        div.innerHTML = `
+                <div class="h-36 bg-mc-pink-light flex items-center justify-center">
+                    <span class="material-symbols-outlined text-mc-primary text-5xl opacity-30 group-hover:opacity-60 transition-opacity">${fav.icon}</span>
+                </div>
+                <div class="p-6">
+                    <span class="text-xs uppercase text-mc-primary font-bold mb-2 block">${fav.category}</span>
+                    <h3 class="text-lg font-semibold text-mc-ebony mb-2">${fav.title}</h3>
+                    <p class="text-sm text-mc-body/50">${fav.desc}</p>
+                </div>`;
+                        grid.appendChild(div);
+                    });
+
+                }
+                renderFavorites();
+
+                // ===== ACTIVITY =====
+                function renderActivity() {
+                    const log = document.getElementById('activity-log');
+                    const noAct = document.getElementById('no-activity');
+                    log.innerHTML = '';
+                    if (!data.activity.length) {
+                        log.classList.add('hidden'); noAct.classList.remove('hidden'); return;
+                    }
+                    log.classList.remove('hidden'); noAct.classList.add('hidden');
+                    data.activity.slice(0, 10).forEach(act => {
+                        const div = document.createElement('div');
+                        div.className = 'activity-row group';
+                        div.innerHTML = `
+                <div class="w-10 h-10 flex items-center justify-center bg-white text-mc-primary mr-5 flex-shrink-0">
+                    <span class="material-symbols-outlined">${act.type}</span>
+                </div>
+                <div class="flex-grow">
+                    <h4 class="font-bold text-mc-ebony">${act.title}</h4>
+                    <p class="text-sm text-mc-body/50">${act.detail}</p>
+                </div>
+                <span class="material-symbols-outlined text-mc-border group-hover:text-mc-primary transition-colors">chevron_right</span>`;
+                        log.appendChild(div);
+                    });
+                }
+                renderActivity();
+
+
+            })();
+    </script>
+
+</body>
+
+</html>

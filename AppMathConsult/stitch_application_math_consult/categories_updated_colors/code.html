@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#2d2a2e", // Dark charcoal from text/logo
+                    "on-secondary-fixed": "#2d2a2e",
+                    "on-tertiary-fixed-variant": "#2d2a2e",
+                    "on-background": "#2d2a2e",
+                    "on-tertiary-container": "#ffffff",
+                    "tertiary-fixed": "#f9d4e1",
+                    "on-surface": "#2d2a2e",
+                    "on-primary-fixed": "#ffffff",
+                    "on-primary-container": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2d2a2e",
+                    "background": "#fdf3f6", // Lightest pink background
+                    "inverse-on-surface": "#ffffff",
+                    "tertiary-container": "#e84a83",
+                    "surface-container-highest": "#f9cadb",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#f9cadb",
+                    "secondary-container": "#f9cadb",
+                    "tertiary": "#e84a83",
+                    "surface-dim": "#f3b9cf",
+                    "surface-container": "#f9d4e1",
+                    "on-tertiary-fixed": "#2d2a2e",
+                    "surface-container-low": "#fdf3f6",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#f9cadb",
+                    "secondary-fixed-dim": "#f3b9cf",
+                    "surface": "#fdf3f6",
+                    "on-primary-fixed-variant": "#e84a83",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#2d2a2e",
+                    "surface-bright": "#fdf3f6",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#f3b9cf",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#f9cadb",
+                    "primary-fixed-dim": "#f3b9cf",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#f9d4e1",
+                    "primary": "#e84a83", // Vibrant pink from CTA buttons
+                    "surface-tint": "#e84a83",
+                    "inverse-primary": "#f3b9cf",
+                    "on-secondary-container": "#2d2a2e",
+                    "primary-container": "#e84a83",
+                    "tertiary-fixed-dim": "#f3b9cf",
+                    "outline": "#2d2a2e",
+                    "on-surface-variant": "#2d2a2e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Josefin Sans", "sans-serif"],
+                    "body": ["Josefin Sans", "sans-serif"],
+                    "label": ["Josefin Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Josefin Sans', sans-serif; }
+        .josefin { font-family: 'Josefin Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-surface-container">
+<div class="flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-primary josefin">MathAtelier</div>
+<div class="hidden md:flex gap-12 items-center">
+<a class="josefin tracking-widest uppercase text-xs font-semibold text-secondary/70 pb-2 hover:text-primary transition-colors" href="#">Lessons</a>
+<a class="josefin tracking-widest uppercase text-xs font-semibold text-secondary/70 pb-2 hover:text-primary transition-colors" href="#">Exercises</a>
+<a class="josefin tracking-widest uppercase text-xs font-semibold text-primary border-b-2 border-primary pb-2 transition-all" href="#">Categories</a>
+<a class="josefin tracking-widest uppercase text-xs font-semibold text-secondary/70 pb-2 hover:text-primary transition-colors" href="#">Favorites</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-secondary/70 hover:text-primary transition-colors">search</button>
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded-full text-xs josefin uppercase tracking-widest font-bold hover:brightness-110 active:scale-95 transition-all">
+                Sign In
+            </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24">
+<!-- Hero / Header Section -->
+<header class="max-w-screen-xl mx-auto px-12 mb-24 text-center">
+<h1 class="josefin text-6xl md:text-7xl font-bold text-on-background tracking-tighter mb-6 leading-none">
+            The Library of <span class="text-primary italic">Structure</span>
+</h1>
+<p class="max-w-2xl mx-auto text-lg text-on-surface-variant leading-relaxed josefin">
+            Explore the curated intersections of mathematical beauty and rigorous logic. Our atelier organizes the infinite into digestible domains of inquiry.
+        </p>
+</header>
+<!-- Bento Grid Categories -->
+<section class="max-w-screen-2xl mx-auto px-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Category Card: Advanced Number Theory (Large Hero) -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative overflow-hidden rounded-full h-[500px] bg-white border border-surface-container transition-all hover:border-primary/30 shadow-sm">
+<img alt="Complex mathematical formulas" class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-20 transition-all duration-700" data-alt="Intricate chalk handwriting of prime number distribution theorems on a dark blackboard with soft side lighting and cinematic grain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKBu0l22C8iEeq55ar25ix2jlJs8zxzhgdsUusj2Cmy2X2AJqnX5-2WepQXAqcfB9pAikm_5uLx6pM2UxNq0cT_5zkt4TvGLzYq45XR14Bsg2GR_ZCEOIaZM-RTg9oPn4yUJIQZYdQuzJNd9B85S4THEMj467hUqQaGKbuGO_Ixj213hSGa2UUu5ZVPv-EbpstXH1cF52WgUZvlp2h4M_3v8Qx3mW3MQHJOZqb_85f7vyxZAkKeRarvf5Z1ZhNpsBu2zYC26BH8Zo"/>
+<div class="relative h-full flex flex-col justify-end p-16">
+<div class="flex items-center gap-4 mb-6">
+<span class="bg-primary text-white p-3 rounded-full material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">functions</span>
+<span class="josefin uppercase tracking-[0.2em] text-xs font-bold text-primary">Core Domain</span>
+</div>
+<h2 class="josefin text-5xl font-bold text-on-background mb-4">Advanced Number Theory</h2>
+<p class="text-on-surface-variant max-w-md text-lg leading-relaxed">
+                        From the distribution of primes to elliptic curves and modular forms. Uncover the secrets hidden within the integers.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Category Card: Topology (Vertical) -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="h-full bg-surface-container rounded-full p-12 flex flex-col justify-between transition-all hover:bg-surface-container-high border border-transparent hover:border-primary/20">
+<div>
+<div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mb-12 shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl">all_inclusive</span>
+</div>
+<h2 class="josefin text-4xl font-bold text-on-secondary-fixed mb-4">Topology</h2>
+<p class="text-on-secondary-fixed-variant leading-relaxed">
+                        Study the properties of space that are preserved under continuous deformations. Exploring knots, surfaces, and manifolds.
+                    </p>
+</div>
+<div class="mt-8 flex justify-end">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+</div>
+</div>
+</div>
+<!-- Category Card: Complex Analysis (Squareish) -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="relative overflow-hidden rounded-full aspect-square bg-white border border-surface-container p-12 flex flex-col items-center text-center justify-center transition-all hover:bg-surface-container-low">
+<div class="mb-6">
+<span class="material-symbols-outlined text-6xl text-primary/20 group-hover:text-primary transition-colors duration-500">waves</span>
+</div>
+<h2 class="josefin text-3xl font-bold text-on-background mb-4">Complex Analysis</h2>
+<p class="text-on-surface-variant text-sm px-4">
+                    The elegant study of functions of complex variables, conformal mapping, and the beauty of holomorphic functions.
+                </p>
+</div>
+</div>
+<!-- Category Card: Algebraic Geometry (Wide) -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="h-full bg-white border border-surface-container rounded-full p-12 flex items-center gap-12 transition-all hover:border-primary/20 relative overflow-hidden">
+<div class="flex-1 z-10">
+<h2 class="josefin text-4xl font-bold text-on-background mb-4">Algebraic Geometry</h2>
+<p class="text-on-surface-variant max-w-lg leading-relaxed mb-6">
+                        Where algebra meets geometry. Study the zero sets of multivariate polynomials and the intricate structures of algebraic varieties.
+                    </p>
+<button class="josefin text-primary font-bold uppercase tracking-widest text-xs flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                        Enter Dimension <span class="material-symbols-outlined text-sm">trending_flat</span>
+</button>
+</div>
+<div class="w-64 h-64 flex-shrink-0 bg-surface-container rounded-full flex items-center justify-center rotate-12 group-hover:rotate-0 transition-transform duration-700">
+<span class="material-symbols-outlined text-8xl text-primary/10">grid_view</span>
+</div>
+</div>
+</div>
+<!-- More categories indicator -->
+<div class="md:col-span-12 mt-12 flex justify-center">
+<div class="bg-white border border-surface-container px-12 py-8 rounded-full flex items-center gap-8 shadow-sm">
+<span class="josefin text-sm font-bold uppercase tracking-widest text-on-surface-variant">And 14 more specialized categories</span>
+<div class="h-px w-24 bg-surface-container-highest"></div>
+<button class="bg-secondary text-white px-8 py-3 rounded-full text-xs josefin font-bold uppercase tracking-widest hover:bg-primary transition-colors">View Directory</button>
+</div>
+</div>
+</section>
+<!-- Newsletter / Community Section -->
+<section class="max-w-screen-xl mx-auto px-12 mt-40">
+<div class="bg-primary rounded-full p-20 text-center relative overflow-hidden shadow-2xl">
+<div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+<h3 class="josefin text-4xl font-bold text-white mb-6">Join the Mathematical Dialogue</h3>
+<p class="text-white/80 max-w-xl mx-auto mb-10 text-lg josefin">
+                Receive weekly insights into open-source contributions and newly added category modules directly in your inbox.
+            </p>
+<div class="max-w-md mx-auto flex gap-4">
+<input class="flex-1 bg-white/20 border-b border-white/30 text-white placeholder:text-white/60 px-6 py-3 rounded-full focus:outline-none focus:bg-white/30 transition-all josefin" placeholder="Your academic email" type="email"/>
+<button class="bg-white text-primary px-10 py-3 rounded-full josefin font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform">Subscribe</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-24 bg-white border-t border-surface-container">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-12 py-16 max-w-screen-2xl mx-auto">
+<div class="space-y-6">
+<div class="text-lg font-bold text-secondary josefin">MathAtelier</div>
+<p class="josefin text-sm leading-relaxed text-secondary/60 max-w-sm">
+                © 2024 MathAtelier. Curating mathematical beauty through open-source rigor. Built by researchers for the curious mind.
+            </p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<h4 class="josefin text-xs font-bold uppercase tracking-widest text-primary">Explore</h4>
+<ul class="space-y-3">
+<li><a class="josefin text-sm text-secondary/60 hover:text-primary transition-colors" href="#">About the Atelier</a></li>
+<li><a class="josefin text-sm text-secondary/60 hover:text-primary transition-colors" href="#">Contribution Guide</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="josefin text-xs font-bold uppercase tracking-widest text-primary">Resources</h4>
+<ul class="space-y-3">
+<li><a class="josefin text-sm text-secondary/60 hover:text-primary transition-colors" href="#">LaTeX Documentation</a></li>
+<li><a class="josefin text-sm text-secondary/60 hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

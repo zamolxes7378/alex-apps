@@ -1,0 +1,556 @@
+/* ==========================================
+   AppMathConsult — Modern Enhancement Layer
+   Loaded AFTER Tailwind. Adds polish without
+   changing the brand identity.
+   ========================================== */
+
+/* 0. Global */
+html {
+    scroll-behavior: smooth;
+}
+
+h1 {
+    letter-spacing: -0.02em;
+}
+
+h2,
+h3 {
+    letter-spacing: -0.01em;
+}
+
+p,
+.text-body {
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* Search bar icon + text alignment fix */
+[class*="bg-mc-pink"] input,
+[class*="bg-mc-pink"] input[type="text"] {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    line-height: 1 !important;
+    font-size: inherit;
+}
+
+[class*="bg-mc-pink"] .material-symbols-outlined {
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1 !important;
+    flex-shrink: 0;
+}
+
+/* 1. Rounded Corners — Comprehensive */
+.exercise-card,
+.resource-card,
+.grade-card,
+.fav-card,
+.progress-card,
+.stat-card,
+.info-card,
+.tool-card,
+.level-card,
+.feature-card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Icon containers (square blocks with bg-color) */
+[class*="w-16"][class*="h-16"],
+[class*="w-12"][class*="h-12"],
+[class*="w-10"][class*="h-10"] {
+    border-radius: 12px;
+}
+
+/* Small badge/chips like 6ème, 5ème level tags */
+span[class*="px-3"][class*="py-1"] {
+    border-radius: 6px;
+}
+
+/* All white panels with padding = cards */
+section .bg-white[class*="p-"] {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* All buttons */
+.btn-primary,
+.btn-secondary,
+button,
+a[class*="btn-"],
+a[class*="bg-white"][class*="px-"] {
+    border-radius: 8px;
+}
+
+/* Card inner buttons (accéder, télécharger) */
+button[class*="py-3"],
+button[class*="py-2"] {
+    border-radius: 8px;
+}
+
+/* All inputs and selects */
+input,
+select,
+textarea {
+    border-radius: 8px;
+}
+
+/* Search bar wrapper (the pink-bg container with the search icon) */
+[class*="bg-mc-pink"][class*="flex"][class*="items-center"][class*="px-"] {
+    border-radius: 12px;
+}
+
+/* Filter chips & pills */
+.filter-chip,
+.filter-pill {
+    border-radius: 9999px;
+}
+
+/* Section badge */
+.section-badge {
+    border-radius: 9999px;
+}
+
+/* Topic chips */
+.topic-chip {
+    border-radius: 6px;
+}
+
+/* Badges */
+.difficulty-badge,
+.type-badge,
+.doc-format {
+    border-radius: 4px;
+}
+
+/* Activity rows */
+.activity-row {
+    border-radius: 8px;
+}
+
+/* 2. Unified Card Hover System
+   Base styles apply to all cards; hover only on clickable (a/button) elements */
+.exercise-card,
+.resource-card,
+.grade-card,
+.fav-card,
+.pillar-card,
+.info-card,
+.tool-card,
+.progress-card,
+.stat-card,
+.hero-card,
+.level-card {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover glow — only on clickable cards */
+a.exercise-card:hover,
+a.resource-card:hover,
+a.grade-card:hover,
+a.fav-card:hover,
+a.pillar-card:hover,
+a.info-card:hover,
+a.tool-card:hover,
+a.hero-card:hover,
+a.level-card:hover,
+button.exercise-card:hover,
+button.resource-card:hover,
+[onclick].exercise-card:hover,
+[onclick].resource-card:hover,
+[role="button"].exercise-card:hover,
+[role="button"].resource-card:hover {
+    box-shadow: 0 8px 30px rgba(233, 63, 133, 0.08);
+    cursor: pointer;
+}
+
+a.stat-card:hover,
+button.stat-card:hover {
+    box-shadow: 0 6px 24px rgba(233, 63, 133, 0.06);
+    cursor: pointer;
+}
+
+/* ── Gradient Primary Button ── */
+.btn-primary,
+a.btn-primary,
+button.btn-primary,
+[type="submit"].btn-primary {
+    background: #E93F85 !important;
+    background-color: #E93F85 !important;
+    background-image: none !important;
+    color: white !important;
+    padding: 15px 28px;
+    font-weight: 600;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(233, 63, 133, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover,
+a.btn-primary:hover,
+button.btn-primary:hover {
+    background: #D1306F !important;
+    box-shadow: 0 6px 24px rgba(233, 63, 133, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(233, 63, 133, 0.3);
+}
+
+/* Nav button: exact same style, no overrides */
+nav .btn-primary,
+nav a.btn-primary {
+    padding: 15px 28px;
+    font-size: 0.95rem;
+}
+
+/* ── Secondary Button ── */
+.btn-secondary {
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-1px);
+}
+
+/* ── Card Accent Strip (opt-in) ── */
+.accent-card {
+    position: relative;
+    border: 1px solid rgba(240, 196, 212, 0.25);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.accent-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #E93F85 0%, #F472B6 40%, #FBD9E7 100%);
+    z-index: 2;
+}
+
+/* ── Warm Input Fields (global) ── */
+.input-field {
+    background: #FDFAFC !important;
+    border: 1.5px solid #F0C4D4;
+    border-radius: 12px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    padding: 15px 16px !important;
+    color: #240814;
+    width: 100%;
+}
+
+.input-field:focus {
+    border-color: #E93F85;
+    background: white !important;
+    box-shadow: 0 0 0 4px rgba(233, 63, 133, 0.08), 0 2px 8px rgba(233, 63, 133, 0.06);
+}
+
+.input-field::placeholder {
+    color: #c4a0b3;
+    font-weight: 300;
+}
+
+/* ── Icon-adorned Inputs ── */
+.input-group {
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #240814;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper .material-symbols-outlined {
+    position: absolute;
+    left: 14px;
+    color: #ccc;
+    font-size: 20px;
+    transition: color 0.2s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.input-wrapper .input-field {
+    padding: 15px 16px 15px 48px !important;
+}
+
+.input-wrapper:focus-within .material-symbols-outlined {
+    color: #E93F85;
+}
+
+/* ── Card subtle borders (global enhancement) ── */
+.exercise-card,
+.resource-card,
+.grade-card,
+.progress-card,
+.stat-card,
+.fav-card,
+.info-card,
+.tool-card {
+    border: 1px solid rgba(240, 196, 212, 0.15);
+}
+
+/* Search bar */
+.search-container {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s ease;
+}
+
+.search-container:focus-within {
+    box-shadow: 0 4px 16px rgba(233, 63, 133, 0.06);
+}
+
+/* 3. Gradient Backgrounds */
+header.bg-white,
+.hero-gradient {
+    background: linear-gradient(135deg, #FDF3F6 0%, #FFFFFF 60%) !important;
+}
+
+footer {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FDF3F6 100%) !important;
+}
+
+/* 4. Micro-Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.exercise-card,
+.resource-card,
+.grade-card,
+.fav-card {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.exercise-card:nth-child(1),
+.resource-card:nth-child(1),
+.grade-card:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.exercise-card:nth-child(2),
+.resource-card:nth-child(2),
+.grade-card:nth-child(2) {
+    animation-delay: 80ms;
+}
+
+.exercise-card:nth-child(3),
+.resource-card:nth-child(3),
+.grade-card:nth-child(3) {
+    animation-delay: 160ms;
+}
+
+.exercise-card:nth-child(4),
+.resource-card:nth-child(4),
+.grade-card:nth-child(4) {
+    animation-delay: 240ms;
+}
+
+.exercise-card:nth-child(5),
+.resource-card:nth-child(5) {
+    animation-delay: 320ms;
+}
+
+.exercise-card:nth-child(6),
+.resource-card:nth-child(6) {
+    animation-delay: 400ms;
+}
+
+.exercise-card:nth-child(7) {
+    animation-delay: 480ms;
+}
+
+.exercise-card:nth-child(8) {
+    animation-delay: 560ms;
+}
+
+.exercise-card:nth-child(9) {
+    animation-delay: 640ms;
+}
+
+/* Filter chip animations */
+.filter-chip,
+.filter-pill {
+    transition: all 0.2s ease;
+}
+
+.filter-chip:hover,
+.filter-pill:hover {
+    transform: translateY(-1px);
+}
+
+.filter-chip.active,
+.filter-pill.active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(233, 63, 133, 0.2);
+}
+
+/* Progress bar fill */
+@keyframes fillBar {
+    from {
+        width: 0%;
+    }
+}
+
+.progress-bar-fill {
+    animation: fillBar 1s ease-out both;
+}
+
+/* 5. Sticky Filters */
+.sticky-filters {
+    position: sticky;
+    top: 80px;
+    z-index: 40;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 6. Topic chip as link */
+a.topic-chip {
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a.topic-chip:hover {
+    background: #E93F85;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* 7. Grade card as link */
+a.grade-card {
+    text-decoration: none;
+    display: block;
+}
+
+a.grade-card:hover {
+    border-color: rgba(240, 196, 212, 0.15);
+}
+
+a.grade-card:hover h3 {
+    color: #E93F85;
+}
+
+a.grade-card:hover .material-symbols-outlined {
+    color: #E93F85;
+    opacity: 1;
+}
+
+/* 8. Section headers */
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #E93F85;
+    letter-spacing: 0.08em;
+}
+
+.section-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #F0C4D4;
+}
+
+/* 9. Info card (for docs pédagogiques) */
+.info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.info-card .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* 10. Tool card */
+.tool-card {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+}
+
+/* 11. Hero quick-access card */
+.hero-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+}
+
+/* 12. Activity row hover */
+.activity-row {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.activity-row:hover {
+    background: white;
+    box-shadow: 0 8px 30px rgba(233, 63, 133, 0.06);
+    transform: translateY(-1px);
+}
+
+/* 13. Quick-action links in espace-élève */
+a[class*="bg-mc-pink-bg"][class*="flex"][class*="items-center"][class*="gap-3"] {
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+a[class*="bg-mc-pink-bg"][class*="flex"][class*="items-center"][class*="gap-3"]:hover {
+    transform: translateX(4px);
+}

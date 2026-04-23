@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Caractéristiques — Bernard l'Hermite</title>
-  <meta name="description" content="Tout sur le matériel du robot Bernard l'Hermite — moteurs DC, capteur ultrasonique, capteurs IR, LEDs ZIP et BBC micro:bit."/>
+  <meta name="description" content="Tout sur le matériel du robot Bernard l'Hermite — moteurs DC, capteur ultrasonique, capteurs IR, et conception laser."/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -75,14 +75,15 @@
     <!-- Section Héro -->
     <section class="mb-24">
       <div class="flex flex-col items-start gap-4">
-        <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold px-3 py-1 bg-secondary/10 rounded-full border border-secondary/20 animate-fade-in animate-border-glow">
-          Kitronik :MOVE Motor + micro:bit
-        </span>
+        <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-surface-container-highest border border-outline-variant/20 animate-fade-in animate-border-glow">
+          <span class="w-2 h-2 rounded-full bg-secondary animate-blink"></span>
+          <span class="text-xs font-label uppercase tracking-widest text-secondary">Kitronik :MOVE Motor + micro:bit</span>
+        </div>
         <h1 class="font-headline text-6xl md:text-8xl font-black tracking-tighter text-gradient-primary leading-tight animate-slide-up">
           Spécifications Système
         </h1>
         <p class="max-w-2xl text-lg text-on-surface-variant font-light leading-relaxed animate-slide-up-delay">
-          Tout repose sur un <strong class="text-secondary">Kitronik :MOVE Motor</strong> combiné à un BBC micro:bit. Côté programmation, nous utilisons MakeCode.
+          Le robot utilise la base <strong class="text-secondary">Kitronik :MOVE Motor</strong> et la carte BBC micro:bit. On a tout programmé avec MakeCode.
         </p>
       </div>
     </section>
@@ -100,17 +101,17 @@
             </div>
             <h2 class="font-headline text-4xl font-bold mb-4 tracking-tight text-white">Détection d'Obstacles</h2>
             <p class="text-on-surface-variant max-w-md leading-relaxed">
-              Le capteur émet un signal sonore et mesure le temps que met l'écho à revenir — ce qui permet au robot de savoir si un obstacle se trouve devant lui. Il utilise les broches 13 (Trigger) et 14 (Echo) du micro:bit.
+              Le robot envoie un son et calcule quand l'écho revient. Comme ça, il voit les murs devant lui sans se cogner.
             </p>
           </div>
           <div class="mt-12 flex gap-4">
             <div class="px-4 py-2 bg-surface-container rounded-lg border border-white/5">
-              <span class="block font-label text-[10px] text-secondary/50 tracking-tighter uppercase">Broche Trigger</span>
-              <span class="font-headline font-bold text-xl text-primary">Pin 13</span>
+              <span class="block font-label text-[10px] text-secondary/50 tracking-tighter uppercase">Rôle</span>
+              <span class="font-headline font-bold text-xl text-primary">Émission</span>
             </div>
-            <div class="px-4 py-2 bg-surface-container rounded-lg border border-white/5">
-              <span class="block font-label text-[10px] text-secondary/50 tracking-tighter uppercase">Broche Echo</span>
-              <span class="font-headline font-bold text-xl text-primary">Pin 14</span>
+            <div class="px-4 py-3 bg-surface-container/50 border-t border-white/5 flex flex-col justify-center">
+              <span class="block font-label text-[10px] text-secondary/50 tracking-tighter uppercase">Rôle</span>
+              <span class="font-headline font-bold text-xl text-primary">Réception</span>
             </div>
             <div class="px-4 py-2 bg-surface-container rounded-lg border border-white/5">
               <span class="block font-label text-[10px] text-secondary/50 tracking-tighter uppercase">Type</span>
@@ -131,16 +132,16 @@
           <div>
             <h2 class="font-headline text-2xl font-bold mb-3 tracking-tight text-white">Suivi de Ligne IR</h2>
             <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
-              Sous le robot, deux capteurs infrarouges pointent vers le sol. Le droit est sur la broche 1, le gauche sur la broche 2. Grâce à eux, le robot peut suivre un parcours tracé au sol de manière autonome.
+              Deux capteurs sous le robot lisent la couleur du sol. S'il sort de la ligne noire, le programme coupe un moteur pour le remettre droit.
             </p>
             <div class="grid grid-cols-2 gap-2 mb-6">
               <div class="text-center py-2 bg-surface-container rounded-lg border border-white/5">
-                <span class="block text-[10px] font-label text-secondary/50 uppercase">Droite</span>
-                <span class="font-headline font-bold text-white">Pin 1</span>
+                <span class="block text-[10px] font-label text-secondary/50 uppercase">Capteur</span>
+                <span class="font-headline font-bold text-white">Droit</span>
               </div>
               <div class="text-center py-2 bg-surface-container rounded-lg border border-white/5">
-                <span class="block text-[10px] font-label text-secondary/50 uppercase">Gauche</span>
-                <span class="font-headline font-bold text-white">Pin 2</span>
+                <span class="block text-[10px] font-label text-secondary/50 uppercase">Capteur</span>
+                <span class="font-headline font-bold text-white">Gauche</span>
               </div>
             </div>
             <div class="w-full h-[1px] bg-gradient-to-r from-secondary/50 to-transparent mb-4"></div>
@@ -156,10 +157,10 @@
           <div class="flex items-center gap-3 mb-6">
             <span class="material-symbols-outlined text-secondary text-3xl icon-bounce">settings_motion_mode</span>
           </div>
-          <h2 class="font-headline text-2xl font-bold mb-3 tracking-tight text-white">Double Moteur DC</h2>
-          <p class="text-sm text-on-surface-variant leading-relaxed">
-            Deux moteurs DC font avancer, reculer et tourner le robot. Le micro:bit communique avec eux par le bus I2C (broches 19 et 20).
-          </p>
+            <h2 class="font-headline text-2xl font-bold mb-3 tracking-tight text-white">Moteurs & Châssis</h2>
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              Les deux moteurs font avancer, reculer et tourner le robot. La carte envoie les commandes de vitesse directement aux moteurs.
+            </p>
         </div>
         <div class="mt-8 relative h-24 w-full flex items-center justify-center">
           <div class="absolute w-full h-full border-t border-b border-white/5 flex flex-col justify-between py-2">
@@ -172,44 +173,17 @@
         <div class="stat-bar mt-4"><div class="stat-bar-fill" style="--fill-width: 90%;"></div></div>
       </div>
 
-      <!-- LEDs + Buzzer + Micro:bit -->
+      <!-- Coquille Laser -->
       <div class="reveal md:col-span-8 group glass-card card-hover rounded-xl p-8 relative neon-glow-secondary overflow-hidden">
-        <div class="grid md:grid-cols-3 gap-8 relative z-10">
-          <!-- LEDs ZIP -->
+        <div class="grid md:grid-cols-1 gap-8 relative z-10">
           <div class="flex flex-col">
-            <span class="material-symbols-outlined text-secondary text-3xl mb-4 icon-bounce" style="font-variation-settings:'FILL' 1;">lightbulb</span>
-            <h3 class="font-headline font-bold text-lg text-white mb-2">4× LEDs ZIP</h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed mb-3">
-              Le robot dispose de 4 LEDs RGB (broche 8) qui changent de couleur pour signaler son état ou l'action en cours.
+            <span class="material-symbols-outlined text-secondary text-3xl mb-4 icon-bounce" style="font-variation-settings:'FILL' 1;">architecture</span>
+            <h2 class="font-headline text-2xl font-bold mb-3 tracking-tight text-white">Coquille & Pinces Laser</h2>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
+              On a découpé la coquille et les pinces au laser. Le châssis et les pinces sont peints en orange, avec la coquille beige par-dessus pour imiter le crabe.
             </p>
-            <div class="flex gap-2 mt-auto">
-              <div class="w-4 h-4 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.5)]"></div>
-              <div class="w-4 h-4 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]" style="animation-delay:0.3s"></div>
-              <div class="w-4 h-4 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.5)]" style="animation-delay:0.6s"></div>
-              <div class="w-4 h-4 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(67,226,210,0.5)]" style="animation-delay:0.9s"></div>
-            </div>
-          </div>
-          <!-- Buzzer Piezo -->
-          <div class="flex flex-col">
-            <span class="material-symbols-outlined text-secondary text-3xl mb-4 icon-bounce" style="font-variation-settings:'FILL' 1;">volume_up</span>
-            <h3 class="font-headline font-bold text-lg text-white mb-2">Buzzer Piézo</h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed mb-3">
-              Un buzzer piézoélectrique (broche 0) émet des bips pour prévenir d'un obstacle ou marquer le temps pendant les épreuves.
-            </p>
-            <div class="px-3 py-1 bg-surface-container rounded-lg border border-white/5 inline-block mt-auto w-fit">
-              <span class="font-mono text-xs text-secondary">Pin 0 → Son</span>
-            </div>
-          </div>
-          <!-- Servos -->
-          <div class="flex flex-col">
-            <span class="material-symbols-outlined text-secondary text-3xl mb-4 icon-bounce" style="font-variation-settings:'FILL' 1;">change_circle</span>
-            <h3 class="font-headline font-bold text-lg text-white mb-2">Ports Servo</h3>
-            <p class="text-sm text-on-surface-variant leading-relaxed mb-3">
-              Deux ports servo (broches 15 et 16) permettent de brancher les servomoteurs qui actionnent les pinces.
-            </p>
-            <div class="flex gap-2 mt-auto">
-              <span class="px-2 py-1 bg-surface-container rounded text-[10px] font-mono text-secondary border border-white/5">Pin 15</span>
-              <span class="px-2 py-1 bg-surface-container rounded text-[10px] font-mono text-secondary border border-white/5">Pin 16</span>
+            <div class="px-3 py-1 bg-surface-container rounded-lg border border-white/5 inline-block self-start">
+              <span class="font-mono text-xs text-secondary">Sans vis ni servomoteurs</span>
             </div>
           </div>
         </div>
@@ -242,23 +216,18 @@
             </div>
             <div class="flex justify-between items-center py-3 border-b border-white/5">
               <span class="text-on-surface-variant text-sm">Capteur Distance</span>
-              <span class="text-secondary font-mono text-sm font-bold">Ultrasonique (Pin 13/14)</span>
+              <span class="text-secondary font-mono text-sm font-bold">Capteur Ultrasonique</span>
             </div>
             <div class="flex justify-between items-center py-3 border-b border-white/5">
               <span class="text-on-surface-variant text-sm">Capteurs Ligne</span>
-              <span class="text-secondary font-mono text-sm font-bold">2× IR (Pin 1/2)</span>
+              <span class="text-secondary font-mono text-sm font-bold">2× Capteurs IR</span>
             </div>
+
+
+
             <div class="flex justify-between items-center py-3 border-b border-white/5">
-              <span class="text-on-surface-variant text-sm">LEDs</span>
-              <span class="text-secondary font-mono text-sm font-bold">4× ZIP RGB (Pin 8)</span>
-            </div>
-            <div class="flex justify-between items-center py-3 border-b border-white/5">
-              <span class="text-on-surface-variant text-sm">Audio</span>
-              <span class="text-secondary font-mono text-sm font-bold">Buzzer piézo (Pin 0)</span>
-            </div>
-            <div class="flex justify-between items-center py-3 border-b border-white/5">
-              <span class="text-on-surface-variant text-sm">Servos</span>
-              <span class="text-secondary font-mono text-sm font-bold">2 ports (Pin 15/16)</span>
+              <span class="text-on-surface-variant text-sm">Communication</span>
+              <span class="text-secondary font-mono text-sm font-bold">Interface I2C</span>
             </div>
             <div class="flex justify-between items-center py-3 border-b border-white/5">
               <span class="text-on-surface-variant text-sm">Alimentation</span>
@@ -277,34 +246,43 @@
       </div>
     </section>
 
-    <!-- Section Mécanique -->
+
+    <!-- Le Look du Robot -->
     <section class="mt-20 mb-20">
       <div class="reveal text-center mb-16">
-        <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold">Conception Mécanique</span>
-        <h2 class="font-headline font-black text-4xl md:text-5xl text-white mt-4 tracking-tighter">Carrosserie & Outils</h2>
-        <p class="text-on-surface-variant mt-4 max-w-xl mx-auto">Voici les pièces que nous avons conçues et ajoutées au robot : carrosserie et pinces.</p>
+        <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold">Le Look du Robot</span>
+        <h2 class="font-headline font-black text-4xl md:text-5xl text-white mt-4 tracking-tighter">Coquille, Pinces & Yeux</h2>
+        <p class="text-on-surface-variant mt-4 max-w-xl mx-auto">On a ajouté une coquille, des pinces et des yeux pour qu'il ressemble à un vrai bernard-l'hermite.</p>
         <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-6"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger">
         <div class="reveal glass-card card-hover rounded-2xl p-8 group neon-glow-secondary">
-          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce" style="font-variation-settings: 'FILL' 1;">directions_car</span>
-          <h3 class="font-headline font-bold text-xl text-white mb-3">Carrosserie</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed">La carrosserie a été gravée directement sur le châssis Kitronik. Ensuite, nous avons modélisé et imprimé en PLA une coquille ainsi que des pinces, montées dessus.</p>
+          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce" style="font-variation-settings: 'FILL' 1;">shield</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Coquille</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">La coquille beige est fixée sur le châssis. Elle couvre l'électronique et lui donne un super look.</p>
           <div class="mt-4 px-3 py-1 bg-surface-container rounded-lg border border-white/5 inline-block">
-            <span class="font-mono text-xs text-secondary">Châssis gravé + Coquille & Pinces en PLA</span>
+            <span class="font-mono text-xs text-secondary">Découpe laser / Beige</span>
           </div>
           <div class="stat-bar mt-4"><div class="stat-bar-fill" style="--fill-width: 80%;"></div></div>
         </div>
         <div class="reveal glass-card card-hover rounded-2xl p-8 group neon-glow-secondary">
           <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce" style="font-variation-settings: 'FILL' 1;">pinch</span>
-          <h3 class="font-headline font-bold text-xl text-white mb-3">Pinces</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed">À l'avant, deux pinces imprimées en PLA permettent au robot de saisir des objets lors des épreuves. Elles sont actionnées par les servomoteurs (Pins 15 et 16).</p>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Pinces Fixes</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Il y a deux pinces à l'avant du robot. Elles servent à attraper et pousser les blocs sur le parcours.</p>
           <div class="mt-4 px-3 py-1 bg-surface-container rounded-lg border border-white/5 inline-block">
-            <span class="font-mono text-xs text-secondary">Servos : Pin 15 & Pin 16 / PLA</span>
+            <span class="font-mono text-xs text-secondary">Forme fixe / Découpe laser</span>
           </div>
           <div class="stat-bar mt-4"><div class="stat-bar-fill" style="--fill-width: 75%;"></div></div>
         </div>
-
+        <div class="reveal glass-card card-hover rounded-2xl p-8 group neon-glow-secondary">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-6 block icon-bounce" style="font-variation-settings: 'FILL' 1;">visibility</span>
+          <h3 class="font-headline font-bold text-xl text-white mb-3">Yeux du Robot</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">On a monté des petits yeux à l'avant pour lui donner vie. Avec sa coquille beige sur le châssis orange, c'est un vrai bernard-l'hermite.</p>
+          <div class="mt-4 px-3 py-1 bg-surface-container rounded-lg border border-white/5 inline-block">
+            <span class="font-mono text-xs text-secondary">Design animal / Yeux</span>
+          </div>
+          <div class="stat-bar mt-4"><div class="stat-bar-fill" style="--fill-width: 90%;"></div></div>
+        </div>
       </div>
     </section>
 
@@ -338,7 +316,9 @@
     <div class="reveal flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-7xl mx-auto gap-8">
       <div class="font-headline font-bold text-white text-lg">Bernard l'hermite</div>
       <p class="font-body text-sm text-white/50 text-center md:text-left">© 2026 Projet Robotique Bernard l'hermite — Kitronik :MOVE Motor + BBC micro:bit | Classe de 3ème</p>
-      <p class="font-body text-[10px] text-white/30 text-center md:text-left mt-1">Images générées par IA. Kitronik™ Kitronik Ltd. BBC micro:bit™ BBC.</p>
+      <p class="font-body text-[10px] text-white/30 text-center md:text-left mt-1">
+        Kitronik est une marque déposée de Kitronik Ltd. BBC micro:bit est une marque déposée de la BBC.
+      </p>
       <div class="flex gap-8 font-body text-sm">
         <a class="text-white/50 hover:text-[#43e2d2] transition-colors" href="index.html">Accueil</a>
         <a class="text-white/50 hover:text-[#43e2d2] transition-colors" href="innovation.html">Innovation</a>

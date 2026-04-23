@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-high": "#ece7e9",
+                        "outline": "#8e6f74",
+                        "inverse-primary": "#ffb2bf",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#f2b6cb",
+                        "on-tertiary-container": "#dcffdd",
+                        "tertiary": "#006630",
+                        "secondary-fixed": "#ffd9e4",
+                        "tertiary-fixed-dim": "#73dc8e",
+                        "surface-container-highest": "#e7e1e3",
+                        "surface-container-low": "#f8f2f4",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#330f1f",
+                        "on-tertiary-fixed": "#00210b",
+                        "on-secondary-container": "#7b4c5e",
+                        "on-primary-fixed-variant": "#90003b",
+                        "on-primary-container": "#fff2f3",
+                        "error-container": "#ffdad6",
+                        "surface": "#fef8fa",
+                        "on-background": "#1d1b1d",
+                        "primary-fixed-dim": "#ffb2bf",
+                        "primary-fixed": "#ffd9de",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1d1b1d",
+                        "inverse-on-surface": "#f5eff1",
+                        "tertiary-container": "#00823f",
+                        "surface-tint": "#bc004f",
+                        "surface-container": "#f2ecee",
+                        "on-primary-fixed": "#3f0016",
+                        "on-secondary-fixed-variant": "#65394b",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#5a4044",
+                        "surface-bright": "#fef8fa",
+                        "inverse-surface": "#323031",
+                        "on-tertiary-fixed-variant": "#005226",
+                        "primary-container": "#d81b60",
+                        "secondary": "#805062",
+                        "secondary-container": "#fec1d6",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#8ff9a8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e7e1e3",
+                        "outline-variant": "#e3bdc3",
+                        "surface-dim": "#ded9db",
+                        "on-primary": "#ffffff",
+                        "background": "#fef8fa",
+                        "primary": "#b0004a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "josefin": ["Josefin Sans", "sans-serif"],
+                        "headline": ["Josefin Sans", "sans-serif"],
+                        "body": ["Josefin Sans", "sans-serif"],
+                        "label": ["Josefin Sans", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: #fef8fa;
+            color: #1d1b1d;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl shadow-[0_40px_-10px_rgba(176,0,74,0.06)] h-20">
+<div class="max-w-[1440px] mx-auto flex justify-between items-center px-8 h-full">
+<div class="text-xl font-bold tracking-tight text-[#b0004a] dark:text-[#d81b60]">
+                The Academic Atelier
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-josefin text-sm tracking-widest uppercase text-zinc-600 dark:text-zinc-400 hover:text-[#b0004a] pb-2 transition-all" href="#">Lessons</a>
+<a class="font-josefin text-sm tracking-widest uppercase text-zinc-600 dark:text-zinc-400 hover:text-[#b0004a] pb-2 transition-all" href="#">Exercises</a>
+<a class="font-josefin text-sm tracking-widest uppercase text-zinc-600 dark:text-zinc-400 hover:text-[#b0004a] pb-2 transition-all" href="#">Categories</a>
+<a class="font-josefin text-sm tracking-widest uppercase text-zinc-600 dark:text-zinc-400 hover:text-[#b0004a] pb-2 transition-all" href="#">Favorites</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="font-josefin text-sm tracking-widest uppercase text-zinc-600 hover:opacity-80 transition-opacity active:scale-95 duration-200">Sign In</button>
+<button class="px-6 py-2 rounded-full bg-gradient-to-br from-[#b0004a] to-[#d81b60] text-white font-josefin text-sm tracking-widest uppercase hover:opacity-80 transition-opacity active:scale-95 duration-200 shadow-sm">Join Now</button>
+</div>
+</div>
+</header>
+<main class="mt-20 flex-grow">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 px-8 overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-10">
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary-container rounded-full blur-[120px]"></div>
+</div>
+<div class="relative z-10 max-w-[1200px] mx-auto text-center">
+<h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-on-surface">
+                    Curating Mathematical <span class="text-primary italic">Excellence</span>
+</h1>
+<p class="max-w-2xl mx-auto text-lg md:text-xl text-on-surface-variant mb-12 leading-relaxed">
+                    Welcome to MathConsult Open. Explore a library where complex theories meet elegant design. Your journey into the art of logic begins here.
+                </p>
+<!-- Flushed Large Search Bar -->
+<div class="max-w-3xl mx-auto group">
+<div class="relative flex items-center bg-surface-container-low rounded-xl px-6 py-4 transition-all duration-300 focus-within:bg-surface-container-high border-b-2 border-outline-variant/20">
+<span class="material-symbols-outlined text-primary mr-4" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-xl font-josefin placeholder:text-outline/50" placeholder="Search proofs, theorems, or categories..." type="text"/>
+<button class="ml-4 px-6 py-2 bg-primary text-white rounded-full font-josefin text-sm tracking-widest uppercase active:scale-95 transition-transform">Explore</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Grid -->
+<div class="max-w-[1200px] mx-auto px-8 pb-24 space-y-32">
+<!-- Popular Topics (Icon Chips) -->
+<section>
+<div class="flex items-end justify-between mb-8">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Popular Disciplines</h2>
+<a class="text-primary font-josefin text-sm tracking-widest uppercase border-b border-primary/20 pb-1 hover:border-primary transition-all" href="#">View All Atlas</a>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="group flex items-center gap-3 px-6 py-3 bg-surface-container-lowest rounded-full hover:bg-secondary-container transition-colors shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="geometry">shapes</span>
+<span class="font-josefin font-medium">Sacred Geometry</span>
+</button>
+<button class="group flex items-center gap-3 px-6 py-3 bg-surface-container-lowest rounded-full hover:bg-secondary-container transition-colors shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="functions">functions</span>
+<span class="font-josefin font-medium">Complex Analysis</span>
+</button>
+<button class="group flex items-center gap-3 px-6 py-3 bg-surface-container-lowest rounded-full hover:bg-secondary-container transition-colors shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="matrix">grid_view</span>
+<span class="font-josefin font-medium">Linear Algebra</span>
+</button>
+<button class="group flex items-center gap-3 px-6 py-3 bg-surface-container-lowest rounded-full hover:bg-secondary-container transition-colors shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="variable">calculate</span>
+<span class="font-josefin font-medium">Number Theory</span>
+</button>
+<button class="group flex items-center gap-3 px-6 py-3 bg-surface-container-lowest rounded-full hover:bg-secondary-container transition-colors shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="analytics">analytics</span>
+<span class="font-josefin font-medium">Probability Art</span>
+</button>
+</div>
+</section>
+<!-- Recently Viewed (Bento Style Cards) -->
+<section>
+<div class="mb-12">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Continuum</h2>
+<p class="text-on-surface-variant font-josefin uppercase tracking-widest text-xs mt-2">Pick up where your inquiry left off</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Featured Card Large -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-xl p-8 relative overflow-hidden group shadow-[0_40px_-10px_rgba(176,0,74,0.06)]">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity">
+<img alt="" class="w-full h-full object-cover" data-alt="abstract mathematical visualization of fractal patterns and geometric lines in soft pink and white tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDurr-H6BDsID39elPoWKYI4SlOkbz_l_KkVUjdC7bYzX6VTOak-91kztyTLNhyB9Tmb2Hp-bAwvvbfDXDiRNQ2UgI3Me_FLRwFIIUS5Ct2HUiHLrAtIhyVOxQjmoBP7OdICHEEVECR291m7JDGTkVyMY2611LzpRDOMle1TjUqqVo2yqCOFfa93g9AnwYw_in9T6TbmXVA5AD-tiRcnSDyCPUm4rcULPI_Hra9DicWIp8o01BRqxi3gVFz6bsLejAHWwNaRU8zh24"/>
+</div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<span class="inline-block px-3 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full text-xs font-bold uppercase tracking-wider mb-6">Advanced Proof</span>
+<h3 class="text-4xl font-bold mb-4 max-w-md">The Riemann Hypothesis: An Aesthetic Overview</h3>
+<p class="text-on-surface-variant mb-8 max-w-sm">Exploring the distribution of prime numbers through the lens of harmonic functions.</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 bg-primary text-white rounded-full font-josefin text-sm uppercase tracking-widest active:scale-95 transition-transform">Resume Study</button>
+<span class="text-xs text-outline font-josefin uppercase tracking-widest">Last viewed 2h ago</span>
+</div>
+</div>
+</div>
+<!-- Smaller Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between shadow-[0_40px_-10px_rgba(176,0,74,0.06)] hover:bg-surface-container-high transition-colors">
+<div>
+<span class="inline-block px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-wider mb-6">Exercise</span>
+<h3 class="text-2xl font-bold mb-4">Topology &amp; Fluidity</h3>
+<p class="text-on-surface-variant text-sm">Visualizing the transformation of continuous shapes without tearing.</p>
+</div>
+<div class="mt-8">
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-2/3"></div>
+</div>
+<p class="text-[10px] mt-2 text-outline uppercase tracking-widest">65% Mastery</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Suggested Resources (Asymmetric Layout) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-5 space-y-8">
+<h2 class="text-4xl font-bold tracking-tight text-on-surface leading-tight">Curated Resources for your <span class="text-primary">Mastery</span></h2>
+<p class="text-on-surface-variant leading-relaxed">Based on your recent activity in Mathematical Proofs, our curators suggest these foundational artifacts.</p>
+<div class="space-y-6">
+<div class="group flex items-center gap-6 p-4 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-12 h-12 flex-shrink-0 bg-primary-fixed rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="book">menu_book</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">The Elements of Euclid</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">High-Resolution Digital Scan</p>
+</div>
+</div>
+<div class="group flex items-center gap-6 p-4 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-12 h-12 flex-shrink-0 bg-secondary-fixed rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="video">play_circle</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Symmetry in Nature</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">Masterclass Video Series</p>
+</div>
+</div>
+<div class="group flex items-center gap-6 p-4 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-12 h-12 flex-shrink-0 bg-tertiary-fixed rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="group">hub</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Collaborative Peer Reviews</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">Active Community Channel</p>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-7 relative h-[500px]">
+<div class="absolute inset-0 bg-surface-container-low rounded-[2rem] -rotate-2 z-0"></div>
+<div class="absolute inset-0 bg-white rounded-[2rem] rotate-1 shadow-[0_40px_-10px_rgba(176,0,74,0.06)] overflow-hidden z-10 flex flex-col">
+<div class="p-8 border-b border-surface-container-high">
+<div class="flex items-center justify-between">
+<h4 class="font-bold uppercase tracking-widest text-xs text-primary">Featured Theorem</h4>
+<span class="material-symbols-outlined text-outline/30" data-icon="more_horiz">more_horiz</span>
+</div>
+</div>
+<div class="flex-grow p-12 flex flex-col justify-center">
+<div class="text-center space-y-8">
+<div class="bg-secondary-fixed/30 p-8 rounded-xl inline-block">
+<code class="text-3xl text-on-surface font-josefin leading-relaxed">
+                                        e<sup>iπ</sup> + 1 = 0
+                                    </code>
+</div>
+<p class="text-on-surface-variant font-josefin italic">"The most beautiful equation in mathematics."</p>
+<div class="pt-8">
+<button class="px-8 py-3 bg-gradient-to-br from-[#b0004a] to-[#d81b60] text-white rounded-full font-josefin text-sm uppercase tracking-widest shadow-lg">Deconstruct Theory</button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1/3 opacity-20 pointer-events-none">
+<img alt="" class="w-full h-full object-cover" data-alt="close up of mathematical equations written on a blackboard in a soft sunlight studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnkDsQoeavkrWoaa4_zVYKU_BNFjsX1NX0kGv6lZBR5yNeVFvqwlLim5ZR6I86Js3shxLR8P93EB5LKlS7fTPjYZt7WhcspAyLvb-Lrc12uftxQDV8Z8xl6ijCkOxofnv5guY3CDLRsVQDl8Mb9ygKI_ccMSx1LbWY_3_EqEP3y5c8nn1YYhuTUkJ8lWXUZgANyrJNaxCY_wE11l_jaon8B17BaTbNzEERtpRSFdFnnmloMlKMLNvBos-44Tk2u8HkDUvTWBpUz0E"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-zinc-50 dark:bg-zinc-900 w-full py-16 px-8 mt-auto">
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
+<div class="space-y-4">
+<div class="text-lg font-semibold text-[#b0004a]">The Academic Atelier</div>
+<p class="font-josefin text-sm tracking-normal text-zinc-500 dark:text-zinc-400">© 2024 The Academic Atelier. Mathematics as Art.</p>
+</div>
+<div class="flex flex-wrap justify-center md:justify-end gap-6">
+<a class="font-josefin text-sm tracking-normal text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors focus:ring-2 focus:ring-[#b0004a]" href="#">Mathematical Proofs</a>
+<a class="font-josefin text-sm tracking-normal text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors focus:ring-2 focus:ring-[#b0004a]" href="#">Research Papers</a>
+<a class="font-josefin text-sm tracking-normal text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors focus:ring-2 focus:ring-[#b0004a]" href="#">Community Forum</a>
+<a class="font-josefin text-sm tracking-normal text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors focus:ring-2 focus:ring-[#b0004a]" href="#">Privacy Policy</a>
+<a class="font-josefin text-sm tracking-normal text-zinc-500 dark:text-zinc-400 hover:text-[#d81b60] transition-colors focus:ring-2 focus:ring-[#b0004a]" href="#">Open Source</a>
+</div>
+</div>
+</footer>
+</body></html>

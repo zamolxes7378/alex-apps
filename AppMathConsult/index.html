@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Math Consult — Plateforme d'apprentissage en mathématiques</title>
+    <meta name="description"
+        content="Plateforme pédagogique de soutien scolaire en mathématiques pour collège et lycée. Cours, exercices, méthodes et fiches de synthèse." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "mc-primary": "#E93F85",
+                        "mc-primary-dark": "#C2185B",
+                        "mc-ebony": "#240814",
+                        "mc-body": "#333333",
+                        "mc-pink-light": "#FBD9E7",
+                        "mc-pink-bg": "#FDF3F6",
+                        "mc-surface": "#FFFFFF",
+                        "mc-yellow": "#FBD600",
+                        "mc-border": "#F0C4D4",
+                    },
+                    fontFamily: {
+                        "josefin": ["Josefin Sans", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="modern.css" />
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        p,
+        .text-body {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .triangle-clip {
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
+
+        .triangle-bg {
+            position: absolute;
+            width: 500px;
+            height: 440px;
+            background: linear-gradient(135deg, #E93F85 0%, #FBD9E7 100%);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            opacity: 0.08;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #E93F85;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #E93F85;
+        }
+
+        .btn-primary,
+        a.btn-primary,
+        button.btn-primary {
+            padding: 15px 28px;
+            background: #E93F85 !important;
+            background-color: #E93F85 !important;
+            background-image: none !important;
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(233, 63, 133, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover,
+        a.btn-primary:hover {
+            box-shadow: 0 6px 24px rgba(233, 63, 133, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 14px 28px;
+            border: 2px solid #E93F85;
+            color: #E93F85;
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FBD9E7;
+        }
+
+        .pillar-card {
+            background: white;
+            padding: 40px 32px;
+            transition: all 0.3s ease;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .level-card {
+            background: white;
+            padding: 48px 40px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #E93F85;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+
+        .level-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .level-card:hover {
+            box-shadow: 0 8px 30px rgba(233, 63, 133, 0.08);
+        }
+
+        .section-divider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #E93F85 0%, #FBD9E7 100%);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            opacity: 0.15;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-mc-body min-h-screen flex flex-col">
+
+    <!-- ============================== -->
+    <!-- NAVIGATION                      -->
+    <!-- ============================== -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b border-mc-border/30">
+        <div class="max-w-[1140px] mx-auto flex justify-between items-center px-6 h-20">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center group">
+                <img src="logo-math-consult.webp" alt="Math Consult"
+                    class="h-14 group-hover:opacity-70 transition-opacity" />
+            </a>
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="nav-link active font-josefin text-sm font-semibold text-mc-ebony">Accueil</a>
+                <a href="programme.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Programme</a>
+                <a href="exercices.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Exercices</a>
+                <a href="ressources.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Ressources</a>
+                <a href="espace-eleve.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Mon
+                    Espace</a>
+            </div>
+            <!-- Auth -->
+            <div id="nav-auth">
+                <a href="connexion.html" class="btn-primary hidden lg:inline-block">Se connecter</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow mt-20">
+
+        <!-- ============================== -->
+        <!-- SECTION HÉRO                    -->
+        <!-- ============================== -->
+        <section class="relative overflow-hidden"
+            style="padding: 100px 0 120px; background: linear-gradient(180deg, #FDF3F6 0%, #FDF3F6 50%, #FFFFFF 100%);">
+            <div class="triangle-bg" style="top: -100px; right: -100px; transform: rotate(15deg);"></div>
+            <div class="triangle-bg"
+                style="bottom: -80px; left: -60px; width: 300px; height: 260px; transform: rotate(-10deg); opacity: 0.05;">
+            </div>
+
+            <div class="max-w-[1140px] mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h1 class="text-5xl lg:text-6xl font-bold text-mc-ebony leading-tight mb-8">
+                            La base de <span class="text-mc-primary">données</span> mathématiques
+                        </h1>
+                        <p class="text-lg text-mc-body leading-relaxed mb-10 max-w-lg">
+                            Accédez à l'ensemble des fiches de cours, exercices, devoirs et fiches de synthèse en
+                            mathématiques et sciences physiques. Organisés par niveau et par chapitre, du collège au
+                            lycée.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="programme.html" class="btn-primary inline-block">Accéder aux cours</a>
+                            <a href="exercices.html" class="btn-secondary inline-block">Voir les exercices</a>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex flex-col justify-center items-center gap-6">
+                        <!-- Quick access cards -->
+                        <div class="grid grid-cols-2 gap-5 w-full max-w-md">
+                            <a href="programme.html" class="hero-card group">
+                                <div class="w-12 h-12 bg-mc-pink-light flex items-center justify-center mb-4"
+                                    style="border-radius:12px;">
+                                    <span class="material-symbols-outlined text-mc-primary text-2xl">menu_book</span>
+                                </div>
+                                <span
+                                    class="text-base font-bold text-mc-ebony block mb-1 group-hover:text-mc-primary transition-colors">Cours</span>
+                                <span class="text-xs text-mc-body/50 block leading-relaxed">Fiches Bristol par
+                                    chapitre</span>
+                                <span
+                                    class="material-symbols-outlined text-mc-border/40 text-lg absolute top-5 right-5 group-hover:text-mc-primary/50 transition-colors">arrow_forward</span>
+                            </a>
+                            <a href="exercices.html" class="hero-card group">
+                                <div class="w-12 h-12 bg-mc-pink-light flex items-center justify-center mb-4"
+                                    style="border-radius:12px;">
+                                    <span class="material-symbols-outlined text-mc-primary text-2xl">edit_note</span>
+                                </div>
+                                <span
+                                    class="text-base font-bold text-mc-ebony block mb-1 group-hover:text-mc-primary transition-colors">Exercices</span>
+                                <span class="text-xs text-mc-body/50 block leading-relaxed">Fiches progressives</span>
+                                <span
+                                    class="material-symbols-outlined text-mc-border/40 text-lg absolute top-5 right-5 group-hover:text-mc-primary/50 transition-colors">arrow_forward</span>
+                            </a>
+                            <a href="ressources.html" class="hero-card group">
+                                <div class="w-12 h-12 bg-mc-pink-light flex items-center justify-center mb-4"
+                                    style="border-radius:12px;">
+                                    <span class="material-symbols-outlined text-mc-primary text-2xl">description</span>
+                                </div>
+                                <span
+                                    class="text-base font-bold text-mc-ebony block mb-1 group-hover:text-mc-primary transition-colors">Méthodes</span>
+                                <span class="text-xs text-mc-body/50 block leading-relaxed">RAIDAAC et outils</span>
+                                <span
+                                    class="material-symbols-outlined text-mc-border/40 text-lg absolute top-5 right-5 group-hover:text-mc-primary/50 transition-colors">arrow_forward</span>
+                            </a>
+                            <a href="ressources.html" class="hero-card group">
+                                <div class="w-12 h-12 bg-mc-pink-light flex items-center justify-center mb-4"
+                                    style="border-radius:12px;">
+                                    <span class="material-symbols-outlined text-mc-primary text-2xl">summarize</span>
+                                </div>
+                                <span
+                                    class="text-base font-bold text-mc-ebony block mb-1 group-hover:text-mc-primary transition-colors">Synthèses</span>
+                                <span class="text-xs text-mc-body/50 block leading-relaxed">Révisions et résumés</span>
+                                <span
+                                    class="material-symbols-outlined text-mc-border/40 text-lg absolute top-5 right-5 group-hover:text-mc-primary/50 transition-colors">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ============================== -->
+        <!-- SECTION : NIVEAUX               -->
+        <!-- ============================== -->
+        <section class="bg-white" style="padding: 72px 0;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center gap-2 bg-mc-pink-bg text-mc-primary text-xs font-bold uppercase px-5 py-2 mb-5"
+                        style="border-radius:9999px; letter-spacing:0.08em;">
+                        <span class="material-symbols-outlined text-sm">school</span>
+                        Niveaux disponibles
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-bold text-mc-ebony mb-4">
+                        Choisissez votre niveau
+                    </h2>
+                    <p class="text-lg text-mc-body max-w-xl mx-auto leading-relaxed"
+                        style="font-family:'Work Sans',sans-serif;">
+                        Des ressources adaptées à chaque étape, de la sixième à la terminale.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Collège -->
+                    <a href="programme.html#college" class="level-card group">
+                        <div class="flex items-start gap-6">
+                            <div class="w-14 h-14 flex items-center justify-center bg-mc-pink-bg flex-shrink-0"
+                                style="border-radius:12px;">
+                                <span class="material-symbols-outlined text-mc-primary text-3xl">school</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-2xl font-bold text-mc-ebony mb-2 group-hover:text-mc-primary transition-colors">
+                                    Collège</h3>
+                                <p class="text-mc-body mb-4 leading-relaxed"
+                                    style="font-family:'Work Sans',sans-serif;">De la 6ème à la 3ème — Construire les
+                                    fondations mathématiques solides pour le brevet.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-mc-pink-bg text-mc-primary text-xs font-semibold"
+                                        style="border-radius:6px;">6ème</span>
+                                    <span class="px-3 py-1 bg-mc-pink-bg text-mc-primary text-xs font-semibold"
+                                        style="border-radius:6px;">5ème</span>
+                                    <span class="px-3 py-1 bg-mc-pink-bg text-mc-primary text-xs font-semibold"
+                                        style="border-radius:6px;">4ème</span>
+                                    <span class="px-3 py-1 bg-mc-pink-bg text-mc-primary text-xs font-semibold"
+                                        style="border-radius:6px;">3ème</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Lycée -->
+                    <a href="programme.html#lycee" class="level-card group">
+                        <div class="flex items-start gap-6">
+                            <div class="w-14 h-14 flex items-center justify-center bg-mc-pink-bg flex-shrink-0"
+                                style="border-radius:12px;">
+                                <span class="material-symbols-outlined text-mc-primary text-3xl">history_edu</span>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-2xl font-bold text-mc-ebony mb-2 group-hover:text-mc-primary transition-colors">
+                                    Lycée</h3>
+                                <p class="text-mc-body mb-4 leading-relaxed"
+                                    style="font-family:'Work Sans',sans-serif;">De la seconde à la terminale —
+                                    Approfondir et exceller en mathématiques pour le baccalauréat.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-mc-pink-bg text-mc-primary text-xs font-semibold"
+                                        style="border-radius:6px;">Seconde</span>
+                                    <span class="px-3 py-1 bg-mc-pink-bg text-mc-primary text-xs font-semibold"
+                                        style="border-radius:6px;">Première Spé</span>
+                                    <span class="px-3 py-1 bg-mc-pink-bg text-mc-primary text-xs font-semibold"
+                                        style="border-radius:6px;">Terminale Spé</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- SECTION : NOS OUTILS           -->
+        <!-- ============================== -->
+        <section style="padding: 80px 0;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center gap-2 bg-mc-pink-bg text-mc-primary text-xs font-bold uppercase px-5 py-2 mb-5"
+                        style="border-radius:9999px; letter-spacing:0.08em;">
+                        <span class="material-symbols-outlined text-sm">build</span>
+                        Outils pédagogiques
+                    </div>
+                    <h2 class="text-4xl font-bold text-mc-ebony mb-4">Une méthode, une banque de données</h2>
+                    <p class="text-lg text-mc-body/70 max-w-xl mx-auto" style="font-family:'Work Sans',sans-serif;">Deux
+                        piliers au cœur de chaque séance Math Consult.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- RAIDAAC -->
+                    <div class="bg-mc-pink-bg p-10" style="border-radius:16px;">
+                        <div class="w-12 h-12 bg-mc-primary flex items-center justify-center mb-6"
+                            style="border-radius:12px;">
+                            <span class="material-symbols-outlined text-white text-2xl">psychology</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-mc-ebony mb-3">Méthode <span
+                                class="text-mc-primary">RAIDAAC</span></h3>
+                        <p class="text-mc-body/70 leading-relaxed mb-6" style="font-family:'Work Sans',sans-serif;">
+                            Une structure rédactionnelle rigoureuse enseignée à chaque élève :
+                            <strong>R</strong>eformulation, <strong>A</strong>nalyse, <strong>I</strong>ntroduction,
+                            <strong>D</strong>éveloppement, <strong>A</strong>rgumentation,
+                            <strong>A</strong>rticulation, <strong>C</strong>onclusion.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-semibold bg-white text-mc-primary px-3 py-1.5"
+                                style="border-radius:6px;">Rédaction</span>
+                            <span class="text-xs font-semibold bg-white text-mc-primary px-3 py-1.5"
+                                style="border-radius:6px;">Argumentation</span>
+                            <span class="text-xs font-semibold bg-white text-mc-primary px-3 py-1.5"
+                                style="border-radius:6px;">Rigueur</span>
+                        </div>
+                        <a href="programme.html#methode"
+                            class="inline-flex items-center gap-2 text-mc-primary font-bold text-sm hover:gap-3 transition-all">
+                            Voir la méthode complète <span
+                                class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    <!-- Banque de données -->
+                    <div class="bg-white p-10" style="border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.04);">
+                        <div class="w-12 h-12 bg-mc-pink-bg flex items-center justify-center mb-6"
+                            style="border-radius:12px;">
+                            <span class="material-symbols-outlined text-mc-primary text-2xl">auto_stories</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-mc-ebony mb-3">Banque de <span
+                                class="text-mc-primary">données</span></h3>
+                        <p class="text-mc-body/70 leading-relaxed mb-6" style="font-family:'Work Sans',sans-serif;">
+                            Des centaines de fiches Bristol (cours), exercices progressifs, devoirs surveillés et sujets
+                            d'examen — classés par niveau et par chapitre, du collège à la terminale.
+                        </p>
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="text-center bg-mc-pink-bg py-3" style="border-radius:10px;">
+                                <div class="text-2xl font-bold text-mc-primary">9</div>
+                                <div class="text-xs text-mc-body/50 mt-1">niveaux</div>
+                            </div>
+                            <div class="text-center bg-mc-pink-bg py-3" style="border-radius:10px;">
+                                <div class="text-2xl font-bold text-mc-primary">2</div>
+                                <div class="text-xs text-mc-body/50 mt-1">matières</div>
+                            </div>
+                            <div class="text-center bg-mc-pink-bg py-3" style="border-radius:10px;">
+                                <div class="text-2xl font-bold text-mc-primary">100+</div>
+                                <div class="text-xs text-mc-body/50 mt-1">ressources</div>
+                            </div>
+                        </div>
+                        <a href="ressources.html"
+                            class="inline-flex items-center gap-2 text-mc-primary font-bold text-sm hover:gap-3 transition-all">
+                            Explorer les ressources <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section style="padding: 100px 0;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-mc-primary font-bold text-sm uppercase mb-4">Comment ça marche</h3>
+                    <h2 class="text-4xl font-bold text-mc-ebony mb-6 leading-tight">
+                        Naviguer dans la banque de données
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-8 bg-white"
+                        style="border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.04); ">
+                        <div class="w-16 h-16 bg-mc-pink-light flex items-center justify-center mx-auto mb-6"
+                            style="border-radius:14px;">
+                            <span class="text-mc-primary font-bold text-2xl">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3">Choisir sa matière et son niveau</h3>
+                        <p class="text-mc-body/70 leading-relaxed">Sélectionnez Mathématiques ou Sciences Physiques,
+                            puis votre classe — de la 6ème à la Terminale, y compris Bac Pro.</p>
+                    </div>
+                    <div class="text-center p-8 bg-white"
+                        style="border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.04); ">
+                        <div class="w-16 h-16 bg-mc-pink-light flex items-center justify-center mx-auto mb-6"
+                            style="border-radius:14px;">
+                            <span class="text-mc-primary font-bold text-2xl">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3">Accéder aux fiches</h3>
+                        <p class="text-mc-body/70 leading-relaxed">Consultez la fiche Bristol (cours), puis
+                            entraînez-vous avec les fiches d'exercices numérotées, classées par chapitre.</p>
+                    </div>
+                    <div class="text-center p-8 bg-white"
+                        style="border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.04); ">
+                        <div class="w-16 h-16 bg-mc-pink-light flex items-center justify-center mx-auto mb-6"
+                            style="border-radius:14px;">
+                            <span class="text-mc-primary font-bold text-2xl">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3">S'évaluer et préparer les examens</h3>
+                        <p class="text-mc-body/70 leading-relaxed">Réalisez les devoirs maison et devoirs surveillés,
+                            puis révisez avec les sujets d'examen corrigés (Brevet, BAC).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- SECTION : CTA                   -->
+        <!-- ============================== -->
+        <section class="bg-mc-primary relative overflow-hidden" style="padding: 80px 0;">
+            <!-- Decorative triangles -->
+            <div class="absolute top-0 right-0 w-64 h-64 opacity-10"
+                style="clip-path: polygon(100% 0%, 0% 100%, 100% 100%); background: white;"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 opacity-10"
+                style="clip-path: polygon(0% 0%, 100% 100%, 0% 100%); background: white;"></div>
+
+            <div class="max-w-[1140px] mx-auto px-6 relative z-10 text-center">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+                    Commencez votre apprentissage maintenant
+                </h2>
+                <p class="text-white/80 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
+                    Fiches Bristol, exercices progressifs, devoirs maison et sujets d'examen corrigés — toute la banque
+                    de données Math Consult à portée de clic.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="programme.html"
+                        class="inline-block bg-white text-mc-primary px-7 py-3.5 font-semibold hover:bg-mc-pink-light transition-colors"
+                        style="border-radius:8px;">Parcourir le programme</a>
+                    <a href="exercices.html"
+                        class="btn-secondary inline-block !border-white !text-white hover:!bg-white/10"
+                        style="border-radius:8px;">S'entraîner</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================== -->
+    <!-- FOOTER                          -->
+    <!-- ============================== -->
+    <footer class="bg-white border-t border-mc-border/30" style="padding: 60px 0 40px;">
+        <div class="max-w-[1140px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1: Brand -->
+                <div>
+                    <a href="index.html" class="inline-block mb-4">
+                        <img src="logo-math-consult.webp" alt="Math Consult" class="h-12" />
+                    </a>
+                    <p class="text-sm text-mc-body/60 leading-relaxed">
+                        Banque de données pédagogique en mathématiques et sciences physiques — fiches de cours,
+                        exercices, devoirs et sujets d'examen du collège au lycée.
+                    </p>
+                </div>
+                <!-- Column 2: Plan de l'application -->
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Plan de l'application</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Accueil</a></li>
+                        <li><a href="programme.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Programme</a>
+                        </li>
+                        <li><a href="exercices.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Exercices</a>
+                        </li>
+                        <li><a href="ressources.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Ressources</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Column 3: Liens utiles -->
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Liens utiles</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Bilan
+                                pédagogique</a></li>
+                        <li><a href="https://mathconsult-niort.fr/stages/" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Nos
+                                stages</a></li>
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Être
+                                rappelé(e)</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Informations -->
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Informations</h4>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Tél :</strong> 05 49 28 03 08
+                        </li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Mail :</strong>
+                            contact@mathconsult-niort.fr</li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Lieu :</strong> 25b rue du 24
+                            février, 79000 Niort</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-mc-border/30 pt-6 text-center">
+                <p class="text-xs text-mc-body/40"><a href="https://mathconsult-niort.fr" target="_blank"
+                        class="hover:text-mc-primary transition-colors">Math Consult</a> 2026 | <a
+                        href="mentions-legales.html" class="hover:text-mc-primary transition-colors">Mentions légales et
+                        conformité</a> | Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+
+</body>
+
+</html>

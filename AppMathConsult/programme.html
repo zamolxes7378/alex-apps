@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Programme — Math Consult</title>
+    <meta name="description"
+        content="Programme de mathématiques par niveau : collège (6e-3e) et lycée (2nde-Tle). Cours structurés, exercices progressifs et fiches méthodologiques." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "mc-primary": "#E93F85",
+                        "mc-primary-dark": "#C2185B",
+                        "mc-ebony": "#240814",
+                        "mc-body": "#333333",
+                        "mc-pink-light": "#FBD9E7",
+                        "mc-pink-bg": "#FDF3F6",
+                        "mc-surface": "#FFFFFF",
+                        "mc-yellow": "#FBD600",
+                        "mc-border": "#F0C4D4",
+                    },
+                    fontFamily: {
+                        "josefin": ["Josefin Sans", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="modern.css" />
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        p,
+        .text-body {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #E93F85;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #E93F85;
+        }
+
+        .btn-primary,
+        a.btn-primary,
+        button.btn-primary {
+            padding: 15px 28px;
+            background: #E93F85 !important;
+            background-color: #E93F85 !important;
+            background-image: none !important;
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(233, 63, 133, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover,
+        a.btn-primary:hover {
+            box-shadow: 0 6px 24px rgba(233, 63, 133, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 14px 28px;
+            border: 2px solid #E93F85;
+            color: #E93F85;
+            background: transparent;
+            border-radius: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FBD9E7;
+        }
+
+        .grade-card {
+            background: white;
+            padding: 40px 36px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .grade-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #E93F85;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+
+        .grade-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .grade-card:hover {
+            box-shadow: 0 8px 30px rgba(233, 63, 133, 0.08);
+        }
+
+        .topic-chip {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #FDF3F6;
+            color: #333;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+        }
+
+        .topic-chip:hover {
+            background: #FBD9E7;
+            color: #E93F85;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #FBD9E7;
+            color: #E93F85;
+            padding: 8px 20px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-mc-body min-h-screen flex flex-col">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b border-mc-border/30">
+        <div class="max-w-[1140px] mx-auto flex justify-between items-center px-6 h-20">
+            <a href="index.html" class="flex items-center group">
+                <img src="logo-math-consult.webp" alt="Math Consult"
+                    class="h-14 group-hover:opacity-70 transition-opacity" />
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Accueil</a>
+                <a href="programme.html"
+                    class="nav-link active font-josefin text-sm font-semibold text-mc-ebony">Programme</a>
+                <a href="exercices.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Exercices</a>
+                <a href="ressources.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Ressources</a>
+                <a href="espace-eleve.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Mon
+                    Espace</a>
+            </div>
+            <div id="nav-auth">
+                <a href="connexion.html" class="btn-primary hidden lg:inline-block">Se connecter</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow mt-20">
+
+        <!-- HEADER -->
+        <header class="relative overflow-hidden"
+            style="padding: 80px 0 100px; background: linear-gradient(180deg, #FDF3F6 0%, #FDF3F6 40%, #FFFFFF 100%);">
+            <div class="absolute top-0 right-0 w-96 h-96 opacity-5"
+                style="clip-path: polygon(50% 0%, 100% 100%, 0% 100%); background: linear-gradient(135deg, #E93F85, #FBD9E7); transform: rotate(15deg) translate(100px, -100px);">
+            </div>
+            <div class="max-w-[1140px] mx-auto px-6 text-center relative z-10">
+                <div class="inline-flex items-center gap-2 bg-white/80 text-mc-primary text-xs font-bold uppercase px-5 py-2 mb-6"
+                    style="border-radius:9999px; letter-spacing:0.08em;">
+                    <span class="material-symbols-outlined text-sm">menu_book</span>
+                    Programme scolaire
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-bold text-mc-ebony mb-6">
+                    Le programme par <span class="text-mc-primary">niveau</span>
+                </h1>
+                <p class="text-lg text-mc-body max-w-2xl mx-auto leading-relaxed">
+                    Explorez l'ensemble de la banque de données Math Consult : fiches de cours, exercices, devoirs et
+                    sujets d'examen en mathématiques et sciences physiques, organisés par niveau et par chapitre.
+                </p>
+            </div>
+        </header>
+
+        <!-- COLLÈGE -->
+        <section id="college" class="bg-white" style="padding: 100px 0;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="section-badge">
+                        <span class="material-symbols-outlined text-lg">school</span>
+                        Collège
+                    </span>
+                    <div class="h-px flex-grow bg-mc-border/40"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 6ème -->
+                    <a href="exercices.html?level=6ème" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <h3 class="text-3xl font-bold text-mc-ebony">6ème</h3>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-4xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Poser les bases : nombres, géométrie et premières
+                            mesures.</p>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-mc-primary uppercase">Math</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="topic-chip">Nombres entiers et décimaux</span>
+                            <span class="topic-chip">Fractions</span>
+                            <span class="topic-chip">Géométrie plane</span>
+                            <span class="topic-chip">Symétrie axiale</span>
+                            <span class="topic-chip">Proportionnalité</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-[#1565C0] uppercase">Sciences Physiques</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Matière et mélanges</span>
+                            <span class="topic-chip">Mouvement et vitesse</span>
+                            <span class="topic-chip">Sources d'énergie</span>
+                        </div>
+                    </a>
+                    <!-- 5ème -->
+                    <a href="exercices.html?level=5ème" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <h3 class="text-3xl font-bold text-mc-ebony">5ème</h3>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-4xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Développer le raisonnement : nombres relatifs,
+                            calcul littéral et figures complexes.</p>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-mc-primary uppercase">Math</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="topic-chip">Nombres relatifs</span>
+                            <span class="topic-chip">Calcul littéral</span>
+                            <span class="topic-chip">Triangles et parallélisme</span>
+                            <span class="topic-chip">Symétrie centrale</span>
+                            <span class="topic-chip">Statistiques</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-[#1565C0] uppercase">Sciences Physiques</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Circuits électriques</span>
+                            <span class="topic-chip">Changements d'état</span>
+                            <span class="topic-chip">Lumière et couleurs</span>
+                        </div>
+                    </a>
+                    <!-- 4ème -->
+                    <a href="exercices.html?level=4ème" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <h3 class="text-3xl font-bold text-mc-ebony">4ème</h3>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-4xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Approfondir les outils : puissances, équations et
+                            géométrie du triangle.</p>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-mc-primary uppercase">Math</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="topic-chip">Puissances</span>
+                            <span class="topic-chip">Équations</span>
+                            <span class="topic-chip">Théorème de Pythagore</span>
+                            <span class="topic-chip">Cosinus</span>
+                            <span class="topic-chip">Proportionnalité avancée</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-[#1565C0] uppercase">Sciences Physiques</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Lois des circuits</span>
+                            <span class="topic-chip">Réactions chimiques</span>
+                            <span class="topic-chip">Optique géométrique</span>
+                        </div>
+                    </a>
+                    <!-- 3ème -->
+                    <a href="exercices.html?level=3ème" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <div>
+                                <h3 class="text-3xl font-bold text-mc-ebony">3ème</h3>
+                                <span class="text-mc-primary text-xs font-semibold">+ Sujets prépa Brevet</span>
+                            </div>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-4xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Préparer le brevet : 25+ chapitres, 30 missions
+                            SCRATCH et sujets d'examen corrigés.</p>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-mc-primary uppercase">Math — 25+ chapitres</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="topic-chip">Fonctions affines</span>
+                            <span class="topic-chip">Équations</span>
+                            <span class="topic-chip">Factorisation</span>
+                            <span class="topic-chip">Thalès</span>
+                            <span class="topic-chip">Trigonométrie</span>
+                            <span class="topic-chip">Probabilités</span>
+                            <span class="topic-chip">Statistiques</span>
+                            <span class="topic-chip">Systèmes</span>
+                            <span class="topic-chip">SCRATCH</span>
+                            <span class="topic-chip">Racines carrées</span>
+                            <span class="topic-chip">PGCD</span>
+                            <span class="topic-chip">Vecteurs</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-[#1565C0] uppercase">Sciences Physiques</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Électricité et puissance</span>
+                            <span class="topic-chip">Chimie et atomes</span>
+                            <span class="topic-chip">Mécanique et gravitation</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- LYCÉE -->
+        <section id="lycee" class="bg-mc-pink-light" style="padding: 100px 0;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="section-badge">
+                        <span class="material-symbols-outlined text-lg">history_edu</span>
+                        Lycée Général
+                    </span>
+                    <div class="h-px flex-grow bg-mc-border/40"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Seconde -->
+                    <a href="exercices.html?level=Seconde" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <h3 class="text-3xl font-bold text-mc-ebony">Seconde</h3>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-3xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Transition vers le lycée : fonctions de référence,
+                            vecteurs et statistiques.</p>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-mc-primary uppercase">Math</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="topic-chip">Fonctions de référence</span>
+                            <span class="topic-chip">Équations et inéquations</span>
+                            <span class="topic-chip">Vecteurs</span>
+                            <span class="topic-chip">Géométrie repérée</span>
+                            <span class="topic-chip">Statistiques</span>
+                            <span class="topic-chip">Algorithmique Python</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-[#1565C0] uppercase">Physique-Chimie</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Constitution de la matière</span>
+                            <span class="topic-chip">Mouvement et interactions</span>
+                            <span class="topic-chip">Ondes et signaux</span>
+                        </div>
+                    </a>
+                    <!-- Première Spé -->
+                    <a href="exercices.html?level=Première+Spé" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <div>
+                                <h3 class="text-3xl font-bold text-mc-ebony">Première</h3>
+                                <span class="text-mc-primary text-sm font-semibold">Spécialité + Complémentaire</span>
+                            </div>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-3xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Approfondir les fondamentaux : suites, dérivation
+                            et probabilités conditionnelles.</p>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-mc-primary uppercase">Math Spé</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="topic-chip">Suites numériques</span>
+                            <span class="topic-chip">Second degré</span>
+                            <span class="topic-chip">Dérivation</span>
+                            <span class="topic-chip">Fonction exponentielle</span>
+                            <span class="topic-chip">Probabilités conditionnelles</span>
+                            <span class="topic-chip">Géométrie dans l'espace</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-[#1565C0] uppercase">Physique-Chimie Spé</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Suivi de réactions</span>
+                            <span class="topic-chip">Forces et mouvements</span>
+                            <span class="topic-chip">Énergie et conversions</span>
+                        </div>
+                    </a>
+                    <!-- Terminale Spé -->
+                    <a href="exercices.html?level=Terminale+Spé" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <div>
+                                <h3 class="text-3xl font-bold text-mc-ebony">Terminale</h3>
+                                <span class="text-mc-primary text-sm font-semibold">Spécialité + Complémentaire</span>
+                            </div>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-3xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Maîtriser pour le bac : intégration, logarithme,
+                            lois de probabilité et Grand Oral.</p>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-mc-primary uppercase">Math Spé</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="topic-chip">Limites et continuité</span>
+                            <span class="topic-chip">Intégration</span>
+                            <span class="topic-chip">Logarithme népérien</span>
+                            <span class="topic-chip">Suites et récurrence</span>
+                            <span class="topic-chip">Loi binomiale / normale</span>
+                            <span class="topic-chip">Produit scalaire</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="text-xs font-bold text-[#1565C0] uppercase">Physique-Chimie Spé</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Acides et bases</span>
+                            <span class="topic-chip">Mécanique newtonienne</span>
+                            <span class="topic-chip">Ondes et particules</span>
+                            <span class="topic-chip">ECE (TP évalués)</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAC PRO & FILIÈRES TECHNOLOGIQUES -->
+        <section id="pro" style="padding: 100px 0;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="section-badge">
+                        <span class="material-symbols-outlined text-lg">construction</span>
+                        Filières Professionnelles &amp; Technologiques
+                    </span>
+                    <div class="h-px flex-grow bg-mc-border/40"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Bac Pro -->
+                    <a href="exercices.html?level=Bac+Pro" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <div>
+                                <h3 class="text-3xl font-bold text-mc-ebony">Bac Pro</h3>
+                                <span class="text-mc-primary text-sm font-semibold">CAP — BEP — Bac Pro</span>
+                            </div>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-3xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Accompagnement en mathématiques et sciences
+                            physiques pour les filières professionnelles, du CAP au Bac Pro.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Mathématiques</span>
+                            <span class="topic-chip">Sciences Physiques</span>
+                            <span class="topic-chip">Sujets BEP</span>
+                            <span class="topic-chip">Sujets Bac Pro</span>
+                        </div>
+                    </a>
+                    <!-- Terminale ST -->
+                    <a href="exercices.html?level=Terminale+Spé" class="grade-card block">
+                        <div class="flex items-start justify-between mb-6">
+                            <div>
+                                <h3 class="text-3xl font-bold text-mc-ebony">Terminale ST…</h3>
+                                <span class="text-mc-primary text-sm font-semibold">STI2D — STL — STMG</span>
+                            </div>
+                            <span class="material-symbols-outlined text-mc-primary/30 text-3xl">arrow_forward</span>
+                        </div>
+                        <p class="text-mc-body leading-relaxed mb-4">Fiches spécifiques pour les filières technologiques
+                            : mathématiques, physique et sciences de l'ingénieur.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="topic-chip">Math STI2D</span>
+                            <span class="topic-chip">Physique STI2D</span>
+                            <span class="topic-chip">Sciences Appliquées</span>
+                            <span class="topic-chip">Mécanique SI</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUTILS NUMÉRIQUES -->
+        <section class="bg-mc-pink-bg" style="padding: 80px 0;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="flex items-center gap-4 mb-12">
+                    <span class="section-badge">
+                        <span class="material-symbols-outlined text-lg">build</span>
+                        Outils
+                    </span>
+                    <div class="h-px flex-grow bg-mc-border/40"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-8 text-center"
+                        style="border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                        <span class="material-symbols-outlined text-mc-primary text-4xl mb-4 block">calculate</span>
+                        <h4 class="font-bold text-mc-ebony mb-2">Calculatrices en ligne</h4>
+                        <p class="text-sm text-mc-body/60">Calculatrice scientifique accessible directement depuis la
+                            plateforme.</p>
+                    </div>
+                    <div class="bg-white p-8 text-center"
+                        style="border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                        <span class="material-symbols-outlined text-mc-primary text-4xl mb-4 block">show_chart</span>
+                        <h4 class="font-bold text-mc-ebony mb-2">Tracé de courbes</h4>
+                        <p class="text-sm text-mc-body/60">Logiciel de tracé de courbes pour visualiser les fonctions et
+                            graphiques.</p>
+                    </div>
+                    <div class="bg-white p-8 text-center"
+                        style="border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                        <span class="material-symbols-outlined text-mc-primary text-4xl mb-4 block">table_chart</span>
+                        <h4 class="font-bold text-mc-ebony mb-2">Tableur</h4>
+                        <p class="text-sm text-mc-body/60">Utilisation d'un tableur pour les statistiques et le
+                            traitement de données.</p>
+                    </div>
+                    <div class="bg-white p-8 text-center"
+                        style="border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                        <span class="material-symbols-outlined text-mc-primary text-4xl mb-4 block">devices</span>
+                        <h4 class="font-bold text-mc-ebony mb-2">Guides Calculatrices</h4>
+                        <p class="text-sm text-mc-body/60">Tutoriels complets pour maîtriser votre calculatrice TI ou
+                            Casio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ORIENTATION -->
+        <section style="padding: 60px 0 100px;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="section-badge">
+                        <span class="material-symbols-outlined text-lg">explore</span>
+                        Orientation & Filières
+                    </span>
+                    <div class="h-px flex-grow bg-mc-border/40"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="info-card">
+                        <div class="icon-wrapper bg-blue-50"><span
+                                class="material-symbols-outlined text-blue-600">rocket_launch</span></div>
+                        <div>
+                            <h4 class="font-bold text-mc-ebony mb-1">Parcours SUP</h4>
+                            <p class="text-sm text-mc-body/60">Guide complet : inscription, vœux, phase d'admission et
+                                calendrier officiel.</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="icon-wrapper bg-amber-50"><span
+                                class="material-symbols-outlined text-amber-600">info</span></div>
+                        <div>
+                            <h4 class="font-bold text-mc-ebony mb-1">Nouveau BAC</h4>
+                            <p class="text-sm text-mc-body/60">Réforme du baccalauréat : épreuves, coefficients et
+                                contrôle continu.</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="icon-wrapper bg-amber-50"><span
+                                class="material-symbols-outlined text-amber-600">mic</span></div>
+                        <div>
+                            <h4 class="font-bold text-mc-ebony mb-1">Grand Oral</h4>
+                            <p class="text-sm text-mc-body/60">Conseils de préparation, évaluation et exemples de sujets
+                                pour l'oral du BAC.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CTA -->
+        <section class="bg-mc-primary relative overflow-hidden" style="padding: 80px 0;">
+            <div class="absolute top-0 right-0 w-64 h-64 opacity-10"
+                style="clip-path: polygon(100% 0%, 0% 100%, 100% 100%); background: white;"></div>
+            <div class="max-w-[1140px] mx-auto px-6 text-center relative z-10">
+                <h2 class="text-3xl font-bold text-white mb-6">Besoin d'un accompagnement personnalisé ?</h2>
+                <p class="text-white/80 max-w-xl mx-auto text-lg leading-relaxed mb-8">Nos professeurs construisent un
+                    parcours adapté au rythme et aux objectifs de chaque élève, en mathématiques comme en sciences
+                    physiques.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://mathconsult-niort.fr/contact/#contact"
+                        class="inline-block bg-white text-mc-primary px-7 py-3.5 font-semibold hover:bg-mc-pink-light transition-colors"
+                        style="border-radius:8px;">Être rappelé(e)</a>
+                    <a href="https://mathconsult-niort.fr/contact/#contact" class="btn-secondary inline-block !border-white !text-white hover:!bg-white/10"
+                        style="border-radius:8px;">Faire un bilan pédagogique</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-mc-border/30" style="padding: 60px 0 40px;">
+        <div class="max-w-[1140px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="inline-block mb-4">
+                        <img src="logo-math-consult.webp" alt="Math Consult" class="h-12" />
+                    </a>
+                    <p class="text-sm text-mc-body/60 leading-relaxed">Banque de données pédagogique — Fiches de cours,
+                        exercices, devoirs et sujets d'examen en math et sciences physiques.</p>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Plan de l'application</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Accueil</a></li>
+                        <li><a href="programme.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Programme</a>
+                        </li>
+                        <li><a href="exercices.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Exercices</a>
+                        </li>
+                        <li><a href="ressources.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Ressources</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Liens utiles</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Bilan
+                                pédagogique</a></li>
+                        <li><a href="https://mathconsult-niort.fr/stages/" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Nos
+                                stages</a></li>
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Être
+                                rappelé(e)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Informations</h4>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Tél :</strong> 05 49 28 03 08
+                        </li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Mail :</strong>
+                            contact@mathconsult-niort.fr</li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Lieu :</strong> 25b rue du 24
+                            février, 79000 Niort</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-mc-border/30 pt-6 text-center">
+                <p class="text-xs text-mc-body/40"><a href="https://mathconsult-niort.fr" target="_blank"
+                        class="hover:text-mc-primary transition-colors">Math Consult</a> 2026 | <a
+                        href="mentions-legales.html" class="hover:text-mc-primary transition-colors">Mentions légales et
+                        conformité</a> | Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+
+</body>
+
+</html>

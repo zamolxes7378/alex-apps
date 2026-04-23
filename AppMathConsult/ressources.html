@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ressources pédagogiques — Math Consult</title>
+    <meta name="description"
+        content="Bibliothèque de ressources pédagogiques : cours, méthodes, fiches de synthèse pour collège et lycée en mathématiques." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "mc-primary": "#E93F85",
+                        "mc-primary-dark": "#C2185B",
+                        "mc-ebony": "#240814",
+                        "mc-body": "#333333",
+                        "mc-pink-light": "#FBD9E7",
+                        "mc-pink-bg": "#FDF3F6",
+                        "mc-surface": "#FFFFFF",
+                        "mc-yellow": "#FBD600",
+                        "mc-border": "#F0C4D4",
+                    },
+                    fontFamily: {
+                        "josefin": ["Josefin Sans", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="modern.css" />
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        p,
+        .text-body {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #E93F85;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #E93F85;
+        }
+
+        .btn-primary,
+        a.btn-primary,
+        button.btn-primary {
+            padding: 15px 28px;
+            background: #E93F85 !important;
+            background-color: #E93F85 !important;
+            background-image: none !important;
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(233, 63, 133, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover,
+        a.btn-primary:hover {
+            box-shadow: 0 6px 24px rgba(233, 63, 133, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 14px 28px;
+            border: 2px solid #E93F85;
+            color: #E93F85;
+            background: transparent;
+            border-radius: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FBD9E7;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 36px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(240, 196, 212, 0.2);
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 8px 30px rgba(233, 63, 133, 0.08);
+        }
+
+        .type-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            font-size: 0.7rem;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            border-radius: 4px;
+        }
+
+        .type-cours {
+            background: #E3F2FD;
+            color: #1565C0;
+        }
+
+        .type-methode {
+            background: #F3E5F5;
+            color: #7B1FA2;
+        }
+
+        .type-synthese {
+            background: #FFF3E0;
+            color: #E65100;
+        }
+
+        .type-exercice {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .filter-pill {
+            padding: 10px 22px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background: white;
+            color: #333;
+            border: 1px solid #F0C4D4;
+            border-radius: 9999px;
+        }
+
+        .filter-pill:hover,
+        .filter-pill.active {
+            background: #E93F85;
+            color: white;
+            border-color: #E93F85;
+        }
+
+        .doc-icon {
+            width: 56px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+            border-radius: 10px;
+        }
+
+        .doc-format {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #E93F85;
+            color: white;
+            font-size: 0.5rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px 0 10px 0;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-mc-body min-h-screen flex flex-col">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b border-mc-border/30">
+        <div class="max-w-[1140px] mx-auto flex justify-between items-center px-6 h-20">
+            <a href="index.html" class="flex items-center group">
+                <img src="logo-math-consult.webp" alt="Math Consult"
+                    class="h-14 group-hover:opacity-70 transition-opacity" />
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Accueil</a>
+                <a href="programme.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Programme</a>
+                <a href="exercices.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Exercices</a>
+                <a href="ressources.html"
+                    class="nav-link active font-josefin text-sm font-semibold text-mc-ebony">Ressources</a>
+                <a href="espace-eleve.html"
+                    class="nav-link font-josefin text-sm font-semibold text-mc-ebony/70 hover:text-mc-ebony">Mon
+                    Espace</a>
+            </div>
+            <div id="nav-auth">
+                <a href="connexion.html" class="btn-primary hidden lg:inline-block">Se connecter</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow mt-20">
+
+        <!-- HEADER + FILTERS -->
+        <header class="relative overflow-hidden"
+            style="padding: 80px 0 0; background: linear-gradient(180deg, #FDF3F6 0%, #FDF3F6 50%, #FFFFFF 100%);">
+            <div class="absolute top-0 right-0 w-72 h-72 opacity-5"
+                style="clip-path: polygon(50% 0%, 100% 100%, 0% 100%); background: linear-gradient(135deg, #E93F85, #FBD9E7); transform: rotate(15deg) translate(60px, -60px);">
+            </div>
+            <div class="max-w-[1140px] mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 bg-white/80 text-mc-primary text-xs font-bold uppercase px-5 py-2 mb-6"
+                            style="border-radius:9999px; letter-spacing:0.08em;">
+                            <span class="material-symbols-outlined text-sm">library_books</span>
+                            Banque de données pédagogique
+                        </div>
+                        <h1 class="text-5xl lg:text-6xl font-bold text-mc-ebony leading-tight">
+                            Ressources <span class="text-mc-primary">Math Consult</span>
+                        </h1>
+                    </div>
+                    <p class="text-mc-body/60 max-w-sm italic leading-relaxed text-right hidden lg:block"
+                        style="font-family:'Work Sans',sans-serif;">
+                        Fiches Bristol, exercices, devoirs et vidéos — l'ensemble des ressources utilisées en séance,
+                        accessibles en ligne.
+                    </p>
+                </div>
+            </div>
+            <!-- FILTERS -->
+            <div class="max-w-[1140px] mx-auto px-6" style="padding: 32px 24px 48px;">
+                <div class="bg-white/80 p-8"
+                    style="border-radius:16px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid rgba(240,196,212,0.25);">
+                    <!-- Search -->
+                    <div class="flex items-center gap-4 bg-white px-6 mb-6 border border-mc-border/30 focus-within:border-mc-primary/50 transition-colors"
+                        style="border-radius:12px; height:52px; box-shadow:0 2px 8px rgba(0,0,0,0.02);">
+                        <span class="material-symbols-outlined text-mc-primary"
+                            style="font-size:22px; line-height:1;">search</span>
+                        <input
+                            class="w-full bg-transparent border-none focus:ring-0 font-josefin placeholder:text-mc-body/40"
+                            style="padding:0; margin:0; font-size:18px; line-height:1; height:auto; transform:translateY(1px);"
+                            placeholder="Rechercher une ressource (ex: Thalès, fractions, vidéo...)" type="text" />
+                    </div>
+                    <!-- Filter Chips -->
+                    <div class="flex flex-wrap items-center gap-3 mb-4">
+                        <span class="text-xs font-bold text-mc-primary uppercase w-16 flex-shrink-0"
+                            style="letter-spacing:0.05em;">Type :</span>
+                        <button class="filter-pill active">Tout</button>
+                        <button class="filter-pill">Fiche Bristol</button>
+                        <button class="filter-pill">Exercices</button>
+                        <button class="filter-pill">Devoirs</button>
+                        <button class="filter-pill">Vidéos</button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-xs font-bold text-mc-primary uppercase w-16 flex-shrink-0"
+                            style="letter-spacing:0.05em;">Niveau :</span>
+                        <button class="filter-pill">Collège</button>
+                        <button class="filter-pill">Lycée</button>
+                        <button class="filter-pill">Bac Pro</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- RESOURCE GRID -->
+        <section id="res-grid-section" class="bg-white" style="padding: 60px 0 40px;">
+            <div class="max-w-[1140px] mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="res-cards">
+
+                    <!-- Resource 1: Fiche Bristol -->
+                    <article class="resource-card group" data-type="fiche bristol" data-level="collège"
+                        data-search="fiche bristol thalès géométrie cours résumé synthétique 3ème">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-mc-pink-light">
+                                <span class="material-symbols-outlined text-mc-primary text-3xl">description</span>
+                                <span class="doc-format">PDF</span>
+                            </div>
+                            <span class="type-badge type-cours">Fiche Bristol</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Fiche Bristol — Théorème de Thalès</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Résumé synthétique du cours : théorème
+                            direct, réciproque, configuration papillon et méthode de rédaction.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">school</span>
+                                <span>3ème — Géométrie</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">Support de cours</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Resource 2: Fiche d'exercices -->
+                    <article class="resource-card group" data-type="exercices" data-level="collège"
+                        data-search="équations exercices fiche algèbre factorisation produit nul 3ème">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-green-50">
+                                <span class="material-symbols-outlined text-green-600 text-3xl">edit_note</span>
+                                <span class="doc-format">PDF</span>
+                            </div>
+                            <span class="type-badge type-exercice">Exercices</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Équations — Fiche 3</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Produit de facteur nul et factorisation
+                            — exercices progressifs avec mise en situation.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">school</span>
+                                <span>3ème — Algèbre</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">Fiche d'exercices n°3/8</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Resource 3: Devoir Maison -->
+                    <article class="resource-card group" data-type="devoirs" data-level="collège"
+                        data-search="thalès devoir maison dm géométrie 3ème produit en croix rédaction">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-orange-50">
+                                <span class="material-symbols-outlined text-orange-600 text-3xl">home_work</span>
+                                <span class="doc-format">PDF</span>
+                            </div>
+                            <span class="type-badge type-synthese">Devoir Maison</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Thalès — Devoir Maison 2</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Résolutions d'équations utilisant le
+                            produit en croix, et structure type de la rédaction.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">school</span>
+                                <span>3ème — Géométrie</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">DM n°2/8</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Resource 4: Vidéo SCRATCH -->
+                    <article class="resource-card group" data-type="vidéos" data-level="collège"
+                        data-search="scratch vidéo cours algorithmique répétitions variables conditions missions programmation 3ème">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-purple-50">
+                                <span class="material-symbols-outlined text-purple-600 text-3xl">play_circle</span>
+                                <span class="doc-format">VID</span>
+                            </div>
+                            <span class="type-badge type-methode">Vidéo</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            SCRATCH — Cours vidéo</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">4 vidéos de cours : présentation de
+                            Scratch, répétitions, variables et conditions — progression complète.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">school</span>
+                                <span>3ème — Algorithmique</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">4 vidéos + 30 missions</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Regarder <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Spotlight: Pack DNB -->
+                    <article
+                        class="resource-card lg:col-span-2 bg-mc-primary !text-white relative overflow-hidden group"
+                        data-type="tout" data-level="collège"
+                        data-search="dnb brevet sujets entraînement officiel métropole asie amérique nord centre étranger corrigé 3ème examen">
+                        <div
+                            class="absolute -right-16 -top-16 w-64 h-64 bg-white/10 blur-3xl group-hover:bg-white/15 transition-all duration-700">
+                        </div>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-6">
+                                <span
+                                    class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white px-4 py-1 text-xs font-bold uppercase">Préparation
+                                    Brevet</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-4 leading-tight">Sujets DNB — Entraînement et
+                                officiels</h3>
+                            <p class="text-white/80 text-lg max-w-xl mb-4">7 sujets d'entraînement complets couvrant
+                                l'ensemble du programme de 3ème, plus 4 sujets officiels corrigés.</p>
+                            <div class="flex flex-wrap gap-3 mb-8">
+                                <span class="text-xs bg-white/15 px-3 py-1">Métropole 2021</span>
+                                <span class="text-xs bg-white/15 px-3 py-1">Asie 2021</span>
+                                <span class="text-xs bg-white/15 px-3 py-1">Am. du Nord 2021</span>
+                                <span class="text-xs bg-white/15 px-3 py-1">Centre étranger 2021</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <button
+                                    class="bg-white text-mc-primary px-7 py-3 font-semibold hover:bg-mc-pink-bg transition-colors">Accéder
+                                    aux sujets</button>
+                                <button
+                                    class="border border-white/30 text-white px-7 py-3 font-semibold hover:bg-white/10 transition-colors">Voir
+                                    les corrigés</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Spéciales Révisions BAC -->
+                    <article class="resource-card group" data-type="exercices" data-level="lycée"
+                        data-search="révisions bac concours spéciales terminale brevet préparation examen">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-amber-50">
+                                <span class="material-symbols-outlined text-amber-600 text-3xl">military_tech</span>
+                            </div>
+                            <span class="type-badge type-cours">Révisions</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Spéciales Révisions — Brevet, BAC, Concours</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Fiches de révisions ciblées et sujets
+                            corrigés pour préparer sereinement les épreuves nationales.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">school</span>
+                                <span>3ème / Terminale — Examens</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">Révisions intensives</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Coefficients BAC -->
+                    <article class="resource-card group" data-type="fiche bristol" data-level="lycée"
+                        data-search="coefficients bac nouveau baccalauréat épreuves contrôle continu spécialités">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-blue-50">
+                                <span class="material-symbols-outlined text-blue-600 text-3xl">bar_chart</span>
+                            </div>
+                            <span class="type-badge type-cours">Info BAC</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Coefficients du nouveau BAC</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Détail des coefficients par épreuve :
+                            contrôle continu, spécialités, Grand Oral et épreuves anticipées.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">info</span>
+                                <span>Terminale — Réforme BAC</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">Document officiel</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Exercices guidés -->
+                    <article class="resource-card group" data-type="exercices" data-level="collège"
+                        data-search="exercices guidés professeur accompagnement méthodologie pas à pas correction">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-green-50">
+                                <span
+                                    class="material-symbols-outlined text-green-600 text-3xl">supervised_user_circle</span>
+                            </div>
+                            <span class="type-badge type-exercice">Guidé</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Exercices guidés par le professeur</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Exercices résolus pas à pas avec
+                            explications détaillées du raisonnement et de la méthodologie.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">school</span>
+                                <span>Tous niveaux — Méthodologie</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">Accompagnement</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Organisation et contenu stages -->
+                    <article class="resource-card group" data-type="devoirs" data-level="lycée"
+                        data-search="stages vacances organisation contenu planning révisions intensif été">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-purple-50">
+                                <span class="material-symbols-outlined text-purple-600 text-3xl">event_available</span>
+                            </div>
+                            <span class="type-badge type-devoir">Stage</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Organisation & contenu des stages</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Planning de nos stages de révision
+                            pendant les vacances : dates, contenus, objectifs et modalités d'inscription.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">calendar_month</span>
+                                <span>Tous niveaux — Vacances</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">Programme de stages</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Hyperliens fiches complémentaires -->
+                    <article class="resource-card group" data-type="fiche bristol" data-level="collège"
+                        data-search="hyperliens fiches complémentaires liens externes base données complète web">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-indigo-50">
+                                <span class="material-symbols-outlined text-indigo-600 text-3xl">link</span>
+                            </div>
+                            <span class="type-badge type-cours">Liens</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Hyperliens — Fiches complémentaires</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Sélection de liens vers des ressources
+                            externes de qualité : cours, animations et exercices interactifs.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">public</span>
+                                <span>Tous niveaux — Web</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">Base de données complète</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Calendrier scolaire et dates -->
+                    <article class="resource-card group" data-type="fiche bristol" data-level="lycée"
+                        data-search="calendrier scolaire dates bac examens résultats horaires vacances rentrée">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="doc-icon bg-rose-50">
+                                <span class="material-symbols-outlined text-rose-600 text-3xl">date_range</span>
+                            </div>
+                            <span class="type-badge type-cours">Calendrier</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-mc-ebony mb-3 group-hover:text-mc-primary transition-colors">
+                            Calendrier scolaire & dates BAC</h3>
+                        <p class="text-sm text-mc-body/60 leading-relaxed mb-6">Dates officielles : épreuves du
+                            baccalauréat, brevet, résultats, vacances et rentrée scolaire.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center gap-2 text-xs font-medium text-mc-body/40 mb-4">
+                                <span class="material-symbols-outlined text-sm">event</span>
+                                <span>Tous niveaux — Infos pratiques</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-mc-border/20">
+                                <span class="text-xs text-mc-body/40">Année scolaire</span>
+                                <button
+                                    class="text-mc-primary font-bold text-xs uppercase flex items-center gap-2 hover:opacity-70">
+                                    Consulter <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- No results -->
+                <div id="res-no-results" class="hidden text-center py-20">
+                    <span class="material-symbols-outlined text-mc-border text-6xl mb-4 block">search_off</span>
+                    <h3 class="text-2xl font-bold text-mc-ebony mb-2">Aucun résultat</h3>
+                    <p class="text-mc-body/50">Essayez un autre terme ou modifiez les filtres.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-mc-border/30" style="padding: 60px 0 40px;">
+        <div class="max-w-[1140px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="inline-block mb-4">
+                        <img src="logo-math-consult.webp" alt="Math Consult" class="h-12" />
+                    </a>
+                    <p class="text-sm text-mc-body/60 leading-relaxed">Banque de données pédagogique — Fiches de cours,
+                        exercices, devoirs et sujets d'examen en math et sciences physiques.</p>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Plan de l'application</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Accueil</a></li>
+                        <li><a href="programme.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Programme</a>
+                        </li>
+                        <li><a href="exercices.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Exercices</a>
+                        </li>
+                        <li><a href="ressources.html"
+                                class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Ressources</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Liens utiles</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Bilan
+                                pédagogique</a></li>
+                        <li><a href="https://mathconsult-niort.fr/stages/" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Nos
+                                stages</a></li>
+                        <li><a href="https://mathconsult-niort.fr/contact/#contact" class="text-sm text-mc-body/60 hover:text-mc-primary transition-colors">Être
+                                rappelé(e)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-mc-primary font-bold text-sm uppercase mb-4">Informations</h4>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Tél :</strong> 05 49 28 03 08
+                        </li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Mail :</strong>
+                            contact@mathconsult-niort.fr</li>
+                        <li class="text-sm text-mc-body/60"><strong class="text-mc-ebony">Lieu :</strong> 25b rue du 24
+                            février, 79000 Niort</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-mc-border/30 pt-6 text-center">
+                <p class="text-xs text-mc-body/40"><a href="https://mathconsult-niort.fr" target="_blank"
+                        class="hover:text-mc-primary transition-colors">Math Consult</a> 2026 | <a
+                        href="mentions-legales.html" class="hover:text-mc-primary transition-colors">Mentions légales et
+                        conformité</a> | Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script>
+            (function () {
+                const searchInput = document.querySelector('input[placeholder="Rechercher..."]');
+                const cards = document.querySelectorAll('#res-cards > [data-type]');
+                const noResults = document.getElementById('res-no-results');
+                const container = document.getElementById('res-cards');
+
+                const filterPills = document.querySelectorAll('.filter-pill');
+                // Group pills by their parent row: Type row (first), Level row (second)
+                const filterRows = document.querySelectorAll('.flex.flex-wrap.items-center.gap-3');
+                let typeGroup = [], levelGroup = [];
+                filterRows.forEach(row => {
+                    const label = row.querySelector('span');
+                    const pills = row.querySelectorAll('.filter-pill');
+                    if (label && pills.length) {
+                        const txt = label.textContent.trim().toUpperCase();
+                        if (txt.includes('TYPE')) typeGroup = Array.from(pills);
+                        else if (txt.includes('NIVEAU')) levelGroup = Array.from(pills);
+                    }
+                });
+
+                let activeType = 'tout';
+                let activeLevel = 'tout';
+
+                function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+
+                function setupPills(pills, cb) {
+                    pills.forEach(pill => {
+                        pill.addEventListener('click', () => {
+                            pills.forEach(p => p.classList.remove('active'));
+                            pill.classList.add('active');
+                            cb(norm(pill.textContent.trim()));
+                            applyFilters();
+                        });
+                    });
+                }
+                setupPills(typeGroup, v => activeType = v);
+                setupPills(levelGroup, v => activeLevel = v);
+
+                if (searchInput) searchInput.addEventListener('input', () => applyFilters());
+
+                function applyFilters() {
+                    const q = norm(searchInput ? searchInput.value : '');
+                    let visible = 0;
+                    cards.forEach(card => {
+                        const tp = norm(card.dataset.type);
+                        const lv = norm(card.dataset.level);
+                        const sr = norm(card.dataset.search);
+                        const tx = norm(card.textContent);
+                        const typeOk = activeType === 'tout' || tp === activeType || tp === 'tout';
+                        const levelOk = activeLevel === 'tout' || lv.includes(activeLevel) || lv === 'tout';
+                        const searchOk = !q || sr.includes(q) || tx.includes(q);
+                        if (typeOk && levelOk && searchOk) { card.style.display = ''; visible++; }
+                        else { card.style.display = 'none'; }
+                    });
+                    noResults && noResults.classList.toggle('hidden', visible > 0);
+                    container && container.classList.toggle('hidden', visible === 0);
+                }
+            })();
+    </script>
+
+</body>
+
+</html>

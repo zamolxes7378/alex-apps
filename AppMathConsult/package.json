@@ -1,0 +1,8 @@
+{
+  "name": "mathconsult-plateforme",
+  "version": "1.0.0",
+  "description": "Plateforme d'apprentissage mathématique — Math Consult Niort",
+  "scripts": {
+    "dev": "npx -y live-server --port=3000"
+  }
+}
