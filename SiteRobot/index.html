@@ -124,6 +124,48 @@
       </div>
     </section>
 
+    <!-- Photo du Robot — Showcase -->
+    <section class="relative w-full mb-32 overflow-hidden">
+      <!-- Blurred background (depth-of-field effect) -->
+      <div class="absolute inset-0 scale-110" style="background-image: url('images/nanobanana_robot.png'); background-size: cover; background-position: center; filter: blur(28px) brightness(0.35) saturate(1.4);"></div>
+      <!-- Dark gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-b from-surface/40 via-transparent to-surface/80"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-20">
+        <div class="reveal text-center mb-12">
+          <span class="font-label text-secondary tracking-[0.4em] uppercase text-xs font-bold">En Action</span>
+          <h2 class="font-headline font-black text-4xl md:text-5xl text-white mt-4 tracking-tighter">Notre Robot</h2>
+          <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-6"></div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto reveal">
+          <!-- Ambient glow -->
+          <div class="absolute -inset-6 bg-secondary/15 rounded-[2.5rem] blur-3xl pointer-events-none"></div>
+          <!-- Photo card -->
+          <div class="relative glass-card rounded-[2rem] overflow-hidden border border-secondary/25 animate-border-glow shadow-[0_0_80px_rgba(0,255,200,0.12)]">
+            <img
+              src="images/nanobanana_robot.png"
+              alt="Bernard l'Hermite — Robot en action lors de la compétition robotique 2026"
+              class="w-full object-cover"
+              style="image-rendering: high-quality; max-height: 80vh; object-position: center 30%;"
+            />
+            <!-- Caption overlay -->
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-surface/95 via-surface/60 to-transparent px-8 py-10">
+              <div class="flex items-end justify-between">
+                <div>
+                  <p class="text-white font-headline font-black text-2xl tracking-tight">Bernard l'Hermite</p>
+                  <p class="text-secondary text-sm font-label uppercase tracking-widest mt-1">Compétition Robotique 2026</p>
+                </div>
+                <div class="bg-surface/80 backdrop-blur px-4 py-2 rounded-full border border-secondary/30 animate-border-glow">
+                  <span class="text-[10px] font-mono text-secondary">NANOBANANA ROBOT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Spécifications rapides du Kitronik -->
     <section class="max-w-7xl mx-auto px-6 md:px-8 mb-32">
       <div class="reveal text-center mb-16">
