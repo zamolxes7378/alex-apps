@@ -113,20 +113,22 @@
 
         <!-- Image du robot -->
         <div class="flex-1 relative animate-slide-left">
-          <!-- Blurred background layer — creates depth-of-field on the boxes behind the robot -->
-          <div class="absolute -inset-6 rounded-[2.5rem] overflow-hidden pointer-events-none">
-            <div class="absolute inset-0 scale-110" style="background-image: url('images/robot-front.png'); background-size: cover; background-position: center 25%; filter: blur(24px) brightness(0.4) saturate(1.5);"></div>
-          </div>
           <div class="absolute inset-0 bg-secondary/10 rounded-full blur-[100px] pointer-events-none animate-pulse-glow"></div>
-          <!-- Sharp photo card -->
-          <div class="relative glass-card rounded-[2rem] overflow-hidden border border-secondary/20 animate-float shadow-[0_0_60px_rgba(0,255,200,0.15)]">
-            <img
-              src="images/robot-front.png"
-              alt="Robot Bernard l'Hermite — Kitronik :MOVE Motor"
-              class="w-full object-cover"
-              style="image-rendering: high-quality; object-position: center 25%;"
-            />
-            <div class="absolute top-4 right-4 bg-surface/80 backdrop-blur px-4 py-2 rounded-full border border-secondary/30 animate-border-glow">
+          <!-- Glass card with padding — same border/frame as AI image -->
+          <div class="relative glass-card rounded-[2rem] p-4 border border-secondary/20 animate-float animate-border-glow shadow-[0_0_60px_rgba(0,255,200,0.15)]">
+            <!-- Inner image container with blur background -->
+            <div class="relative rounded-[1.5rem] overflow-hidden">
+              <!-- Blurred background layer (depth-of-field on boxes) -->
+              <div class="absolute inset-0 scale-110 pointer-events-none" style="background-image: url('images/robot-hero.png'); background-size: cover; background-position: center 20%; filter: blur(22px) brightness(0.38) saturate(1.5);"></div>
+              <!-- Sharp centered image -->
+              <img
+                src="images/robot-hero.png"
+                alt="Robot Bernard l'Hermite — Kitronik :MOVE Motor"
+                class="relative w-full object-contain block"
+                style="image-rendering: high-quality;"
+              />
+            </div>
+            <div class="absolute top-7 right-7 bg-surface/80 backdrop-blur px-4 py-2 rounded-full border border-secondary/30 animate-border-glow">
               <span class="text-[10px] font-mono text-secondary">PLATEFORME: KITRONIK :MOVE MOTOR</span>
             </div>
           </div>
