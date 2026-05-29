@@ -1,0 +1,10 @@
+# Preview / QA screenshots
+.preview/
+
+# Deploy
+.vercel
+.netlify
+.env*.local
+
+# Dependencies
+node_modules/

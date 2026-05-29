@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kotech Engineering · Conseil & réalisation en intelligence artificielle</title>
+  <meta name="description"
+    content="Kotech accompagne les DSI, mutuelles et industriels dans leur stratégie IA : audit, architecture data & IA, conformité DORA / RGPD / AI Act, on-premise et industrialisation — sans renier la culture interne ni la souveraineté des données." />
+  <meta name="author" content="Kotech Engineering" />
+  <meta name="theme-color" content="#F1EEE7" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kotech Engineering · L'IA, augmentée par l'humain." />
+  <meta property="og:description"
+    content="Conseil et réalisation en intelligence artificielle. Audit, architecture, conformité européenne, on-premise et industrialisation." />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Favicon : monogramme K -->
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1710'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='66' font-style='italic' text-anchor='middle' fill='%23C9462A'%3EK%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <!-- Indicateur de progression -->
+  <div class="scroll-progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <!-- Lien d'évitement -->
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- ============ EN-TÊTE ============ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="Kotech — accueil">
+        <span class="brand-mark">K</span>
+        <span class="brand-name">Kotech<span class="brand-suffix">Engineering</span></span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <a href="#manifeste" class="nav-link"><span class="nav-idx">01</span> Approche</a>
+        <a href="#services" class="nav-link"><span class="nav-idx">02</span> Services</a>
+        <a href="#expertise" class="nav-link"><span class="nav-idx">03</span> Expertise</a>
+        <a href="#methode" class="nav-link"><span class="nav-idx">04</span> Méthode</a>
+        <a href="#apropos" class="nav-link"><span class="nav-idx">05</span> Équipe</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Parlons-en</a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false"
+        aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ MENU MOBILE ============ -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-nav" aria-label="Navigation mobile">
+      <a href="#manifeste" class="mobile-link"><span class="nav-idx">01</span> Approche</a>
+      <a href="#services" class="mobile-link"><span class="nav-idx">02</span> Services</a>
+      <a href="#expertise" class="mobile-link"><span class="nav-idx">03</span> Expertise</a>
+      <a href="#methode" class="mobile-link"><span class="nav-idx">04</span> Méthode</a>
+      <a href="#apropos" class="mobile-link"><span class="nav-idx">05</span> Équipe</a>
+      <a href="#contact" class="mobile-link"><span class="nav-idx">06</span> Contact</a>
+    </nav>
+    <div class="mobile-foot">
+      <a href="mailto:sebastian@kotech.fr">sebastian@kotech.fr</a>
+      <a href="tel:+33637864348">+33 (0)6 37 86 43 48</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <p class="eyebrow reveal">
+          <span class="status-dot" aria-hidden="true"></span>
+          Conseil &amp; réalisation en intelligence artificielle
+        </p>
+
+        <h1 class="hero-title reveal">L'IA, <em>augmentée</em><br />par l'humain.</h1>
+
+        <p class="hero-lead reveal">
+          Nous aidons les DSI, mutuelles et industriels à structurer leur stratégie IA —
+          audit, architecture, alignement réglementaire — sans renier ni la culture interne,
+          ni la souveraineté des données.
+        </p>
+
+        <div class="hero-actions reveal">
+          <a href="#contact" class="btn btn-primary">
+            Démarrer un échange
+            <svg viewBox="0 0 24 24" class="btn-arrow" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="#manifeste" class="btn btn-ghost">Découvrir l'approche</a>
+        </div>
+
+        <div class="hero-meta reveal">
+          <div class="meta-col">
+            <p class="meta-label">Spécialités</p>
+            <ul class="meta-list">
+              <li>Benchmark &amp; Audit IA</li>
+              <li>Architecture Data &amp; IA</li>
+              <li>Réalisation &amp; industrialisation</li>
+            </ul>
+          </div>
+          <div class="meta-col">
+            <p class="meta-label">Contextes</p>
+            <ul class="meta-list">
+              <li>On-premise</li>
+              <li>Hybride · Open source</li>
+              <li>DORA · RGPD · AI&nbsp;Act</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Audit IA stratégique</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Architecture On-premise / Hybride</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">MLOps &amp; industrialisation</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Conformité DORA</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Benchmark open source</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">RAG &amp; agents conversationnels</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Détection de fraude</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Audit IA stratégique</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Architecture On-premise / Hybride</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">MLOps &amp; industrialisation</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Conformité DORA</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Benchmark open source</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">RAG &amp; agents conversationnels</span><span class="marquee-sep">✦</span>
+        <span class="marquee-item">Détection de fraude</span><span class="marquee-sep">✦</span>
+      </div>
+    </div>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats" aria-label="Chiffres clés">
+      <div class="container stats-inner">
+        <p class="stats-since reveal">Depuis 2021 —</p>
+        <div class="stats-grid">
+          <div class="stat reveal">
+            <span class="stat-num" data-count="10" data-suffix="+">0</span>
+            <span class="stat-label">Missions livrées</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num" data-count="4">0</span>
+            <span class="stat-label">Secteurs couverts</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num stat-word">International</span>
+            <span class="stat-label">Présence</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 — MANIFESTE ============ -->
+    <section class="section" id="manifeste">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker"><span class="kicker-num">01</span> — Approche</p>
+          <h2 class="section-title">Manifeste</h2>
+        </header>
+
+        <p class="section-intro reveal">
+          Notre conviction : l'IA est un <em>catalyseur</em> — elle amplifie la créativité,
+          renforce la décision et fait progresser l'organisation, à condition de rester ancrée
+          dans son contexte humain et technique.
+        </p>
+
+        <div class="manifesto-grid">
+          <article class="manifesto-item reveal">
+            <span class="manifesto-num">i.</span>
+            <h3>Le contexte avant les outils</h3>
+            <p>
+              Nous ne plaquons pas de solutions. Nous partons de votre culture SI, de vos
+              contraintes réglementaires et de la maturité réelle de vos équipes. Un cas d'usage
+              pertinent vaut mieux qu'une démo brillante.
+            </p>
+          </article>
+          <article class="manifesto-item reveal">
+            <span class="manifesto-num">ii.</span>
+            <h3>Un regard extérieur, factuel</h3>
+            <p>
+              Nous challengeons les convictions internes — y compris les nôtres — en croisant
+              retours d'expérience, benchmarks marché et analyse architecturale. Notre livrable
+              est un outil de dialogue, pas une opinion.
+            </p>
+          </article>
+          <article class="manifesto-item reveal">
+            <span class="manifesto-num">iii.</span>
+            <h3>Industrialiser, pas démontrer</h3>
+            <p>
+              Nous accompagnons le passage de l'expérimentation au produit IA reproductible.
+              C'est là que la valeur se crée — et qu'elle se mesure.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 — SERVICES ============ -->
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker"><span class="kicker-num">02</span> — Services</p>
+          <h2 class="section-title">Quatre offres, un fil rouge</h2>
+        </header>
+
+        <p class="section-intro reveal">
+          Du <em>cadrage stratégique</em> à la mise en production. Nous intervenons sur l'ensemble
+          du cycle de vie d'une initiative IA, avec une exigence d'alignement permanent entre
+          business, technique et réglementaire.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <span class="service-idx">/ 01</span>
+            <h3>Audit &amp; Benchmark IA</h3>
+            <p>
+              Cartographie objective des solutions, méthodes et tendances IA pertinentes pour
+              votre contexte métier et technique. Analyse SWOT, matrice d'alignement stratégique,
+              recommandations priorisées.
+            </p>
+            <ul class="chips">
+              <li>Open source</li>
+              <li>Marché sectoriel</li>
+              <li>SWOT contextualisé</li>
+              <li>Feuille de route</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-idx">/ 02</span>
+            <h3>Architecture data &amp; IA</h3>
+            <p>
+              Audit d'hébergement on-premise vs hybride au regard de DORA et de votre culture SI.
+              Conception d'architectures IA souveraines, intégration GPU, choix open source
+              argumentés.
+            </p>
+            <ul class="chips">
+              <li>On-premise / Hybride</li>
+              <li>GPU &amp; inférence</li>
+              <li>DORA · RGPD</li>
+              <li>Souveraineté</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-idx">/ 03</span>
+            <h3>Industrialisation &amp; MLOps</h3>
+            <p>
+              Mise en production des modèles, monitoring, reproductibilité. Nous accompagnons le
+              passage de l'expérimentation à l'approche produit IA — pilotée, mesurée, maintenable
+              dans la durée.
+            </p>
+            <ul class="chips">
+              <li>MLOps</li>
+              <li>Monitoring</li>
+              <li>Approche produit</li>
+              <li>CI/CD modèles</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-idx">/ 04</span>
+            <h3>Coaching &amp; montée en compétences</h3>
+            <p>
+              Transfert de savoir-faire vers vos équipes data et SI. Ateliers, design
+              d'organisation cible (métiers · DSI · data · IA), définition d'une vision du travail
+              collaboratif homme-IA.
+            </p>
+            <ul class="chips">
+              <li>Ateliers</li>
+              <li>Org. cible</li>
+              <li>Travail collaboratif</li>
+              <li>REX sectoriel</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 — EXPERTISE ============ -->
+    <section class="section" id="expertise">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker"><span class="kicker-num">03</span> — Expertise</p>
+          <h2 class="section-title">Stack &amp; cadre</h2>
+        </header>
+
+        <p class="section-intro reveal">
+          Une expertise <em>technique et réglementaire</em> taillée pour les organisations à forte
+          culture SI : open source, on-premise, conformité européenne.
+        </p>
+
+        <div class="expertise-grid">
+          <article class="expertise-item reveal">
+            <span class="greek">α</span>
+            <div class="expertise-body">
+              <h3>Souveraineté &amp; on-premise</h3>
+              <p>
+                Architectures IA hébergées sur infrastructures internes, avec GPU dédiés.
+                Évaluation factuelle des scénarios hybrides quand ils apportent une vraie valeur —
+                pas par dogme.
+              </p>
+            </div>
+          </article>
+
+          <article class="expertise-item reveal">
+            <span class="greek">β</span>
+            <div class="expertise-body">
+              <h3>Conformité &amp; gouvernance</h3>
+              <p>
+                Maîtrise du règlement DORA, du RGPD, de l'AI Act et des cadres internes de
+                gouvernance des données. Les exigences réglementaires européennes sont intégrées
+                dès la conception, pas en bout de chaîne.
+              </p>
+              <p class="expertise-tags">DORA · RGPD · AI Act · ISO 27001</p>
+            </div>
+          </article>
+
+          <article class="expertise-item reveal">
+            <span class="greek">γ</span>
+            <div class="expertise-body">
+              <h3>Expertise technique</h3>
+              <p>
+                Architecture data et IA, applications agentiques, bases de connaissance et
+                ontologies — une couverture technique complète, de la modélisation des données à
+                l'orchestration des agents.
+              </p>
+              <p class="expertise-tags">Architecture Data &amp; IA · Applications agentiques · Bases de connaissance · Ontologies</p>
+            </div>
+          </article>
+
+          <article class="expertise-item reveal">
+            <span class="greek">δ</span>
+            <div class="expertise-body">
+              <h3>Industrialisation</h3>
+              <p>
+                Nos solutions sont conçues dès l'origine pour être industrialisées :
+                reproductibilité, passage à l'échelle et maintien en conditions opérationnelles
+                font partie du cadrage initial, pas d'une phase ultérieure.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 — MÉTHODE ============ -->
+    <section class="section section-alt" id="methode">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker"><span class="kicker-num">04</span> — Méthode</p>
+          <h2 class="section-title">Audit &amp; benchmark IA</h2>
+        </header>
+
+        <p class="section-intro reveal">
+          Notre méthodologie d'<em>audit et benchmark</em> des solutions IA, adaptée au contexte de
+          chaque client — une démarche structurée et factuelle, du cadrage à la restitution, pour
+          produire des livrables réutilisables en interne.
+        </p>
+
+        <ol class="timeline">
+          <li class="timeline-step reveal">
+            <div class="step-top">
+              <span class="step-num">01</span>
+              <span class="step-when">Semaines 1–2</span>
+            </div>
+            <h3>Cadrage</h3>
+            <p>
+              Entretiens individuels avec la DSI. Vision 360° du contexte SI, des cas d'usage et
+              des contraintes réglementaires.
+            </p>
+            <p class="step-deliver">→ Compte-rendu d'entretiens</p>
+          </li>
+
+          <li class="timeline-step reveal">
+            <div class="step-top">
+              <span class="step-num">02</span>
+              <span class="step-when">Semaines 3–4</span>
+            </div>
+            <h3>Recherche</h3>
+            <p>
+              Benchmark des solutions IA on-premise, hybrides et open source. Analyse des tendances
+              sectorielles, étude DORA et AI Act.
+            </p>
+            <p class="step-deliver">→ Benchmark IA</p>
+          </li>
+
+          <li class="timeline-step reveal">
+            <div class="step-top">
+              <span class="step-num">03</span>
+              <span class="step-when">Semaines 5–6</span>
+            </div>
+            <h3>Analyse</h3>
+            <p>
+              SWOT contextualisé, audit on-premise vs cloud vs hybride, matrice d'alignement
+              stratégique, recommandations priorisées.
+            </p>
+            <p class="step-deliver">→ Audit + SWOT + Matrice</p>
+          </li>
+
+          <li class="timeline-step reveal">
+            <div class="step-top">
+              <span class="step-num">04</span>
+              <span class="step-when">Semaines 7–8</span>
+            </div>
+            <h3>Restitution</h3>
+            <p>
+              Présentation des résultats et remise d'une documentation directement réutilisable en
+              interne.
+            </p>
+            <p class="step-deliver">→ Feuille de route</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 05 — À PROPOS ============ -->
+    <section class="section" id="apropos">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker"><span class="kicker-num">05</span> — À propos</p>
+          <h2 class="section-title">L'équipe</h2>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="section-intro reveal">
+              Kotech est un cabinet de conseil IA <em>indépendant</em>, fondé sur la conviction que
+              la technologie doit servir les organisations qui la déploient — leur culture, leurs
+              contraintes, leurs équipes.
+            </p>
+            <p class="reveal">
+              Derrière Kotech, <em>toute une équipe</em> de passionnés de technologie : experts Data
+              et Cloud, agents IA, bases de connaissance, gestion de projet IA et développement
+              d'applications.
+            </p>
+            <p class="reveal">
+              Nous travaillons aux côtés des DSI et des directions data, en apportant un
+              <em>regard extérieur factuel</em> et une expertise concrète des contextes on-premise,
+              open source et réglementés — de la feuille de route à la mise en production.
+            </p>
+          </div>
+
+          <aside class="founder-card reveal">
+            <div class="founder-avatar" aria-hidden="true">SP</div>
+            <h3 class="founder-name">Sebastian Pavel</h3>
+            <p class="founder-role">Consultant IA · Fondateur</p>
+            <p class="founder-bio">
+              15+ ans d'expérience en architecture data et IA pour des organisations à forte
+              exigence réglementaire (assurance, industrie, secteur public).
+            </p>
+            <p class="founder-bio">
+              Il s'appuie sur une équipe de passionnés de technologie pour couvrir l'ensemble du
+              cycle de vie d'une initiative IA.
+            </p>
+            <div class="founder-links">
+              <a href="mailto:sebastian@kotech.fr" class="text-link">sebastian@kotech.fr</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 — CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="contact-orb" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-kicker"><span class="kicker-num">06</span> — Contact</p>
+        </header>
+
+        <h2 class="contact-title reveal">Parlons de votre <em>initiative&nbsp;IA</em>.</h2>
+
+        <p class="contact-lead reveal">
+          Un audit, un avis sur une architecture, un cadrage stratégique avant Comité de Direction —
+          le premier échange est <strong>gratuit et sans engagement</strong>. 45&nbsp;minutes pour
+          comprendre votre contexte.
+        </p>
+
+        <div class="contact-grid">
+          <a class="contact-card reveal" href="mailto:sebastian@kotech.fr">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">sebastian@kotech.fr</span>
+            <span class="contact-go" aria-hidden="true">→</span>
+          </a>
+          <a class="contact-card reveal" href="tel:+33637864348">
+            <span class="contact-label">Téléphone</span>
+            <span class="contact-value">+33 (0)6 37 86 43 48</span>
+            <span class="contact-go" aria-hidden="true">→</span>
+          </a>
+          <div class="contact-card contact-card-static reveal">
+            <span class="contact-label">Localisation</span>
+            <span class="contact-value">Paris · France</span>
+            <span class="contact-sub">International</span>
+          </div>
+        </div>
+
+        <div class="contact-cta reveal">
+          <a href="mailto:sebastian@kotech.fr?subject=Initiative%20IA%20%E2%80%94%20premier%20%C3%A9change"
+            class="btn btn-primary btn-lg">
+            Réserver 45 minutes
+            <svg viewBox="0 0 24 24" class="btn-arrow" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PIED DE PAGE ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="#hero" aria-label="Kotech — accueil">
+          <span class="brand-mark">K</span>
+          <span class="brand-name">Kotech<span class="brand-suffix">Engineering</span></span>
+        </a>
+        <p class="footer-tag">L'IA, augmentée par l'humain.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Pied de page">
+        <a href="#manifeste">Approche</a>
+        <a href="#services">Services</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#methode">Méthode</a>
+        <a href="#apropos">Équipe</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="footer-meta">
+        <p class="footer-reg">DORA · RGPD · AI Act · ISO 27001</p>
+        <p class="footer-loc">Paris · France · International</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> Kotech Engineering. Tous droits réservés.</p>
+      <p class="footer-credit">Conseil &amp; réalisation en intelligence artificielle</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
